@@ -51,3 +51,11 @@ export const ADD_USER_EXERCISE = gql`
     }
   }
 `;
+
+export const REMOVE_USER_EXERCISE = gql `
+mutation removeUserExercise($exerciseId: ID!, $userExerciseId: ID!) {
+  removeUserExercise(exerciseId: $exerciseId, userExerciseId: $userExerciseId) {
+        _id
+  }
+}
+`

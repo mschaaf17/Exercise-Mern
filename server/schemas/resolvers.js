@@ -30,9 +30,14 @@ const resolvers = {
     //   return Exercise.find().sort({ createdAt: -1 });
     // }
     // should query all exercises or by username
-    exercises: async (parent, { username }) => {
-      const params = username ? { username } : {};
-      return Exercise.find(params).sort({ createdAt: -1 });
+    exercises: async (parent, args, context) => {
+      // const params = username ? { username } : {};
+      if (context.user)  {
+      const userData = await User.findOne({_id: context.user._id}).sort({ createdAt: -1 }).populate("exercises")
+        console.log(userData)
+      return userData?.exercises
+      }
+      throw new AuthenticationError('You are not logged in')
     },
     exercise: async (parent, { _id }) => {
       return Exercise.findOne({ _id });
@@ -88,16 +93,24 @@ addUserExercise: async (parent, { exerciseId, weight, repetitions, time, notes},
   throw new AuthenticationError('You need to be logged in.')
 },
 
-removeUserExercise: async (parent, {exerciseId}, context) => {
+removeUserExercise: async (parent, {exerciseId, userExerciseId}, context) => {
+  try {
+    console.log(exerciseId)
   if (context.user) {
+    console.log('hello')
     const deletedExercise = await Exercise.findOneAndUpdate(
-      {_id: context.user._id},
-      {$pull: { userExercise: {exerciseId: exerciseId} }},
+      {_id: exerciseId},
+      {$pull: { userExercise: {_id: userExerciseId} }},
       {new: true}
     )
+    console.log(deletedExercise)
     return deletedExercise
   }
   throw new AuthenticationError('You need to be logged in.')
+}
+catch(err) {
+  throw new AuthenticationError (err)
+}
 }
 }
 }

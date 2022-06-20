@@ -33,8 +33,9 @@ const typeDefs = gql`
     me: User
     users: [User]
     user(username: String!): User
-    exercises(username: String): [Exercise]
+    exercises: [Exercise]
     exercise(_id: ID!): Exercise
+    # exercise(exerciseName: String): Exercise 
   }
 
   type Mutation {
@@ -42,7 +43,8 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     addExercise(exerciseName: String!): Exercise
     addUserExercise(exerciseId: ID!, weight: Int, repetitions: Int, time: Int, notes: String): Exercise
-    removeUserExercise(exerciseId: ID!): Exercise
+    removeUserExercise(exerciseId: ID!, userExerciseId: ID!): Exercise
+
   }
 `;
 
