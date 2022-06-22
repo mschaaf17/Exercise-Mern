@@ -12,12 +12,9 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 
 import Home from './pages/Home';
-<<<<<<< HEAD
 import Ranking from './pages/Ranking';
-=======
 import Login from './pages/Login'
 import Signup from './pages/Signup'
->>>>>>> feature/home
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -46,32 +43,13 @@ function App() {
           <Header />
           <div className="container">
             <Routes>
-<<<<<<< HEAD
               <Route path="/" element={<Home />} />
-              {/* <Route path="/login" element={<Login />} /> */}
-              {/* <Route path="/signup" element={<Signup />} /> */}
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
               {/* <Route path="/profile" element={<Profile />} /> */}
               <Route path="/ranking" element={<Ranking />} />
               {/* <Route path="/videos" element={<Video />} /> */}
               {/* <Route path="/workout" element={<Workout />} /> */}
-=======
-              <Route 
-                path="/" 
-                element={<Home />} 
-              />
-              <Route 
-                path="/login"
-                element={<Login />}
-              />
-              <Route
-                path="/signup"
-                element={<Signup />}
-              />
-              {/* <Route 
-                path="*"
-                element={<NoMatch />}
-              /> */}
->>>>>>> feature/home
             </Routes>
           </div>
           <Footer />
