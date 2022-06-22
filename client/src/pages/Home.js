@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-import React from 'react';
-function Home() {
-  return <div>This is Homepage</div>;
-}
-
-export default Home;
-=======
 import React from 'react'
 import { Link } from 'react-router-dom';
 import Video1 from '../assets/videos/video1.mp4'
@@ -28,4 +20,3 @@ function Home() {
 }
 
 export default Home
->>>>>>> feature/home
