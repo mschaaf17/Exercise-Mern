@@ -29,9 +29,6 @@ export const ADD_EXERCISE = gql`
     addExercise(exerciseName: $exerciseName) {
       _id
       exerciseName
-      userExercise {
-       _id
-      }
     }
   }
 `;

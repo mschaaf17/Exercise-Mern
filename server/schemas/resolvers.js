@@ -27,8 +27,9 @@ const resolvers = {
     },
     // get all exercises
     // exercises: async () => {
-    //   return Exercise.find().sort({ createdAt: -1 });
-    // }
+    //   return Exercise.find().sort({ createdAt: -1 })
+    //   .populate('exerciseName');
+    // },
     // should query all exercises or by username
     exercises: async (parent, args, context) => {
       // const params = username ? { username } : {};

@@ -12,6 +12,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 
 import Home from './pages/Home';
+import Workout from './pages/Workout.js';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -39,13 +40,15 @@ function App() {
         <div className="flex-column justify-flex-start min-100-vh">
           <Header />
           <div className="container">
-            hey
-            {/* <Routes>
-              <Route 
+            hey app page
+            <Routes>
+              {/* <Route 
                 path="/" 
                 element={<Home />} 
-              />
-            </Routes> */}
+              /> */}
+              <Route path="/workout" element={<Workout/>} />
+
+            </Routes>
           </div>
           <Footer />
         </div>
