@@ -1,0 +1,51 @@
+h1 {
+    font-size: 30px;
+}
+
+/* start timer section only */
+.border_bottom {
+    border-bottom: solid 1px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+.green {
+    background-color: green;
+}
+.red {
+    background-color: red;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.flex {
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: space-between;
+    margin: 5px;
+}
+
+/* entire workout timer and log section */
+.workout_timer {
+    width: 60%;
+    height: 100vh;
+    margin: 0px 10px;
+    border: 1px solid;
+}
+
+/* displayed log data */
+.workout_log {
+    width: 40%;
+    height: 100vh;
+    border: 1px solid;
+}
+
+/* log your workout only */
+
+.submit_log {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5px;
+}
+

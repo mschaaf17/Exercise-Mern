@@ -4,6 +4,10 @@ import { ADD_EXERCISE } from '../../utils/mutations'
 import { ADD_USER_EXERCISE } from '../../utils/mutations'
 import { REMOVE_USER_EXERCISE } from '../../utils/mutations'
 import { QUERY_EXERCISES } from '../../utils/queries'
+import ExerciseList from '../../components/ExerciseList'
+import './index.css';
+
+
 
 export default function Workout() {
     const [time, setTime] = useState(0)
@@ -36,6 +40,10 @@ export default function Workout() {
     })
     const [addUserExercise] = useMutation(ADD_USER_EXERCISE)
 
+    const {loading, data} = useQuery(QUERY_EXERCISES)
+    const exercises = data?.exercises || []
+    console.log(exercises)
+
 
     // update state based on input changes
     const handleChange = (event) => {
@@ -54,6 +62,7 @@ export default function Workout() {
     const handleFormSubmit = async (event) => {
         event.preventDefault()
 
+        // query exercises isnt of mutations
         try {
             const {data} = await addExercise({
                 variables: {...exerciseState}
@@ -76,6 +85,7 @@ export default function Workout() {
             repetitions: '',
             notes: ''
         })
+    
         console.log('Submitted!')
     }
 
@@ -86,9 +96,12 @@ export default function Workout() {
     // }
 
   return (
+    <>
     <div>
         This is the workout page!
-        <div className='border'>
+        <div className="flex">
+        <div className='workout_timer'>
+            <div className ="border_bottom">
     {/* timer section */}
         <h1>Working Out? Start Timer!</h1>
         <span>{("0" + Math.floor((time / 3600000) % 60)).slice(-2)}:</span>
@@ -98,28 +111,28 @@ export default function Workout() {
 
         <div>
             {!timerOn && time === 0 && (
-            <button onClick={() => setTimerOn(true)}>Start</button>
+            <button className="green" onClick={() => setTimerOn(true)}>Start</button>
             )}
             {timerOn && (
-             <button onClick={() => setTimerOn(false)}>Stop</button>
+             <button className="red" onClick={() => setTimerOn(false)}>Stop</button>
             )}
       
                 {!timerOn && time !== 0 && (
-        <button onClick={() => setTimerOn(true)}>Resume</button>
+        <button className="green" onClick={() => setTimerOn(true)}>Resume</button>
 
                 )}
 
                 {!timerOn && time > 0 && (
-        <button onClick={() => setTime(0)}>Reset</button>
+        <button className="yellow" onClick={() => setTime(0)}>Reset</button>
 
                 )}
         </div>
-        </div>
+       </div>
 
         {/* enter exercise area */}
-    <div className="border">
+    <div>
       <h1>Log your Workout</h1>
-      <form onSubmit = {handleFormSubmit}>
+      <form className="submit_log" onSubmit = {handleFormSubmit}>
         <input placeholder="Exercise Name" name="exerciseName" type="text" value= {exerciseState.exerciseName} onChange = {handleChange}/>
         <input placeholder="weight" name="weight" type="text" value= {exerciseInfoState.weight} onChange = {handleChange}/>
         <input placeholder="repetitions" name="repetitions" type="text" value= {exerciseInfoState.repetitions} onChange = {handleChange}/>
@@ -130,8 +143,8 @@ export default function Workout() {
         <button type="submit">Submit</button>
       </form>
     </div>
-
-    <div>
+    </div>
+    <div className='workout_log'>
     <h1>Workout Log</h1>
     <div>
     date the workout was logged
@@ -139,8 +152,16 @@ export default function Workout() {
     <div>
         <span>{time}</span>
         <span>createdAt</span>
+        {loading ? (
+            <div>Loading...</div>
+        ): (
+            <ExerciseList exercises = {exercises} title='Exercise Log' />
+        )}
+      
     </div>
     </div>
     </div>
+    </div>
+    </>
   )
 }
