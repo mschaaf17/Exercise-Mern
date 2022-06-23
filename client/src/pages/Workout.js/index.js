@@ -4,7 +4,7 @@ import { ADD_EXERCISE } from '../../utils/mutations'
 import { ADD_USER_EXERCISE } from '../../utils/mutations'
 import { REMOVE_USER_EXERCISE } from '../../utils/mutations'
 import { QUERY_EXERCISES } from '../../utils/queries'
-// import ExerciseList from '../../components/ExerciseList'
+import ExerciseList from '../../components/ExerciseList'
 import './index.css';
 
 
@@ -152,11 +152,11 @@ export default function Workout() {
     <div>
         <span>{time}</span>
         <span>createdAt</span>
-        {/* {loading ? (
+        {loading ? (
             <div>Loading...</div>
         ): (
             <ExerciseList exercises = {exercises} title='Exercise Log' />
-        )} */}
+        )}
       
     </div>
     </div>
