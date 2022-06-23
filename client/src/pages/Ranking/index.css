@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .mainbox {
   display: flex;
   flex-wrap: wrap;
@@ -9,15 +15,16 @@
 .column {
   flex: 1;
   margin: 0.125rem;
-  min-width: 250px;
+  background-color: pink;
+  min-width: 400px;
 }
 
 .panel {
-  height: 3.875rem;
+  height: 2.5rem;
   position: relative;
-  padding: 0 0.1875rem 0.5rem;
+  padding: 0 0.2rem 0.2rem;
   background-color: pink;
-  margin-bottom: 0.25rem;
+  /* margin-bottom: 0.25rem; */
   border: 1px solid rgb(59, 57, 57);
   background: url(../../assets/images/line.png);
 }
@@ -77,10 +84,13 @@
   height: 0.6rem;
   color: #02a6b5;
   line-height: 0.6rem;
-  font-size: 0.25rem;
+  font-size: 0.2rem;
   text-align: center;
 }
 
 .chart {
-  height: 3rem;
+  /* height: 1.6rem; */
+  display:flex;
+  height: 1.6rem;
+  /* height: 100%; */
 }
