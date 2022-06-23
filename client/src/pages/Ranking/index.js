@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import * as echarts from 'echarts';
 import '../../utils/flexible';
 import './index.css';
 import {
