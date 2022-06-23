@@ -29,16 +29,14 @@ export default function Workout() {
     }, [timerOn])
 
     const [exerciseState, setExerciseState] = useState({
-        exerciseName: ''
-    })
-    const [addExercise] = useMutation(ADD_EXERCISE)
-
-    const [exerciseInfoState, setExerciseInfoState] = useState({
-      weight: '',
+        exerciseName: '',
+        weight: '',
       repetitions: '',
       notes: '',
     })
-    const [addUserExercise] = useMutation(ADD_USER_EXERCISE)
+    const [addExercise] = useMutation(ADD_EXERCISE)
+
+ 
 
     const {loading, data} = useQuery(QUERY_EXERCISES)
     const exercises = data?.exercises || []
@@ -52,10 +50,7 @@ export default function Workout() {
             ...exerciseState,
             [name]: value
         })
-        setExerciseInfoState({
-            ...exerciseInfoState,
-            [name]: value
-        })
+       
     }
 
     // submit form
@@ -67,24 +62,21 @@ export default function Workout() {
             const {data} = await addExercise({
                 variables: {...exerciseState}
             })
-            const {moreData } = await addUserExercise({
-                variables: {...exerciseInfoState}
-            })
+           
             console.log({data})
-            console.log({moreData})
+           
         }
         catch (e) {
             console.error (e)
         }
         // clear all values
         setExerciseState({
-            exerciseName: ''
-        })
-        setExerciseInfoState({
+            exerciseName: '',
             weight: '',
             repetitions: '',
-            notes: ''
+            notes: '',
         })
+      
     
         console.log('Submitted!')
     }
@@ -134,12 +126,12 @@ export default function Workout() {
       <h1>Log your Workout</h1>
       <form className="submit_log" onSubmit = {handleFormSubmit}>
         <input placeholder="Exercise Name" name="exerciseName" type="text" value= {exerciseState.exerciseName} onChange = {handleChange}/>
-        <input placeholder="weight" name="weight" type="text" value= {exerciseInfoState.weight} onChange = {handleChange}/>
-        <input placeholder="repetitions" name="repetitions" type="text" value= {exerciseInfoState.repetitions} onChange = {handleChange}/>
+        <input placeholder="weight" name="weight" type="text" value= {exerciseState.weight} onChange = {handleChange}/>
+        <input placeholder="repetitions" name="repetitions" type="text" value= {exerciseState.repetitions} onChange = {handleChange}/>
         <p placeholder="cardioTime" name="cardioTime" type="text" value= {time}>   <span>{("0" + Math.floor((time / 3600000) % 60)).slice(-2)}:</span>
         <span>{("0" + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
         <span>{("0" + Math.floor((time / 1000) % 60)).slice(-2)}</span></p>
-        <textarea placeholder="notes" name="notes" type="text" value= {exerciseInfoState.notes} onChange = {handleChange}/>
+        <textarea placeholder="notes" name="notes" type="text" value= {exerciseState.notes} onChange = {handleChange}/>
         <button type="submit">Submit</button>
       </form>
     </div>

@@ -82,26 +82,26 @@ addExercise: async (parent, args, context) => {
 
   throw new AuthenticationError('You need to be logged in!');
 },
-addUserExercise: async (parent, { exerciseId, weight, repetitions, time, notes}, context) => {
-  if (context.user) {
-    const updatedExercise = await Exercise.findOneAndUpdate(
-      { _id: exerciseId },
-      { $push: { userExercise: {weight, repetitions, time, notes, username: context.user.username} }},
-      { new: true, runValidators: true}
-    )
-    return updatedExercise
-  }
-  throw new AuthenticationError('You need to be logged in.')
-},
+// addUserExercise: async (parent, { exerciseId, weight, repetitions, time, notes}, context) => {
+//   if (context.user) {
+//     const updatedExercise = await Exercise.findOneAndUpdate(
+//       { _id: exerciseId },
+//       { $push: { userExercise: {weight, repetitions, time, notes, username: context.user.username} }},
+//       { new: true, runValidators: true}
+//     )
+//     return updatedExercise
+//   }
+//   throw new AuthenticationError('You need to be logged in.')
+// },
 
-removeUserExercise: async (parent, {exerciseId, userExerciseId}, context) => {
+removeExercise: async (parent, {exerciseId}, context) => {
   try {
     console.log(exerciseId)
   if (context.user) {
     console.log('hello')
     const deletedExercise = await Exercise.findOneAndUpdate(
       {_id: exerciseId},
-      {$pull: { userExercise: {_id: userExerciseId} }},
+      {$pull: { exercises: {exerciseId: exerciseId }}},
       {new: true}
     )
     console.log(deletedExercise)
@@ -112,7 +112,7 @@ removeUserExercise: async (parent, {exerciseId, userExerciseId}, context) => {
 catch(err) {
   throw new AuthenticationError (err)
 }
-}
+ }
 }
 }
 

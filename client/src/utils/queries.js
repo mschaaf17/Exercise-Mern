@@ -5,16 +5,14 @@ export const QUERY_EXERCISES = gql`
     exercises {
       _id
       exerciseName
-      userExercise {
-        weight
+       weight
       repetitions
-      username
       notes
       createdAt
       }
       
     }
-  }
+  
 `;
 
 
@@ -23,15 +21,12 @@ export const QUERY_EXERCISE = gql`
     exercise(_id: $id) {
       _id
       exerciseName
-      userExercise {
         weight
       repetitions
-      username
       notes
       createdAt
       }
     }
-  }
 `;
 
 export const QUERY_USER = gql`
@@ -42,7 +37,7 @@ export const QUERY_USER = gql`
       email
     exercises {
       exerciseName
-      userExercise {
+      _id
         weight
         time
         repetitions
@@ -51,7 +46,7 @@ export const QUERY_USER = gql`
       }
     }
   }
-  }
+  
 `;
 
 export const QUERY_ME = gql`
@@ -62,7 +57,6 @@ export const QUERY_ME = gql`
       email
     exercises {
       exerciseName
-      userExercise {
         weight
         time
         repetitions
@@ -71,7 +65,7 @@ export const QUERY_ME = gql`
       }
        }
     }
-  }
+  
 `;
 
 // export const QUERY_ME_BASIC = gql`
