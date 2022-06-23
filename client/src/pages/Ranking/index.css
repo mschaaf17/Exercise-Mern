@@ -7,27 +7,34 @@
 .mainbox {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   /* min-width: 1024px;
   max-width: 1920px; */
-  padding: 0.125rem 0;
-}
-
-.column {
-  flex: 1;
-  margin: 0.125rem;
-  /* background-color: pink; */
-  background-color: rgba(79, 54, 219, 0.144);
-  min-width: 400px;
+  padding: 0.125rem;
 }
 
 .panel {
-  height: 2.5rem;
+  flex: 1;
+  min-width: 400px;
+  margin: 0.12rem;
+  /* background-color: pink; */
+  background-color: rgba(79, 54, 219, 0.144);
+  /* min-width: 400px; */
+  /* height: 2.5rem; */
   position: relative;
   padding: 0 0.2rem 0.2rem;
 
   /* margin-bottom: 0.25rem; */
   border: 1px solid rgb(30, 205, 236);
   background: url(../../assets/images/line.png);
+}
+
+.panel-blank {
+  border: none;
+}
+.panel-blank::before,
+.panel-blank::after {
+  display: none;
 }
 
 .panel::before {
@@ -90,8 +97,5 @@
 }
 
 .chart {
-  /* height: 1.6rem; */
-  display: flex;
   height: 1.6rem;
-  /* height: 100%; */
 }
