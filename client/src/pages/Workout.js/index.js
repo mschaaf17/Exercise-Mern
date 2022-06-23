@@ -1,9 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { useQuery, useMutation } from '@apollo/client'
 import { ADD_EXERCISE } from '../../utils/mutations'
-import { ADD_USER_EXERCISE } from '../../utils/mutations'
-import { REMOVE_USER_EXERCISE } from '../../utils/mutations'
-import { QUERY_EXERCISES } from '../../utils/queries'
+import { QUERY_EXERCISES, QUERY_ME } from '../../utils/queries'
 import ExerciseList from '../../components/ExerciseList'
 import './index.css';
 
@@ -28,6 +26,13 @@ export default function Workout() {
 
     }, [timerOn])
 
+    const {loading, data} = useQuery(QUERY_EXERCISES)
+    const {data: userData } =useQuery(QUERY_ME)
+    const exercises = data?.exercises || []
+    console.log(exercises)
+    
+    // const loggedIn = Auth.loggedIn()
+
     const [exerciseState, setExerciseState] = useState({
         exerciseName: '',
         weight: '',
@@ -38,9 +43,7 @@ export default function Workout() {
 
  
 
-    const {loading, data} = useQuery(QUERY_EXERCISES)
-    const exercises = data?.exercises || []
-    console.log(exercises)
+    
 
 
     // update state based on input changes

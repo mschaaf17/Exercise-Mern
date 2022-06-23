@@ -94,6 +94,9 @@ addExercise: async (parent, args, context) => {
 //   throw new AuthenticationError('You need to be logged in.')
 // },
 
+
+// {_id: exerciseId},
+// {$pull: { userExercise: {_id: userExerciseId} }},
 removeExercise: async (parent, {exerciseId}, context) => {
   try {
     console.log(exerciseId)
@@ -101,7 +104,7 @@ removeExercise: async (parent, {exerciseId}, context) => {
     console.log('hello')
     const deletedExercise = await Exercise.findOneAndUpdate(
       {_id: exerciseId},
-      {$pull: { exercises: {exerciseId: exerciseId }}},
+      {$pull: { exercises: {_id: exerciseId }}},
       {new: true}
     )
     console.log(deletedExercise)

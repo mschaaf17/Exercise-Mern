@@ -1,10 +1,12 @@
 import { gql } from '@apollo/client';
 
 export const QUERY_EXERCISES = gql`
-  query {
+  query exercises($username: String) {
+  exercises(username: $username) {
     exercises {
       _id
       exerciseName
+      username
        weight
       repetitions
       notes
@@ -12,8 +14,9 @@ export const QUERY_EXERCISES = gql`
       }
       
     }
-  
+  }
 `;
+
 
 
 export const QUERY_EXERCISE = gql`
@@ -21,6 +24,7 @@ export const QUERY_EXERCISE = gql`
     exercise(_id: $id) {
       _id
       exerciseName
+      username
         weight
       repetitions
       notes
@@ -56,6 +60,7 @@ export const QUERY_ME = gql`
       username
       email
     exercises {
+      _id
       exerciseName
         weight
         time

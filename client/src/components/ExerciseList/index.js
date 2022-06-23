@@ -8,14 +8,15 @@ const ExerciseList = ({ exercises, title }) => {
 
   return (
     <div>
-      <h3>{title}</h3>
+      <h3>{title} </h3>
       {exercises &&
         exercises.map(exercise => (
           <div key={exercise._id} className="card mb-3">
             <p className="card-header">
-              {exercise.exerciseName} <br></br>
-              date of exercises
+              {exercise.exerciseName}
+              {exercise.createdAt}
             </p>
+            <p>weight:{exercise.weight}, reps: {exercise.repetitions}</p>
 
           </div>
         ))}
