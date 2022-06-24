@@ -1,5 +1,4 @@
 const { Exercise, User } = require('../models/');
-const db = require('../config/connection');
 const exerciseList = [
   'Pull Ups',
   'Push Ups',
@@ -10,8 +9,7 @@ const exerciseList = [
 
 const generateExercise = async userList => {
   const exerciseKinds = exerciseList.length;
-  const exerciseArray = [];
-  for (let i = 0; i <= 500; i++) {
+  for (let i = 0; i <= 1000; i++) {
     //   create new exercise
     const exerciseInstance = {
       // random exercise name
@@ -20,8 +18,8 @@ const generateExercise = async userList => {
       weight: Math.floor(Math.random() * 15 + 125),
       repetitions: Math.floor(Math.random() * 30 + 30),
       time: Math.floor(Math.random() * 30 + 10),
+      createdAt: new Date(new Date().setDate(new Date().getDate() - Math.floor(Math.random() * 181))),
     };
-    // console.log(exerciseInstance);
     // save data to User document's exercises
     await Exercise.create(exerciseInstance)
       .then(data =>
