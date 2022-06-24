@@ -1,4 +1,4 @@
-const { exerciseCategory } = require('../models/');
+const { ExerciseCategory } = require('../models/');
 
 const exerciseList = [
   'Pull Ups',
@@ -8,5 +8,11 @@ const exerciseList = [
   'Sit Ups',
 ];
 
-const seedCategory = async () => await exerciseCategory.create(exerciseList.map(item=>{}));
+const seedCategory = async () => {
+  await ExerciseCategory.deleteMany();
+  for (item of exerciseList) {
+    await ExerciseCategory.create({ exerciseName: item });
+  }
+};
+
 module.exports = seedCategory;
