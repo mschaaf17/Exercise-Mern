@@ -1,11 +1,119 @@
+// import { gql } from '@apollo/client';
+
+// export const QUERY_EXERCISES = gql`
+//   query {
+//     exercises {
+//       _id
+//       exerciseName
+//       userExercise {
+//         weight
+//       repetitions
+//       username
+//       notes
+//       createdAt
+//       }
+      
+//     }
+//   }
+// `;
+
+
+// export const QUERY_EXERCISE = gql`
+//   query exercise($id: ID!) {
+//     exercise(_id: $id) {
+//       _id
+//       exerciseName
+//       userExercise {
+//         weight
+//       repetitions
+//       username
+//       notes
+//       createdAt
+//       }
+//     }
+//   }
+// `;
+
+// export const QUERY_USER = gql`
+//   query user($username: String!) {
+//     user(username: $username) {
+//       _id
+//       username
+//       email
+//     exercises {
+//       exerciseName
+//       userExercise {
+//         weight
+//         time
+//         repetitions
+//         notes
+//         createdAt
+//       }
+//     }
+//   }
+//   }
+// `;
+
+// export const QUERY_ME = gql`
+//   {
+//     me {
+//       _id
+//       username
+//       email
+//     exercises {
+//       exerciseName
+//       userExercise {
+//         weight
+//         time
+//         repetitions
+//         notes
+//         createdAt
+//       }
+//        }
+//     }
+//   }
+// `;
+
+// // export const QUERY_ME_BASIC = gql`
+// //   {
+// //     me {
+// //       _id
+// //       username
+// //       email
+// //       friendCount
+// //       friends {
+// //         _id
+// //         username
+// //       }
+// //     }
+// //   }
+// // `;
+
+
 import { gql } from '@apollo/client';
+
+// export const QUERY_EXERCISES = gql`
+//   query exercises($username: String) {
+//   exercises(username: $username) {
+//     exercises {
+//       _id
+//       exerciseName
+//       username
+//        weight
+//       repetitions
+//       notes
+//       createdAt
+//       }
+      
+//     }
+//   }
+// `;
 
 export const QUERY_EXERCISES = gql`
   query {
     exercises {
       _id
       exerciseName
-      userExercise {
         weight
       repetitions
       username
@@ -14,8 +122,9 @@ export const QUERY_EXERCISES = gql`
       }
       
     }
-  }
+  
 `;
+
 
 
 export const QUERY_EXERCISE = gql`
@@ -23,15 +132,13 @@ export const QUERY_EXERCISE = gql`
     exercise(_id: $id) {
       _id
       exerciseName
-      userExercise {
+      username
         weight
       repetitions
-      username
       notes
       createdAt
       }
     }
-  }
 `;
 
 export const QUERY_USER = gql`
@@ -42,7 +149,7 @@ export const QUERY_USER = gql`
       email
     exercises {
       exerciseName
-      userExercise {
+      _id
         weight
         time
         repetitions
@@ -51,7 +158,7 @@ export const QUERY_USER = gql`
       }
     }
   }
-  }
+  
 `;
 
 export const QUERY_ME = gql`
@@ -61,8 +168,8 @@ export const QUERY_ME = gql`
       username
       email
     exercises {
+      _id
       exerciseName
-      userExercise {
         weight
         time
         repetitions
@@ -71,7 +178,7 @@ export const QUERY_ME = gql`
       }
        }
     }
-  }
+  
 `;
 
 // export const QUERY_ME_BASIC = gql`
