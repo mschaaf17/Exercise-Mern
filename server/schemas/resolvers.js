@@ -75,7 +75,7 @@ const resolvers = {
           { $push: { exercises: exercise._id } },
           { new: true }
         );
-    
+          console.log(exercise)
         return exercise;
       }
     
