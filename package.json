@@ -1,7 +1,7 @@
 {
   "name": "final-practice",
   "version": "1.0.0",
-  "description": "",
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",
   "scripts": {
     "start": "node server/server.js",
@@ -15,5 +15,13 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^5.1.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mschaaf17/Exercise-Mern.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mschaaf17/Exercise-Mern/issues"
+  },
+  "homepage": "https://github.com/mschaaf17/Exercise-Mern#readme"
 }
