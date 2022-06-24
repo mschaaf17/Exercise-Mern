@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Auth from '../../utils/auth';
+import './style.css'
 
 const Header = () => {
   const logout = event => {
@@ -10,13 +11,17 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-secondary mb-4 py-2 flex-row align-center">
-      <div className="container flex-row justify-space-between-lg justify-center align-center">
+    <header className="">
+      <div id="nav-container">
+        <div id="title">
         <Link to="/">
           <h1>Stacked</h1>
         </Link>
+        </div>
 
-        <nav className="text-center">
+        
+        <div id="nav-entry">
+        <nav  className="">
           {Auth.loggedIn() ? (
             <>
               <Link to="/profile">My Workouts</Link>
@@ -31,7 +36,8 @@ const Header = () => {
             </>
           )}
         </nav>
-      </div>
+        </div>
+        </div>
     </header>
   );
 };

@@ -1,0 +1,36 @@
+h1 {
+ font: 3vw;
+}
+
+#homepage {
+  position: absolute;
+  right: 0;
+  width: 100%;
+  min-height: 100vh;
+  padding: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+}
+
+#bg-video {
+ position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+
+}
+
+#home-text {
+ display: flex;
+ position: relative;
+ flex-direction: column;
+}
+
+#home-text h1 {
+ text-align: left;
+}

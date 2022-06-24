@@ -1,22 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
  margin: 0;
- box-sizing: border-box;
-}
-
-#homepage {
- width: 100%;
- height: 100vh;
- 
+ padding: 0;
 
 }
 
-#bg-video {
- width: 100%;
- height: 100%;
- object-fit: cover;
- /* -webkit-filter: grayscale(50%); */
-
+:root {
+ --primary: #cc0000;
+ --secondary: white;
+ --tertiary: black;
 }
+
+
 
 a {
  text-decoration: none;
@@ -25,3 +23,10 @@ a {
 ul {
  list-style: none;
 }
+
+.flex {
+ display: flex;
+ display: -webkit-flex;
+
+}
+

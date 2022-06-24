@@ -1,24 +1,24 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import Auth from '../utils/auth';
-import { ADD_USER } from '../utils/mutations';
+import { Link } from 'react-router-dom';
+import { LOGIN_USER } from '../../utils/mutations';
+import Auth from '../../utils/auth';
 
-function Signup(props) {
+function Login(props) {
   const [formState, setFormState] = useState({ email: '', password: '' });
-  const [addUser] = useMutation(ADD_USER);
+  const [login, { error }] = useMutation(LOGIN_USER);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    const mutationResponse = await addUser({
-      variables: {
-        email: formState.email,
-        password: formState.password,
-        username: formState.username
-      },
-    });
-    const token = mutationResponse.data.addUser.token;
-    Auth.login(token);
+    try {
+      const mutationResponse = await login({
+        variables: { email: formState.email, password: formState.password },
+      });
+      const token = mutationResponse.data.login.token;
+      Auth.login(token);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const handleChange = (event) => {
@@ -31,24 +31,14 @@ function Signup(props) {
 
   return (
     <div className="">
-      <Link to="/login">Already have an account? Login here</Link>
+      <Link to="/signup">New user? Signup here</Link>
 
-      <h2>Signup</h2>
+      <h2>Login</h2>
       <form onSubmit={handleFormSubmit}>
         <div className="">
-          <label htmlFor="username">Username:</label>
+          <label htmlFor="email">Email address:</label>
           <input
-            placeholder="Username"
-            name="username"
-            type="username"
-            id="username"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="">
-          <label htmlFor="email">Email:</label>
-          <input
-            placeholder="youremail@test.com"
+            placeholder="email@emailaddress.com"
             name="email"
             type="email"
             id="email"
@@ -65,6 +55,11 @@ function Signup(props) {
             onChange={handleChange}
           />
         </div>
+        {error ? (
+          <div>
+            <p className="error-text">Email address or password is incorrect. Please try again.</p>
+          </div>
+        ) : null}
         <div className="">
           <button type="submit">Submit</button>
         </div>
@@ -73,4 +68,4 @@ function Signup(props) {
   );
 }
 
-export default Signup;
+export default Login;
