@@ -14,7 +14,7 @@ const typeDefs = gql`
   #   userExercise: [userExercises]
   # }
 
-  # new 
+  # new
   type Exercise {
     _id: ID
     exerciseName: String
@@ -40,24 +40,35 @@ const typeDefs = gql`
     user: User
   }
 
+  type Player {
+    username: String
+    totalTime: Int
+  }
+
   type Query {
     me: User
     users: [User]
     user(username: String!): User
     exercises: [Exercise]
     exercise(_id: ID!): Exercise
-    # exercise(exerciseName: String): Exercise 
+    # exercise(exerciseName: String): Exercise
+    topPlayers: [Player]
   }
 
   type Mutation {
     login(email: String!, password: String!): Auth
-     addUser(username: String!, email: String!, password: String!): Auth
-     addExercise(exerciseName: String!, weight: Int, repetitions: Int, time: Int, notes: String): Exercise
+    addUser(username: String!, email: String!, password: String!): Auth
+    addExercise(
+      exerciseName: String!
+      weight: Int
+      repetitions: Int
+      time: Int
+      notes: String
+    ): Exercise
 
     # addExercise(exerciseName: String!): Exercise
     # addUserExercise(exerciseId: ID!, weight: Int, repetitions: Int, time: Int, notes: String): Exercise
     # removeUserExercise(exerciseId: ID!, userExerciseId: ID!): Exercise
-
   }
 `;
 

@@ -12,11 +12,10 @@
 //       notes
 //       createdAt
 //       }
-      
+
 //     }
 //   }
 // `;
-
 
 // export const QUERY_EXERCISE = gql`
 //   query exercise($id: ID!) {
@@ -89,7 +88,6 @@
 // //   }
 // // `;
 
-
 import { gql } from '@apollo/client';
 
 // export const QUERY_EXERCISES = gql`
@@ -104,7 +102,7 @@ import { gql } from '@apollo/client';
 //       notes
 //       createdAt
 //       }
-      
+
 //     }
 //   }
 // `;
@@ -114,18 +112,14 @@ export const QUERY_EXERCISES = gql`
     exercises {
       _id
       exerciseName
-        weight
+      weight
       repetitions
       username
       notes
       createdAt
-      }
-      
     }
-  
+  }
 `;
-
-
 
 export const QUERY_EXERCISE = gql`
   query exercise($id: ID!) {
@@ -133,12 +127,12 @@ export const QUERY_EXERCISE = gql`
       _id
       exerciseName
       username
-        weight
+      weight
       repetitions
       notes
       createdAt
-      }
     }
+  }
 `;
 
 export const QUERY_USER = gql`
@@ -147,9 +141,9 @@ export const QUERY_USER = gql`
       _id
       username
       email
-    exercises {
-      exerciseName
-      _id
+      exercises {
+        exerciseName
+        _id
         weight
         time
         repetitions
@@ -158,7 +152,6 @@ export const QUERY_USER = gql`
       }
     }
   }
-  
 `;
 
 export const QUERY_ME = gql`
@@ -167,18 +160,26 @@ export const QUERY_ME = gql`
       _id
       username
       email
-    exercises {
-      _id
-      exerciseName
+      exercises {
+        _id
+        exerciseName
         weight
         time
         repetitions
         notes
         createdAt
       }
-       }
     }
-  
+  }
+`;
+
+export const QUERY_TOP_PLAYERS = gql`
+  {
+    topPlayers {
+      username
+      totalTime
+    }
+  }
 `;
 
 // export const QUERY_ME_BASIC = gql`
