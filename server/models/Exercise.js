@@ -29,14 +29,14 @@ const exerciseSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
-      get: timestamp => dateFormat(timestamp),
-    },
-  },
-  {
-    toJSON: {
-      getters: true,
-    },
+      // get: timestamp => dateFormat(timestamp),
+    }
   }
+  // {
+  //   toJSON: {
+  //     getters: true,
+  //   },
+  // }
 );
 
 const Exercise = model('Exercise', exerciseSchema);
