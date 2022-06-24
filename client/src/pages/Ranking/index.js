@@ -1,20 +1,26 @@
 import React, { useEffect } from 'react';
+import { useQuery } from '@apollo/client';
 import '../../utils/flexible';
 import './index.css';
+
 import {
   hourChart,
   weightChart,
   topChart,
   analysisChart,
 } from '../../components/Charts/';
+import { QUERY_TOP_PLAYERS } from '../../utils/queries';
 
 function Ranking() {
+  const { loading, data } = useQuery(QUERY_TOP_PLAYERS);
+  console.log(data);
+  const topPlayers = data?.topPlayers;
   useEffect(() => {
     hourChart();
     weightChart();
-    topChart();
+    topChart(topPlayers);
     analysisChart();
-  });
+  }, [data]);
 
   return (
     <div className="mainbox">
