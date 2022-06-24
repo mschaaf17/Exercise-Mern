@@ -19,15 +19,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-<<<<<<< HEAD
     "build": "react-scripts build",
-=======
-<<<<<<< HEAD
-    "build": "react-scripts build",
-=======
-    "build": "react-scripts --openssl-legacy-provider build",
->>>>>>> 02b8f8de05712c1a8cd9333a975804f3835fc078
->>>>>>> ff5583d09391a0f891203067e750a8bbf999cec9
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
