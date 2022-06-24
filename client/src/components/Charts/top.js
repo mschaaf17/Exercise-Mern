@@ -63,10 +63,10 @@ export default function topChart() {
         yAxisIndex: 0,
         data: data,
         barCategoryGap: 50,
-        barWidth: 10,
+        barWidth: 20,
         itemStyle: {
           normal: {
-            barBorderRadius: 20,
+            barBorderRadius: 24,
             color: function (params) {
               var num = myColor.length;
               return myColor[params.dataIndex % num];
@@ -87,7 +87,7 @@ export default function topChart() {
         yAxisIndex: 1,
         barCategoryGap: 50,
         data: [100, 100, 100, 100, 100],
-        barWidth: 15,
+        barWidth: 22,
         itemStyle: {
           normal: {
             color: 'none',
