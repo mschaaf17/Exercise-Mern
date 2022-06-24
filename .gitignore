@@ -1,7 +1,4 @@
 node_modules
 .DS_Store
-<<<<<<< HEAD
 jsconfig.json
-=======
 package-lock.json
->>>>>>> feature/home
