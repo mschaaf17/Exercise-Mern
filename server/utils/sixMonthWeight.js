@@ -27,20 +27,7 @@ function getPastMonth(number) {
 const sixMonthWeight = data => {
   const monthlyWeight = {};
 
-  const months = [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Spt',
-    'Oct',
-    'Nov',
-    'Dec',
-  ];
+  
   data
     // change time format to 'YYYY/MM'
     .map(el => ({ time: dateFormat(el.time), weight: el.weight }))
@@ -48,11 +35,11 @@ const sixMonthWeight = data => {
     .filter(el => el.time >= getPastMonth(5))
     .forEach(el => {
       const monthIndex = parseInt(el.time.split('/')[1]) - 1;
-      if (!monthlyWeight[months[monthIndex]]) {
-        monthlyWeight[months[monthIndex]] = [];
+      if (!monthlyWeight[monthIndex]) {
+        monthlyWeight[monthIndex] = [];
         return;
       }
-      monthlyWeight[months[monthIndex]].push(el);
+      monthlyWeight[monthIndex].push(el);
     });
 
   for (let k in monthlyWeight) {

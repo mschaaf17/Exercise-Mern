@@ -2,11 +2,29 @@ import * as echarts from 'echarts';
 export default function weightChart(data) {
   let monthArray = [];
   let weightArray = [];
-
+  let max;
+  let min;
+  let suggestValue = 120;
+  const months = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Spt',
+    'Oct',
+    'Nov',
+    'Dec',
+  ];
   if (data) {
     const weightData = JSON.parse(data);
-    monthArray = Object.keys(weightData);
+    monthArray = Object.keys(weightData).map(el => months[el]);
     weightArray = Object.values(weightData);
+    max = Math.max(...weightArray, suggestValue) + 5;
+    min = Math.min(...weightArray, suggestValue) - 5;
   }
 
   const option = {
@@ -50,8 +68,8 @@ export default function weightChart(data) {
     },
     yAxis: {
       type: 'value',
-      min: 100,
-      max: 150,
+      min: min,
+      max: max,
       axisLine: {
         show: false,
       },
