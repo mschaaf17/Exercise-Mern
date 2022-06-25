@@ -1,17 +1,16 @@
-h1 {
- font: 3vw;
-}
+
 
 #homepage {
-  position: absolute;
-  right: 0;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   width: 100%;
   min-height: 100vh;
-  padding: 100px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  height: 100%;
+  /* justify-content: space-between;
+  align-items: center; */
   z-index: 2;
+  padding: 100px;
 }
 
 #bg-video {
@@ -26,11 +25,110 @@ h1 {
 }
 
 #home-text {
+ z-index: 30;
+ justify-content: center;
  display: flex;
- position: relative;
  flex-direction: column;
+ flex-wrap: wrap;
+ background-color: rgba(0, 0, 0, 0.3);
+ padding: 15px;
+ border-radius: 1vh;
+ width: fit-content;
+ margin-top: 3vh;
 }
 
-#home-text h1 {
- text-align: left;
+#home-title {
+ /* position: absolute; */
+ z-index: 20;
+ display: flex;
+ flex-direction: column;
+ /* justify-content: flex-start;
+ align-items: flex-start; */
+ /* padding-bottom: 5vh; */
+
 }
+
+#home-title h1 {
+ font-size: 80px;
+ -webkit-text-stroke-width: 0.8px;
+ -webkit-text-stroke-color: var(--black);
+  color: var(--lighter-red);
+  text-align: left;
+}
+
+#home-title p {
+ font-size: 25px;
+ margin-left: 5px;
+ color: var(--black);
+ /* -webkit-text-stroke-width: 0.3px;
+ -webkit-text-stroke-color: var(--black); */
+}
+
+#home-text h3 {
+ font-size: 40px;
+ max-width: 100%;
+ /* -webkit-text-stroke-width: 0.4px;
+-webkit-text-stroke-color: var(--black); */
+color: var(--secondary);
+margin-top: 20px;
+}
+
+
+
+#signup-btn {
+ display: flex;
+ justify-content: center;
+ padding: 10px;
+}
+
+button {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ padding: 5px;
+ background: radial-gradient(var(--lighter-red) 40%, var(--primary));
+ border: 0.5px solid var(--secondary);
+ border-radius: 0.5vw;
+ /* box-shadow: 0 0 3px var(--secondary); */
+ width: 12em;
+ color: var(--secondary);
+}
+
+button:hover {
+ cursor: pointer;
+ opacity: 0.8;
+}
+
+a:hover {
+ cursor: pointer;
+}
+
+#existing {
+ display: flex;
+ justify-content: center;
+ padding-top: 10px;
+ color: white;
+ font-size: 15px;
+ text-decoration: underline;
+}
+
+a:visited {
+ color: var(--secondary);
+}
+
+#arrow {
+ margin-left: 5px;
+ width: 20px;
+ 
+}
+/* 
+.overlay
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--secondary);
+  mix-blend-mode: overlay;
+} */

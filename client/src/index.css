@@ -5,13 +5,19 @@
 * {
  margin: 0;
  padding: 0;
-
+ box-sizing: border-box;
+ font-family: 'Inconsolata', monospace;
 }
 
 :root {
- --primary: #cc0000;
- --secondary: white;
- --tertiary: black;
+ --primary: #A42929;
+ --secondary: #E8E8E8;
+ --tertiary: #7C7C7C;
+ --darker-red: #793630;
+ --lighter-red: #E50E0E;
+ --gray: #BBBBBB;
+ --black: black;
+
 }
 
 
@@ -30,3 +36,12 @@ ul {
 
 }
 
+h1 {
+ font-family: 'Stick No Bills', sans-serif;
+ font-weight: 700;
+ font-style: bold;
+}
+
+h3 {
+ font-family: 'Kdam Thmor Pro', sans-serif;
+}

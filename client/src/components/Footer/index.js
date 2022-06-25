@@ -4,7 +4,7 @@ import './style.css'
 const Footer = () => {
   return (
     <footer className="">
-      <div className="container">
+      <div className="footer-container">
         &copy;{new Date().getFullYear()} by Cannibal Coders
       </div>
     </footer>

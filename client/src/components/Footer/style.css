@@ -1,5 +1,11 @@
-footer .container{
+/* footer {
  display: flex;
  align-items: flex-end;
+ height: 150%;
+} */
+
+footer .footer-container {
+ position: absolute;
+ bottom: 0;
  z-index: 5;
 }
