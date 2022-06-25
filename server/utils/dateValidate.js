@@ -15,7 +15,7 @@ const withInLastWeek = utcTime => {
 
   const lastSunday =
     date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate();
-  console.log(lastMonday, lastSunday, Day);
+  // console.log(lastMonday, lastSunday, Day);
   return lastMonday <= Day && lastSunday >= Day;
 };
 
