@@ -1,0 +1,52 @@
+/* Video category layout */
+
+/* element {
+}
+.accent-lightgray-background {
+  background-color: rgb(46, 50, 52);
+  background-image: none;
+}
+.accent-lightgray-background {
+  background: #D9D8D6;
+    background-color: rgb(217, 216, 214);
+    background-image: none;
+}
+.section-padding {
+  padding: 2em 0 2em;
+}
+div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, th, td {
+  margin: 0;
+  padding: 0;
+}
+*, ::before, ::after {
+  box-sizing: inherit;
+}
+body {
+  color: rgb(226, 223, 219);
+}
+body {
+  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  font-weight: normal;
+  line-height: 1.5;
+  color: #0A0A0A;
+  -moz-osx-font-smoothing: grayscale;
+}
+html, body, input, textarea, select, button {
+  color: #e8e6e3;
+}
+:root {
+  --darkreader-neutral-background: #131516;
+  --darkreader-neutral-text: #d8d4cf;
+  --darkreader-selection-background: #004daa;
+  --darkreader-selection-text: #e8e6e3;
+}
+html {
+  font-size: 100%;
+}
+html {
+  font-family: sans-serif;
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+}
+html {
+  color-scheme: dark !important; */
