@@ -1,15 +1,14 @@
 header {
- background-color: var(--primary);
+ background-color: var(--secondary);
 
 }
 
 header h1 {
- color: var(--secondary);
- padding-top: 1vh;
- font-size: 10vh;
+ color: var(--lighter-red);
+
+ font-size: 3em;
  -webkit-text-stroke-width: 1px;
--webkit-text-stroke-color: var(--tertiary);
-font-family: 'Staatliches';
+-webkit-text-stroke-color: var(--black);
 margin-left: 4vw;
 }
 
@@ -19,7 +18,7 @@ margin-left: 4vw;
  justify-content: space-between;
 }
 
-#nav-entry {
+/* #nav-entry {
  display: flex;
  justify-content: center;
  align-items: flex-end;
@@ -33,8 +32,8 @@ margin-left: 4vw;
 -webkit-text-stroke-color: var(--tertiary);
 font-family: 'Staatliches';
 
-}
+} */
 
-#nav-entry a:hover {
+/* #nav-entry a:hover {
  background-color: lightgray;
-}
+} */

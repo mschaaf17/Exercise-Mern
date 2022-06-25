@@ -18,7 +18,7 @@ const Header = () => {
       <div id="nav-container">
         <div id="title">
         <Link to="/">
-          <h1>Stacked</h1>
+          <h1>STACKED</h1>
         </Link>
         </div>
 
@@ -34,8 +34,7 @@ const Header = () => {
             </>
           ) : (
             <>
-              <Link to="/login">Login</Link>
-              <Link to="/signup">Signup</Link>
+              {/* Do not need login signup if user is not logged in because they have routes on the page */}
             </>
           )}
         </nav>
