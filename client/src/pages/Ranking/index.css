@@ -25,7 +25,7 @@
   padding: 0 0.2rem 0.2rem;
 
   /* margin-bottom: 0.25rem; */
-  border: 1px solid rgb(30, 205, 236);
+  border: 1px solid #1089E7;
   background: url(../../assets/images/line.png);
 }
 
@@ -44,8 +44,8 @@
   left: 0;
   width: 10px;
   height: 10px;
-  border-left: 2px solid #02a6b5;
-  border-top: 2px solid #02a6b5;
+  border-left: 2px solid #1089E7;
+  border-top: 2px solid #1089E7;
 }
 
 .panel::after {
@@ -55,8 +55,8 @@
   right: 0;
   width: 10px;
   height: 10px;
-  border-right: 2px solid #02a6b5;
-  border-top: 2px solid #02a6b5;
+  border-right: 2px solid #1089E7;
+  border-top: 2px solid #1089E7;
 }
 
 .panel-footer {
@@ -73,8 +73,8 @@
   left: 0;
   width: 10px;
   height: 10px;
-  border-left: 2px solid #02a6b5;
-  border-bottom: 2px solid #02a6b5;
+  border-left: 2px solid #1089E7;
+  border-bottom: 2px solid #1089E7;
 }
 
 .panel-footer:after {
@@ -84,13 +84,13 @@
   right: 0;
   width: 10px;
   height: 10px;
-  border-right: 2px solid #02a6b5;
-  border-bottom: 2px solid #02a6b5;
+  border-right: 2px solid #1089E7;
+  border-bottom: 2px solid #1089E7;
 }
 
 .panel h2 {
   height: 0.6rem;
-  color: #02a6b5;
+  color: #1089E7;
   line-height: 0.6rem;
   font-size: 0.2rem;
   text-align: center;

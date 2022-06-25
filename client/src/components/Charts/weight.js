@@ -2,10 +2,23 @@ import * as echarts from 'echarts';
 export default function weightChart(data) {
   let monthArray = [];
   let weightArray = [];
-
+  const months = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Spt',
+    'Oct',
+    'Nov',
+    'Dec',
+  ];
   if (data) {
     const weightData = JSON.parse(data);
-    monthArray = Object.keys(weightData);
+    monthArray = Object.keys(weightData).map(el => months[el]);
     weightArray = Object.values(weightData);
   }
 

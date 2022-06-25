@@ -76,7 +76,8 @@ export default function hourChart(data) {
             { type: 'min', name: 'Min' },
           ],
         },
-        barWidth: '27',
+        barWidth: '23',
+
         itemStyle: {
           color: '#F8B448',
           barBorderRadius: 3,
@@ -93,7 +94,9 @@ export default function hourChart(data) {
             { type: 'min', name: 'Min' },
           ],
         },
-        barWidth: '27',
+        barWidth: '20',
+        barcategoryGap: '0',
+        barGap: '1',
         itemStyle: {
           color: '#1089E7',
           barBorderRadius: 3,
