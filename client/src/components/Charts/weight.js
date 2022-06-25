@@ -6,9 +6,7 @@ export default function weightChart(data) {
   if (data) {
     const weightData = JSON.parse(data);
     monthArray = Object.keys(weightData);
-    console.log(monthArray);
     weightArray = Object.values(weightData);
-    console.log(weightArray);
   }
 
   const option = {
@@ -76,13 +74,13 @@ export default function weightChart(data) {
         type: 'line',
         stack: 'Total',
         data: weightArray,
-        smooth: true,
+        // smooth: true,
       },
       {
         name: 'Recommended',
         type: 'line',
         stack: 'Total2',
-        showSymbol: false,
+        // showSymbol: false,
         data: [125, 125, 125, 125, 125, 125, 125],
       },
     ],

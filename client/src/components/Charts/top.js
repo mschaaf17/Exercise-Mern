@@ -8,7 +8,7 @@ export default function topChart(dataArr = []) {
     //图标位置
     grid: {
       top: '10%',
-      left: '35%',
+      left: '25%',
       right: '0%',
       bottom: '10%',
     },
@@ -45,7 +45,7 @@ export default function topChart(dataArr = []) {
     },
 
     series: {
-      name: '条',
+      // name: '条',
       type: 'bar',
       yAxisIndex: 0,
       data: data,

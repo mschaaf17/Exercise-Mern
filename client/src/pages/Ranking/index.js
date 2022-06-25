@@ -4,7 +4,7 @@ import '../../utils/flexible';
 import './index.css';
 
 import {
-  hourChart,
+  weekChart,
   weightChart,
   topChart,
   analysisChart,
@@ -13,17 +13,19 @@ import { QUERY_EXERCISE_DATA } from '../../utils/queries';
 
 function Ranking() {
   const { loading, data } = useQuery(QUERY_EXERCISE_DATA);
-  console.log(data);
+  // console.log(data);
 
   const topPlayers = data?.topPlayers;
   const weightData = data?.userData?.monthlyWeight;
-  const exerciseAnalysis = data?.userData?.exercises;
+  const exerciseData = data?.userData?.exercises;
+  const weeklyData = data?.userData?.weeklyData;
+
 
   useEffect(() => {
-    hourChart();
+    weekChart(weeklyData);
     weightChart(weightData);
     topChart(topPlayers);
-    analysisChart(exerciseAnalysis);
+    analysisChart(exerciseData);
   }, [data]);
 
   return (
@@ -34,7 +36,7 @@ function Ranking() {
         <div className="panel-footer"></div>
       </div>
       <div className="panel">
-        <h2>Top 5 of Last Week</h2>
+        <h2>Star Players</h2>
         <div className="chart ranking"></div>
         <div className="panel-footer"></div>
       </div>

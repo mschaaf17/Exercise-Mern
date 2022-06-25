@@ -22,7 +22,7 @@ export default function analysisChart(data) {
       {
         name: 'Exercise Analysis',
         type: 'pie',
-        radius: ['10%', '70%'],
+        radius: ['10%', '90%'],
         center: ['50%', '50%'],
         roseType: 'radius',
         label: {

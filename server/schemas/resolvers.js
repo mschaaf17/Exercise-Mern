@@ -2,8 +2,9 @@ const { AuthenticationError } = require('apollo-server-express');
 const { User, Exercise } = require('../models');
 const { signToken } = require('../utils/auth');
 const { withInLastWeek } = require('../utils/dateValidate');
-const sixMonthWeight = require('../utils/sixMonthWeight');
-const exerciseAnalysis = require('../utils/exerciseAnalysis');
+const { sixMonthWeight } = require('../utils/sixMonthWeight');
+const { exerciseAnalysis } = require('../utils/exerciseAnalysis');
+const { getWeeklyData } = require('../utils/weeklyData');
 
 const resolvers = {
   Query: {
@@ -68,7 +69,7 @@ const resolvers = {
 
     userData: async (parent, args, context) => {
       const ExerciseData = await User.findById({
-        _id: '62b66fea83ac41d854b13df3',
+        _id: '62b6b834e110bc5ce83914bc',
       })
         .populate({
           path: 'exercises',
@@ -84,15 +85,19 @@ const resolvers = {
         time: el.createdAt,
         weight: el.weight,
       }));
+
       // calculate how much time is spent on each exercise
-      const categoryArray = ExerciseData.map(el => ({
+      const exerciseArray = ExerciseData.map(el => ({
         categoryName: el.exerciseCategory.exerciseName,
         time: el.time,
+        createdAt: el.createdAt,
+        repetitions: el.repetitions,
       }));
-
+      // console.log(exerciseArray);
       return {
         // exercises: exerciseAnalysis(categoryArray),
-        exercises: exerciseAnalysis(categoryArray),
+        weeklyData: getWeeklyData(exerciseArray),
+        exercises: exerciseAnalysis(exerciseArray),
         monthlyWeight: sixMonthWeight(weightArray),
       };
     },

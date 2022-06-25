@@ -180,13 +180,12 @@ export const QUERY_EXERCISE_DATA = gql`
       totalTime
     }
     userData {
+      weeklyData
       monthlyWeight
       exercises
     }
-    
   }
 `;
-
 
 // export const QUERY_ME_BASIC = gql`
 //   {

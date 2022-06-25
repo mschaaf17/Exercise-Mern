@@ -45,18 +45,8 @@ const typeDefs = gql`
     totalTime: Int
   }
 
-  type WeeklyTime {
-    week: String
-    totalTime: Int
-  }
-
-  type ExerciseAnalysis {
-    categoryName: String
-    time: Int
-  }
-
   type UserData {
-    #sixWeekTime: [WeeklyTime]
+    weeklyData: String
     monthlyWeight: String
     exercises: String
   }
