@@ -4,7 +4,7 @@ export default function weightChart(data) {
   let weightArray = [];
 
   if (data) {
-    const weightData = JSON.parse(data.trim());
+    const weightData = JSON.parse(data);
     monthArray = Object.keys(weightData);
     console.log(monthArray);
     weightArray = Object.values(weightData);

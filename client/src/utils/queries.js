@@ -181,7 +181,9 @@ export const QUERY_EXERCISE_DATA = gql`
     }
     userData {
       monthlyWeight
+      exercises
     }
+    
   }
 `;
 

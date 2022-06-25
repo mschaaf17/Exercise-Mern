@@ -3,6 +3,7 @@ const { User, Exercise } = require('../models');
 const { signToken } = require('../utils/auth');
 const { withInLastWeek } = require('../utils/dateValidate');
 const sixMonthWeight = require('../utils/sixMonthWeight');
+const exerciseAnalysis = require('../utils/exerciseAnalysis');
 
 const resolvers = {
   Query: {
@@ -66,29 +67,34 @@ const resolvers = {
     },
 
     userData: async (parent, args, context) => {
-      return (
-        User.findById({ _id: '62b66fea83ac41d854b13df3' })
-          .populate({
-            path: 'exercises',
-            populate: {
-              path: 'exerciseCategory',
-              model: 'ExerciseCategory',
-            },
-          })
-          .then(data => data.exercises)
-          // get exercises array
-          .then(exercisesData =>
-            exercisesData.map(el => ({
-              time: el.createdAt,
-              weight: el.weight,
-            }))
-          )
-          //filter 6 month day to get average weight
-          .then(data => ({
-            monthlyWeight: sixMonthWeight(data),
-          }))
-          .catch(error => console.log(error))
-      );
+      const ExerciseData = await User.findById({
+        _id: '62b66fea83ac41d854b13df3',
+      })
+        .populate({
+          path: 'exercises',
+          populate: {
+            path: 'exerciseCategory',
+            model: 'ExerciseCategory',
+          },
+        })
+        .then(data => data.exercises);
+
+      //get 6 months' average weight
+      const weightArray = ExerciseData.map(el => ({
+        time: el.createdAt,
+        weight: el.weight,
+      }));
+      // calculate how much time is spent on each exercise
+      const categoryArray = ExerciseData.map(el => ({
+        categoryName: el.exerciseCategory.exerciseName,
+        time: el.time,
+      }));
+
+      return {
+        // exercises: exerciseAnalysis(categoryArray),
+        exercises: exerciseAnalysis(categoryArray),
+        monthlyWeight: sixMonthWeight(weightArray),
+      };
     },
   },
 

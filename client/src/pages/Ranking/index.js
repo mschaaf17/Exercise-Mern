@@ -17,12 +17,14 @@ function Ranking() {
 
   const topPlayers = data?.topPlayers;
   const weightData = data?.userData?.monthlyWeight;
+  const exerciseAnalysis = data?.userData?.exercises;
+
 
   useEffect(() => {
     hourChart();
     weightChart(weightData);
     topChart(topPlayers);
-    analysisChart();
+    analysisChart(exerciseAnalysis);
   }, [data]);
 
   return (
