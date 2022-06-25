@@ -39,7 +39,7 @@ const sixMonthWeight = data => {
     // change time format to 'YYYY/MM'
     .map(el => ({ time: dateFormat(el.time), weight: el.weight }))
     // only deal with recent 6 months' data
-    .filter(el => el.time >= getPastMonth(6))
+    .filter(el => el.time >= getPastMonth(5))
     .forEach(el => {
       const monthIndex = parseInt(el.time.split('/')[1]) - 1;
       if (!monthlyWeight[months[monthIndex]]) {
