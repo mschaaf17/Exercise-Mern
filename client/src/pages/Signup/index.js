@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import Auth from '../../utils/auth';
 import { ADD_USER } from '../../utils/mutations';
+import './style.css'
 
 function Signup(props) {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -30,12 +31,13 @@ function Signup(props) {
   };
 
   return (
-    <div className="">
-      <Link to="/login">Already have an account? Login here</Link>
+    <div className="entry-container">
+    <div className="entry-form">
+      
 
       <h2>Signup</h2>
       <form onSubmit={handleFormSubmit}>
-        <div className="">
+        <div className="inputs">
           <label htmlFor="username">Username:</label>
           <input
             placeholder="Username"
@@ -45,7 +47,7 @@ function Signup(props) {
             onChange={handleChange}
           />
         </div>
-        <div className="">
+        <div className="inputs">
           <label htmlFor="email">Email:</label>
           <input
             placeholder="youremail@test.com"
@@ -55,7 +57,7 @@ function Signup(props) {
             onChange={handleChange}
           />
         </div>
-        <div className="">
+        <div className="inputs">
           <label htmlFor="pwd">Password:</label>
           <input
             placeholder="******"
@@ -65,10 +67,12 @@ function Signup(props) {
             onChange={handleChange}
           />
         </div>
-        <div className="">
+        <div className="inputs submit-btn">
           <button type="submit">Submit</button>
         </div>
       </form>
+      <Link to="/login">Already have an account? Login here</Link>
+    </div>
     </div>
   );
 }

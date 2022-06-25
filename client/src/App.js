@@ -40,9 +40,9 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="">
+        
           <Header />
-          <div className="container">
+         
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
@@ -53,9 +53,9 @@ function App() {
               {/* <Route path="/videos" element={<Video />} /> */}
               {/* <Route path="/workout" element={<Workout />} /> */}
             </Routes>
-          </div>
+          
           <Footer />
-        </div>
+        
       </Router>
     </ApolloProvider>
   );

@@ -30,12 +30,13 @@ function Login(props) {
   };
 
   return (
-    <div className="">
-      <Link to="/signup">New user? Signup here</Link>
+    <div className="entry-container">
+    <div className="entry-form">
+      
 
       <h2>Login</h2>
       <form onSubmit={handleFormSubmit}>
-        <div className="">
+        <div className="inputs">
           <label htmlFor="email">Email address:</label>
           <input
             placeholder="email@emailaddress.com"
@@ -45,7 +46,7 @@ function Login(props) {
             onChange={handleChange}
           />
         </div>
-        <div className="">
+        <div className="inputs">
           <label htmlFor="pwd">Password:</label>
           <input
             placeholder="******"
@@ -60,10 +61,12 @@ function Login(props) {
             <p className="error-text">Email address or password is incorrect. Please try again.</p>
           </div>
         ) : null}
-        <div className="">
+        <div className="submit-btn inputs">
           <button type="submit">Submit</button>
         </div>
       </form>
+      <Link to="/signup">New user? Signup here</Link>
+    </div>
     </div>
   );
 }
