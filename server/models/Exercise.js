@@ -3,11 +3,9 @@ const dateFormat = require('../utils/dateFormat');
 
 const exerciseSchema = new Schema(
   {
-    exerciseName: {
-      type: String,
-      // required: 'You need to provide a name for your exercise',
-      minlength: 1,
-      maxlength: 280,
+    exerciseCategory: {
+      type: Schema.Types.ObjectId,
+      ref: 'ExerciseCategory',
     },
     username: {
       type: String,
@@ -31,16 +29,15 @@ const exerciseSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
-      get: timestamp => dateFormat(timestamp),
-    },
-  },
-  {
-    toJSON: {
-      getters: true,
-    },
+      // get: timestamp => dateFormat(timestamp),
+    }
   }
+  // {
+  //   toJSON: {
+  //     getters: true,
+  //   },
+  // }
 );
-
 
 const Exercise = model('Exercise', exerciseSchema);
 module.exports = Exercise;
