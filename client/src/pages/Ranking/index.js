@@ -4,55 +4,55 @@ import '../../utils/flexible';
 import './index.css';
 
 import {
-  weekChart,
-  weightChart,
-  topChart,
-  analysisChart,
+  WeekChart,
+  WeightChart,
+  TopChart,
+  AnalysisChart,
 } from '../../components/Charts/';
+
 import { QUERY_EXERCISE_DATA } from '../../utils/queries';
+import { useState } from 'react';
 
 function Ranking() {
   const { loading, data } = useQuery(QUERY_EXERCISE_DATA);
   // console.log(data);
+  const [weeklyData, setWeeklyData] = useState([]);
+  const [weightData, setWeightData] = useState([]);
+  const [topData, setTopData] = useState([]);
+  const [analysisData, setAnalysisData] = useState([]);
 
-  const topPlayers = data?.topPlayers;
-  const weightData = data?.userData?.monthlyWeight;
-  const exerciseData = data?.userData?.exercises;
-  const weeklyData = data?.userData?.weeklyData;
-
-
+  // const topPlayers = data?.topPlayers;
+  // const weightData = data?.userData?.monthlyWeight;
+  // const exerciseData = data?.userData?.exercises;
+  // const weeklyData = data?.userData?.weeklyData;
   useEffect(() => {
-    weekChart(weeklyData);
-    weightChart(weightData);
-    topChart(topPlayers);
-    analysisChart(exerciseData);
+    if (data) {
+      const topData = data?.topPlayers;
+      const weightData = data?.userData?.monthlyWeight;
+      const analysisData = data?.userData?.exercises;
+      const weekData = data?.userData?.weeklyData;
+
+      weekData && setWeeklyData(weekData);
+      weightData && setWeightData(weightData);
+      topData && setTopData(topData);
+      analysisData && setAnalysisData(analysisData);
+    }
+
+    // WeekChart(weeklyData);
+    // weightChart(weightData);
+    // TopChart(topData);
+    // AnalysisChart(analysisData);
   }, [data]);
 
+  if (loading) {
+    return <div>loading</div>;
+  }
   return (
     <div className="mainbox">
-      <div className="panel">
-        <h2>Weekly Data</h2>
-        <div className="chart hour"></div>
-        <div className="panel-footer"></div>
-      </div>
-      <div className="panel">
-        <h2>Star Players</h2>
-        <div className="chart ranking"></div>
-        <div className="panel-footer"></div>
-      </div>
-
-      <div className="panel">
-        <h2>Exercise Analysis</h2>
-        <div className="chart analysis"></div>
-        <div className="panel-footer"></div>
-      </div>
-      <div className="panel">
-        <h2>Weight Tracker</h2>
-        <div className="chart weight"></div>
-        <div className="panel-footer"></div>
-      </div>
-      <div className="panel panel-blank"></div>
-      <div className="panel panel-blank"></div>
+      <WeekChart weeklyData={weeklyData} />
+      <WeightChart weightData={weightData} />
+      <AnalysisChart analysisData={analysisData} />
+      <TopChart topData={topData} />
     </div>
   );
 }

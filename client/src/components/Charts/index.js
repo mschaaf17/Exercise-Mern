@@ -1,6 +1,6 @@
-import weekChart from './weekly';
-import topChart from './top';
-import weightChart from './weight';
-import analysisChart from './analysis';
+import WeekChart from './Weekly';
+import TopChart from './Top';
+import WeightChart from './Weight';
+import AnalysisChart from './Analysis';
 
-export { weekChart, topChart, weightChart, analysisChart };
+export { WeekChart, TopChart, WeightChart, AnalysisChart };
