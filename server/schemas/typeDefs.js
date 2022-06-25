@@ -1,6 +1,8 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
+
+
   type User {
     _id: ID
     username: String
@@ -45,6 +47,25 @@ const typeDefs = gql`
     totalTime: Int
   }
 
+  type WeeklyTime {
+    week: String
+    totalTime: Int
+  }
+
+ 
+  type ExerciseAnalysis {
+    exerciseCategory: String
+    totalTime: Int
+  }
+
+
+
+  type UserData {
+    #sixWeekTime: [WeeklyTime]
+    monthlyWeight: String
+    #exercises: [ExerciseAnalysis]
+  }
+
   type Query {
     me: User
     users: [User]
@@ -53,6 +74,7 @@ const typeDefs = gql`
     exercise(_id: ID!): Exercise
     # exercise(exerciseName: String): Exercise
     topPlayers: [Player]
+    userData: UserData
   }
 
   type Mutation {
