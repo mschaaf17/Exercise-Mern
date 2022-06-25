@@ -19,7 +19,6 @@ function Ranking() {
   const weightData = data?.userData?.monthlyWeight;
   const exerciseAnalysis = data?.userData?.exercises;
 
-
   useEffect(() => {
     hourChart();
     weightChart(weightData);
@@ -30,17 +29,17 @@ function Ranking() {
   return (
     <div className="mainbox">
       <div className="panel">
-        <h2>Exercise Hours</h2>
+        <h2>Weekly Data</h2>
         <div className="chart hour"></div>
         <div className="panel-footer"></div>
       </div>
       <div className="panel">
-        <h2>Top 5 Players</h2>
+        <h2>Top 5 of Last Week</h2>
         <div className="chart ranking"></div>
         <div className="panel-footer"></div>
       </div>
       <div className="panel">
-        <h2>Weight Track</h2>
+        <h2>Weight Tracker</h2>
         <div className="chart weight"></div>
         <div className="panel-footer"></div>
       </div>
