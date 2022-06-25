@@ -2,6 +2,7 @@ const { AuthenticationError } = require('apollo-server-express');
 const { User, Exercise } = require('../models');
 const { signToken } = require('../utils/auth');
 const { withInLastWeek } = require('../utils/dateValidate');
+const sixMonthWeight = require('../utils/sixMonthWeight');
 
 const resolvers = {
   Query: {
@@ -51,7 +52,7 @@ const resolvers = {
           data.forEach(el => {
             let totalTime = 0;
             el.exercises
-              // only choose data within lastweek
+              // only choose exercise data within lastweek
               .filter(el => withInLastWeek(el.createdAt))
               .forEach(el => {
                 totalTime += el.time;
@@ -60,12 +61,37 @@ const resolvers = {
           });
           // return the top 3 user who has the most exercise time
           return topArray.sort((a, b) => b.totalTime - a.totalTime).slice(0, 5);
-        });
-      throw new AuthenticationError(
-        'Something wrong when retrieving top players'
+        })
+        .catch(error => console.log(error));
+    },
+
+    userData: async (parent, args, context) => {
+      return (
+        User.findById({ _id: '62b54c94b48d929a50e2973b' })
+          .populate({
+            path: 'exercises',
+            populate: {
+              path: 'exerciseCategory',
+              model: 'ExerciseCategory',
+            },
+          })
+          .then(data => data.exercises)
+          // get exercises array
+          .then(exercisesData =>
+            exercisesData.map(el => ({
+              time: el.createdAt,
+              weight: el.weight,
+            }))
+          )
+          //filter 6 month day to get average weight
+          .then(data => ({
+            monthlyWeight: sixMonthWeight(data),
+          }))
+          .catch(error => console.log(error))
       );
     },
   },
+
   Mutation: {
     addUser: async (parent, args) => {
       const user = await User.create(args);
