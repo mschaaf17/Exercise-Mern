@@ -69,7 +69,7 @@ const resolvers = {
 
     userData: async (parent, args, context) => {
       const ExerciseData = await User.findById({
-        _id: '62b6b834e110bc5ce83914bc',
+        _id: '62b6d12328cc56b5dbe4f648',
       })
         .populate({
           path: 'exercises',

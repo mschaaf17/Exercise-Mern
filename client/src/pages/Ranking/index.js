@@ -40,15 +40,15 @@ function Ranking() {
         <div className="chart ranking"></div>
         <div className="panel-footer"></div>
       </div>
-      <div className="panel">
-        <h2>Weight Tracker</h2>
-        <div className="chart weight"></div>
-        <div className="panel-footer"></div>
-      </div>
 
       <div className="panel">
         <h2>Exercise Analysis</h2>
         <div className="chart analysis"></div>
+        <div className="panel-footer"></div>
+      </div>
+      <div className="panel">
+        <h2>Weight Tracker</h2>
+        <div className="chart weight"></div>
         <div className="panel-footer"></div>
       </div>
       <div className="panel panel-blank"></div>

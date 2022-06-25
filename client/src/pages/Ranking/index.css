@@ -15,7 +15,7 @@
 
 .panel {
   flex: 1;
-  min-width: 600px;
+  min-width: 560px;
   margin: 0.12rem;
   /* background-color: pink; */
   background-color: rgba(79, 54, 219, 0.144);
@@ -98,5 +98,5 @@
 
 .chart {
   height: 1.6rem;
-  min-height: 300px;
+  min-height: 200px;
 }

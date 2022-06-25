@@ -10,7 +10,7 @@ export default function weightChart(data) {
   }
 
   const option = {
-    color: ['#ed3f35', '#00f2f1'],
+    color: ['#ed3f35', '#1089E7'],
     tooltip: {
       trigger: 'axis',
     },
