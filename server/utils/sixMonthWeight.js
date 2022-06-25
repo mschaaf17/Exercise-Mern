@@ -1,21 +1,27 @@
 // change utcTime into YYYY/MM to compare
 function dateFormat(utcTime) {
-  const dayArray = new Date(utcTime)
+  let dayArray = new Date(utcTime)
     .toLocaleDateString()
     .split(',')[0]
     .split('/');
-  return [dayArray[2], dayArray[0]].join('/');
+  // change 2022/4 to 2022/04
+  return [dayArray[2], dayArray[0] <= 9 ? '0' + dayArray[0] : dayArray[0]].join(
+    '/'
+  );
 }
 
 // get the past month's time in YYYY/MM format to compare later
 function getPastMonth(number) {
   let date = new Date();
   let pastDate = date.setMonth(date.getMonth() - number);
-  const dayArray = new Date(pastDate)
+  let dayArray = new Date(pastDate)
     .toLocaleDateString()
     .split(',')[0]
     .split('/');
-  return [dayArray[2], dayArray[0]].join('/');
+  // change 2022/4 to 2022/04
+  return [dayArray[2], dayArray[0] <= 9 ? '0' + dayArray[0] : dayArray[0]].join(
+    '/'
+  );
 }
 
 const sixMonthWeight = data => {
@@ -44,6 +50,7 @@ const sixMonthWeight = data => {
       const monthIndex = parseInt(el.time.split('/')[1]) - 1;
       if (!monthlyWeight[months[monthIndex]]) {
         monthlyWeight[months[monthIndex]] = [];
+        return;
       }
       monthlyWeight[months[monthIndex]].push(el);
     });
@@ -63,4 +70,4 @@ const sixMonthWeight = data => {
   return JSON.stringify(monthlyWeight);
 };
 
-module.exports = sixMonthWeight;
+module.exports = { sixMonthWeight };
