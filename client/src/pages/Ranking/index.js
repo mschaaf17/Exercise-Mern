@@ -9,15 +9,15 @@ import {
   topChart,
   analysisChart,
 } from '../../components/Charts/';
-import { QUERY_ANALYSIS_DATA } from '../../utils/queries';
+import { QUERY_EXERCISE_DATA } from '../../utils/queries';
 
 function Ranking() {
-  const { loading, data } = useQuery(QUERY_ANALYSIS_DATA);
-  // const { loading2, data2 } = useQuery(QUERY_UER_DATA);
-  // console.log(data2);
+  const { loading, data } = useQuery(QUERY_EXERCISE_DATA);
   console.log(data);
+
   const topPlayers = data?.topPlayers;
-  const weightData = data?.userData?.sixMonthWeight;
+  const weightData = data?.userData?.monthlyWeight;
+
   useEffect(() => {
     hourChart();
     weightChart(weightData);

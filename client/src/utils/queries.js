@@ -173,14 +173,14 @@ export const QUERY_ME = gql`
   }
 `;
 
-export const QUERY_ANALYSIS_DATA = gql`
+export const QUERY_EXERCISE_DATA = gql`
   {
     topPlayers {
       username
       totalTime
     }
     userData {
-      sixMonthWeight
+      monthlyWeight
     }
   }
 `;

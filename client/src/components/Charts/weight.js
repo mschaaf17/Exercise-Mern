@@ -1,6 +1,16 @@
 import * as echarts from 'echarts';
 export default function weightChart(data) {
-  const recentWeight = data.map(el => el !== 0);
+  let monthArray = [];
+  let weightArray = [];
+
+  if (data) {
+    const weightData = JSON.parse(data.trim());
+    monthArray = Object.keys(weightData);
+    console.log(monthArray);
+    weightArray = Object.values(weightData);
+    console.log(weightArray);
+  }
+
   const option = {
     color: ['#ed3f35', '#00f2f1'],
     tooltip: {
@@ -28,7 +38,7 @@ export default function weightChart(data) {
     xAxis: {
       type: 'category',
       boundaryGap: false,
-      data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July'],
+      data: monthArray,
       axisLine: {
         show: false,
       },
@@ -42,8 +52,8 @@ export default function weightChart(data) {
     },
     yAxis: {
       type: 'value',
-      min: 115,
-      max: 135,
+      min: 100,
+      max: 150,
       axisLine: {
         show: false,
       },
@@ -62,14 +72,14 @@ export default function weightChart(data) {
     },
     series: [
       {
-        name: 'pounds',
+        name: 'Your Weight',
         type: 'line',
         stack: 'Total',
-        data: [120, 122, 121, 125, 132, 132, 130],
+        data: weightArray,
         smooth: true,
       },
       {
-        name: 'recommended pounds',
+        name: 'Recommended',
         type: 'line',
         stack: 'Total2',
         showSymbol: false,
