@@ -166,7 +166,7 @@ addExercise: async (parent, {exerciseCategory, weight, repetitions, time, notes}
 
 }
 }
-
+// 
     // removeUserExercise: async (parent, {exerciseId, userExerciseId}, context) => {
     //   try {
     //     console.log(exerciseId)
