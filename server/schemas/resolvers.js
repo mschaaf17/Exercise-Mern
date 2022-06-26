@@ -135,6 +135,24 @@ const resolvers = {
 
       return { token, user };
     },
+    addExerciseName: async (parent, args, context) => {
+      if (context.user) {
+        const exercise = await ExerciseCategory.create({
+          ...args,
+          username: context.user.username,
+        });
+
+        await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $push: { exercises: exercise._id } },
+          { new: true }
+        );
+        console.log(exercise);
+        return exercise;
+      }
+
+      throw new AuthenticationError('You need to be logged in!');
+    },
     addExercise: async (parent, args, context) => {
       if (context.user) {
         console.log(context.user);

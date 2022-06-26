@@ -114,6 +114,14 @@ export const ADD_EXERCISE = gql`
   }
 `;
 
+export const ADD_EXERCISE_NAME = gql`
+mutation addExerciseName($exerciseName: String!) {
+  addExerciseName (exerciseName: $exerciseName) {
+    exerciseName
+  }
+}
+`
+
 export const REMOVE_USER_EXERCISE = gql`
   mutation removeUserExercise($exerciseId: ID!, $userExerciseId: ID!) {
     removeUserExercise(
