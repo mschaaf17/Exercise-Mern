@@ -7,16 +7,11 @@
     "start": "node server.js",
     "watch": "nodemon server.js",
     "seed": "node seeders/seeds.js"
-<<<<<<< HEAD
-
-=======
->>>>>>> 37f70119ccaeffebcc0b8f90b2af86c3421840e2
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-<<<<<<< HEAD
     "bcrypt": "^4.0.1",
     "jsonwebtoken": "^8.5.1",
     "apollo-server-express": "^3.6.2",
@@ -28,26 +23,3 @@
     "nodemon": "^2.0.3"
   }
 }
-
-
-
-
-
-
-
-
-
-=======
-    "apollo-server-express": "^3.6.2",
-    "bcrypt": "^4.0.1",
-    "express": "^4.17.2",
-    "graphql": "^16.3.0",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.1.8"
-  },
-  "devDependencies": {
-    "@faker-js/faker": "^7.3.0",
-    "nodemon": "^2.0.3"
-  }
-}
->>>>>>> 37f70119ccaeffebcc0b8f90b2af86c3421840e2
