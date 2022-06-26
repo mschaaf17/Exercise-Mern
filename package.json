@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/mschaaf17/Exercise-Mern/issues"
   },
-  "homepage": "https://github.com/mschaaf17/Exercise-Mern#readme"
+  "homepage": "https://github.com/mschaaf17/Exercise-Mern#readme",
+  "dependencies": {
+    "react-router-dom": "^6.3.0"
+  }
 }
