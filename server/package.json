@@ -7,7 +7,6 @@
     "start": "node server.js",
     "watch": "nodemon server.js",
     "seed": "node seeders/seeds.js"
-
   },
   "keywords": [],
   "author": "",
@@ -24,12 +23,3 @@
     "nodemon": "^2.0.3"
   }
 }
-
-
-
-
-
-
-
-
-

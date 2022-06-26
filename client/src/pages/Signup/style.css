@@ -1,0 +1,38 @@
+.entry-container {
+ display: flex;
+ justify-content: center;
+}
+
+
+.entry-form {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ margin-top: 50px;
+ border: 1px solid var(--darker-red);
+ border-radius: 5px;
+ width: fit-content;
+ padding: 10px;
+ background-color: var(--secondary);
+
+}
+
+.entry-form a {
+ color: var(--black);
+ font-size: 0.5em;
+}
+
+.inputs {
+ margin: 0.5em;
+}
+
+.inputs input {
+ padding: 5px;
+}
+
+.submit-btn {
+ display: flex;
+ justify-content: center;
+
+}

@@ -4,11 +4,10 @@ export default function topChart(dataArr = []) {
   var titlename = dataArr.map(el => el.username);
   var myColor = ['#1089E7', '#F57474', '#56D0E3', '#F8B448', '#8B78F6'];
   const option = {
-    // 基于准备好的dom，初始化echarts实例
-    //图标位置
+
     grid: {
       top: '10%',
-      left: '35%',
+      left: '25%',
       right: '0%',
       bottom: '10%',
     },
@@ -29,7 +28,7 @@ export default function topChart(dataArr = []) {
         show: false,
       },
       axisLabel: {
-        color: '#02a6b6',
+        color: 'black',
         rich: {
           lg: {
             backgroundColor: '#339911',
@@ -45,15 +44,15 @@ export default function topChart(dataArr = []) {
     },
 
     series: {
-      name: '条',
+    
       type: 'bar',
       yAxisIndex: 0,
       data: data,
       barCategoryGap: 50,
-      barWidth: 20,
+      barWidth: 23,
+      barBorderRadius: 2,
       itemStyle: {
         normal: {
-          barBorderRadius: 24,
           color: function (params) {
             var num = myColor.length;
             return myColor[params.dataIndex % num];

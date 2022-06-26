@@ -1,22 +1,30 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import Auth from '../../utils/auth';
+import './style.css'
 
 const Header = () => {
+  const location = useLocation()
   const logout = event => {
     event.preventDefault();
     Auth.logout();
   };
-
+  if (location.pathname === "/") {
+    return null
+  }
   return (
-    <header className="bg-secondary mb-4 py-2 flex-row align-center">
-      <div className="container flex-row justify-space-between-lg justify-center align-center">
+    <header className="">
+      <div id="nav-container">
+        <div id="title">
         <Link to="/">
-          <h1>Stacked</h1>
+          <h1>STACKED</h1>
         </Link>
+        </div>
 
-        <nav className="text-center">
+        
+        <div id="nav-entry">
+        <nav  className="">
           {Auth.loggedIn() ? (
             <>
               <Link to="/profile">My Workouts</Link>
@@ -26,12 +34,12 @@ const Header = () => {
             </>
           ) : (
             <>
-              <Link to="/login">Login</Link>
-              <Link to="/signup">Signup</Link>
+              {/* Do not need login signup if user is not logged in because they have routes on the page */}
             </>
           )}
         </nav>
-      </div>
+        </div>
+        </div>
     </header>
   );
 };

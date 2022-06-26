@@ -1,24 +1,23 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
-  type User {
-    _id: ID
-    username: String
-    email: String
-    exercises: [Exercise]
-  }
-
   # type Exercise {
   #   _id: ID
   #   exerciseName: String
   #   userExercise: [userExercises]
   # }
 
-  # new
+
+
+  type ExerciseCategory {
+    _id: ID
+    exerciseName: String
+  }
+
   type Exercise {
     _id: ID
-    exerciseCategory: String
     username: String
+    exerciseCategory: ExerciseCategory
     weight: Int
     repetitions: Int
     time: Int
@@ -26,9 +25,11 @@ const typeDefs = gql`
     createdAt: String
   }
 
-  type ExerciseCategory {
+  type User {
     _id: ID
-    exerciseName: String
+    username: String
+    email: String
+    exercises: [Exercise]
   }
 
   #   type userExercises {
@@ -51,25 +52,29 @@ const typeDefs = gql`
     totalTime: Int
   }
 
+  type UserData {
+    weeklyData: String
+    monthlyWeight: String
+    exercises: String
+  }
+
   type Query {
     me: User
     users: [User]
     user(username: String!): User
-    exercises: [Exercise]
+    exercises: User
     exercise(_id: ID!): Exercise
-    userExercise(createdAt: String): Exercise
-    exerciseNames: [ExerciseCategory]
     # exercise(exerciseName: String): Exercise
     topPlayers: [Player]
+    userData: UserData
+    exerciseNames: [ExerciseCategory]
   }
 
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    addExerciseName(exerciseName: String!): ExerciseCategory
     addExercise(
-      exerciseCategory: String!
-      # username: String
+      exerciseName: String!
       weight: Int
       repetitions: Int
       time: Int
@@ -78,8 +83,7 @@ const typeDefs = gql`
 
     # addExercise(exerciseName: String!): Exercise
     # addUserExercise(exerciseId: ID!, weight: Int, repetitions: Int, time: Int, notes: String): Exercise
-    removeExercise(exerciseId: ID!): Exercise
-
+    # removeUserExercise(exerciseId: ID!, userExerciseId: ID!): Exercise
   }
 `;
 

@@ -1,33 +1,37 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import './style.css';
 
-const ExerciseList = ({ exercises, names, title }) => {
+const ExerciseList = ({ exercises = [] }) => {
+  console.log(exercises);
+  // const [date, setDate] = useState(new Date());
   if (!exercises.length) {
     return <h3>No exercises Yet</h3>;
   }
 
   return (
-    <div>
-      <h3>{title}</h3>
-      {names &&
-      names.map(name => (
-        <div key={name._id}>
-          <h4>{name.exerciseName}</h4>
-        </div>
-      ))}
+    <div className="workout-log">
+      <h3>Workout Log</h3>
+      {/* <div>{date.toLocaleDateString()}</div>
+      <div>
+        <span value={stopTime}>
+          <span>
+            {('0' + Math.floor((stopTime / 3600000) % 60)).slice(-2)}:
+          </span>
+          <span>{('0' + Math.floor((stopTime / 60000) % 60)).slice(-2)}:</span>
+          <span>{('0' + Math.floor((stopTime / 1000) % 60)).slice(-2)}</span>
+        </span>
+        <span>createdAt</span>
+      </div> */}
       {exercises &&
-        exercises.map(exercise => (
-          <div key={exercise._id} className="card mb-3">
+        exercises.map(el => (
+          <div key={el._id} className="card mb-3">
             <div className="card-header">
-            <h4> {exercise.createdAt}</h4>
-             <p>{exercise.exerciseName}</p>  
-             
-            <p>{exercise.weight ? `Weight: ${exercise.weight} lbs` : ' '}</p>
-            <p>{exercise.repetitions ? `Repetitions: ${exercise.repetitions}` : ' '}</p>
-            <p>{exercise.notes ? `Notes: ${exercise.notes}` : ' '}</p>
-            <button>Delete</button>
+              <p>{el.exerciseCategory.exerciseName}</p>
+              <p>Date:{el.createdAt}</p>
+              <p>Repetition:{el.repetitions}</p>
+              <p>Time:{el.repetitions} mins</p>
+              <p>Note:{el.notes}</p>
             </div>
-
           </div>
         ))}
     </div>

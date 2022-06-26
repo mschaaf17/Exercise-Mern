@@ -110,25 +110,29 @@ import { gql } from '@apollo/client';
 export const QUERY_EXERCISES = gql`
   query {
     exercises {
-      _id
-      # exerciseName
-      weight
-      repetitions
-      time
-      notes
-      createdAt
+      exercises {
+        _id
+        weight
+        repetitions
+        time
+        notes
+        createdAt
+        exerciseCategory {
+          exerciseName
+        }
+      }
     }
   }
 `;
 
 export const QUERY_NAMES = gql`
-query ExerciseNames {
-  exerciseNames {
-    _id
-    exerciseName
+  query {
+    exerciseNames {
+      _id
+      exerciseName
+    }
   }
-}
-`
+`;
 
 export const QUERY_EXERCISE = gql`
   query exercise($id: ID!) {
@@ -182,11 +186,16 @@ export const QUERY_ME = gql`
   }
 `;
 
-export const QUERY_TOP_PLAYERS = gql`
+export const QUERY_EXERCISE_DATA = gql`
   {
     topPlayers {
       username
       totalTime
+    }
+    userData {
+      weeklyData
+      monthlyWeight
+      exercises
     }
   }
 `;
