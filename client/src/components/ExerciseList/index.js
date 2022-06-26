@@ -26,7 +26,7 @@ const ExerciseList = ({ exercises = [] }) => {
         exercises.map(el => (
           <div key={el._id} className="card mb-3">
             <div className="card-header">
-              {/* <p>{el.exerciseCategory.exerciseName}</p> */}
+              <p>{el.exerciseCategory.exerciseName}</p>
               <p>Date:{el.createdAt}</p>
               <p>Repetition:{el.repetitions}</p>
               <p>Weight:{el.weight} lbs</p>
