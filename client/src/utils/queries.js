@@ -121,6 +121,15 @@ export const QUERY_EXERCISES = gql`
   }
 `;
 
+export const QUERY_NAMES = gql`
+query ExerciseNames {
+  exerciseNames {
+    _id
+    exerciseName
+  }
+}
+`
+
 export const QUERY_EXERCISE = gql`
   query exercise($id: ID!) {
     exercise(_id: $id) {
