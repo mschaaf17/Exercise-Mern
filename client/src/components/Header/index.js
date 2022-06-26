@@ -19,7 +19,9 @@ const Header = () => {
         <nav className="text-center">
           {Auth.loggedIn() ? (
             <>
-              <Link to="/profile">My Workouts</Link>
+              <Link to="/profile">Edit Profile</Link>
+              <Link to="/ranking">Ranking</Link>
+              <Link to="/workout">Workout</Link>
               <a href="/" onClick={logout}>
                 Logout
               </a>
