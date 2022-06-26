@@ -1,8 +1,5 @@
 node_modules
-<<<<<<< HEAD
-=======
 .DS_Store
 jsconfig.json
 package-lock.json
 tempCodeRunnerFile.js
->>>>>>> 37f70119ccaeffebcc0b8f90b2af86c3421840e2

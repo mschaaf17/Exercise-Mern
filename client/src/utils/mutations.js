@@ -87,22 +87,8 @@ export const ADD_USER = gql`
   }
 `;
 
-<<<<<<< HEAD
-
-export const ADD_EXERCISE_NAME = gql`
-mutation addExerciseName($exerciseName: String!) {
-  addExerciseName (exerciseName: $exerciseName) {
-    exerciseName
-  }
-}
-`
-
-export const ADD_EXERCISE = gql`
- mutation  addExercise($exerciseName: String!, $weight: Int, $repetitions: Int, $time: Int, $notes: String) {
-=======
 export const ADD_EXERCISE = gql`
   mutation addExercise($exerciseName: String!, $weight: Int, $repetitions: Int, $time: Int, $notes: String) {
->>>>>>> 37f70119ccaeffebcc0b8f90b2af86c3421840e2
     addExercise(exerciseName: $exerciseName, weight: $weight, repetitions: $repetitions, time: $time, notes: $notes) {
       _id
       exerciseName
@@ -111,11 +97,7 @@ export const ADD_EXERCISE = gql`
       notes
       createdAt
     }
-<<<<<<< HEAD
-}
-=======
   }
->>>>>>> 37f70119ccaeffebcc0b8f90b2af86c3421840e2
 `;
 
 
