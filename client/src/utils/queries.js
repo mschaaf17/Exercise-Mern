@@ -110,25 +110,29 @@ import { gql } from '@apollo/client';
 export const QUERY_EXERCISES = gql`
   query {
     exercises {
-      _id
-      exerciseCategory
-      weight
-      repetitions
-      username
-      notes
-      createdAt
+      exercises {
+        _id
+        weight
+        repetitions
+        time
+        notes
+        createdAt
+        exerciseCategory {
+          exerciseName
+        }
+      }
     }
   }
 `;
 
 export const QUERY_NAMES = gql`
-query ExerciseNames {
-  exerciseNames {
-    _id
-    exerciseName
+  query {
+    exerciseNames {
+      _id
+      exerciseName
+    }
   }
-}
-`
+`;
 
 export const QUERY_EXERCISE = gql`
   query exercise($id: ID!) {

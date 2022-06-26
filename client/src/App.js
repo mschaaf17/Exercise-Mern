@@ -51,7 +51,6 @@ function App() {
               <Route path="/ranking" element={<Ranking />} />
               <Route path ="/workout" element ={<Workout/>}/>
               {/* <Route path="/videos" element={<Video />} /> */}
-              {/* <Route path="/workout" element={<Workout />} /> */}
             </Routes>
           
           <Footer />

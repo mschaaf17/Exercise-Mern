@@ -1,33 +1,30 @@
-import React, { useEffect, useState } from "react";
-import { useQuery, useMutation } from "@apollo/client";
-import { ADD_EXERCISE } from "../../utils/mutations";
+import React, { useEffect, useState } from 'react';
+import { useQuery, useMutation } from '@apollo/client';
+import { ADD_EXERCISE } from '../../utils/mutations';
 // import { ADD_USER_EXERCISE } from '../../utils/mutations'
 // import { REMOVE_USER_EXERCISE } from '../../utils/mutations'
-import { QUERY_EXERCISES, QUERY_NAMES } from "../../utils/queries";
-import ExerciseList from "../../components/ExerciseList";
-import "./index.css";
-import moment from 'moment'
-
+import { QUERY_EXERCISES, QUERY_NAMES } from '../../utils/queries';
+import ExerciseList from '../../components/ExerciseList';
+import './index.css';
+import moment from 'moment';
 
 export default function Workout() {
   const [time, setTime] = useState(0);
   const [timerOn, setTimerOn] = useState(false);
-  const [stopTime, setStopTime]= useState(0)
-  const [date, setDate] = useState(new Date())
-
-  const handleClickStop = ()=> {
-    setTimerOn(false)
-    setStopTime(time)
-    setDate(new Date())
-
-  } 
+  const [stopTime, setStopTime] = useState(0);
+  const [date, setDate] = useState(new Date());
+  const handleClickStop = () => {
+    setTimerOn(false);
+    setStopTime(time);
+    setDate(new Date());
+  };
 
   useEffect(() => {
     let interval = null;
 
     if (timerOn) {
       interval = setInterval(() => {
-        setTime((prevTime) => prevTime + 10);
+        setTime(prevTime => prevTime + 10);
       }, 10);
     } else {
       clearInterval(interval);
@@ -37,64 +34,57 @@ export default function Workout() {
   }, [timerOn]);
 
   const [exerciseState, setExerciseState] = useState({
-    exerciseName: "",
-    weight: "",
-    repetitions: "",
-    notes: "",
+    exerciseName: '',
+    weight: 0,
+    repetitions: 0,
+    notes: '',
   });
-  const [addExercise, {error}] = useMutation(ADD_EXERCISE);
 
-  const [exerciseOptions, setExerciseOptions] = useState([""])
-  console.log('console!')
+  const [addExercise, { error }] = useMutation(ADD_EXERCISE);
 
-  const { loading, data } = useQuery(QUERY_NAMES);
-  const exercises = data?.exerciseNames || [];
+  //get exercise names
+  const { data } = useQuery(QUERY_NAMES);
+  const exerciseNames = data?.exerciseNames || [];
 
- 
-
- 
-
-  // const {info} = useQuery(QUERY_NAMES)
-  // const names = info?.names || []
-  // console.log(names)
+  //get all the exercises
+  const { data: allExercises } = useQuery(QUERY_EXERCISES);
+  console.log(allExercises);
 
   // update state based on input changes
-  const handleChange = (event) => {
+  const handleChange = event => {
     const { name, value } = event.target;
     setExerciseState({
       ...exerciseState,
       [name]: value,
     });
   };
-console.log(exerciseState)
-  // submit form
-  const handleFormSubmit = async (event) => {
+
+  // handle submit
+  const handleFormSubmit = async event => {
     event.preventDefault();
-    if(!exerciseState.exerciseName) {
-      console.log('invalid input')
-      return
-    } 
+    if (!exerciseState.exerciseName) {
+      console.log('invalid input');
+      return;
+    }
 
     try {
       const { data } = await addExercise({
-        // check variables!!!!!
-        variables: { ...exerciseState},
+        variables: {
+          ...exerciseState,
+          weight: parseInt(exerciseState.weight),
+          repetitions: parseInt(exerciseState.repetitions),
+        },
       });
-    
-
-      console.log( data );
     } catch (e) {
       console.error(e);
     }
-    // clear all values
-    setExerciseState({
-      exerciseName: "",
-      weight: "",
-      repetitions: "",
-      notes: "",
-    });
 
-    console.log("Submitted!");
+    setExerciseState({
+      exerciseName: '',
+      weight: '',
+      repetitions: '',
+      notes: '',
+    });
   };
 
   // logged exercises form
@@ -106,14 +96,13 @@ console.log(exerciseState)
   // const [show, setshow] = useState(false)
 
   // // ab workout
-  // const [ab, setAb] = useState(false) 
+  // const [ab, setAb] = useState(false)
 
-  const filteredExercises = exercises.filter(exercise => {
-   const createdAt = moment(exercise.createdAt).startOf('day')
-   const momentDate = moment(date).startOf('day')
-   return createdAt.isSame(momentDate)
-  })
-  
+  // const filteredExercises = exerciseNames.filter(exercise => {
+  //   const createdAt = moment(exercise.createdAt).startOf('day');
+  //   const momentDate = moment(date).startOf('day');
+  //   return createdAt.isSame(momentDate);
+  // });
 
   return (
     <>
@@ -125,10 +114,10 @@ console.log(exerciseState)
               {/* timer section */}
               <h1>Working Out? Start Timer!</h1>
               <span>
-                {("0" + Math.floor((time / 3600000) % 60)).slice(-2)}:
+                {('0' + Math.floor((time / 3600000) % 60)).slice(-2)}:
               </span>
-              <span>{("0" + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
-              <span>{("0" + Math.floor((time / 1000) % 60)).slice(-2)}</span>
+              <span>{('0' + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
+              <span>{('0' + Math.floor((time / 1000) % 60)).slice(-2)}</span>
               {/* <span>{("0" + ((time / 10) % 100)).slice(-2)}</span> */}
 
               <div>
@@ -160,7 +149,9 @@ console.log(exerciseState)
             {/* enter exercise area */}
             <div>
               <h1>Log your Workout</h1>
-              <h2>{exerciseState.weight} {exerciseState.notes}</h2>
+              {/* <h2>
+                {exerciseState.weight} {exerciseState.notes}
+              </h2> */}
               <form className="submit_log" onSubmit={handleFormSubmit}>
                 <select
                   // placeholder="Exercise Name"
@@ -168,16 +159,24 @@ console.log(exerciseState)
                   // type="text"
                   defaultValue="default"
                   onChange={handleChange}
-                  >
-                    <option disabled value="default">Select Exercise</option>
-{exercises && exercises.map(exerciseName => {
-  if (exerciseName.exerciseName) {
-   return <option key={exerciseName.exerciseName} id={exerciseName._id}>{exerciseName.exerciseName}</option>
-  }
-})}
-  
-</select>
-
+                >
+                  <option disabled value="default">
+                    Select Exercise
+                  </option>
+                  {exerciseNames &&
+                    exerciseNames.map(exerciseName => {
+                      if (exerciseName.exerciseName) {
+                        return (
+                          <option
+                            key={exerciseName.exerciseName}
+                            id={exerciseName._id}
+                          >
+                            {exerciseName.exerciseName}
+                          </option>
+                        );
+                      }
+                    })}
+                </select>
 
                 <input
                   placeholder="weight"
@@ -259,29 +258,11 @@ console.log(exerciseState)
               </div> */}
             </div>
           </div>
-          <div className="workout_log">
-            <h1>Workout Log</h1>
-            <div>{date.toLocaleDateString()}</div>
-            <div>
-              <span value={stopTime}>
-                <span>
-                  {("0" + Math.floor((stopTime / 3600000) % 60)).slice(-2)}:
-                </span>
-                <span>
-                  {("0" + Math.floor((stopTime / 60000) % 60)).slice(-2)}:
-                </span>
-                <span>{("0" + Math.floor((stopTime / 1000) % 60)).slice(-2)}</span>
-              </span>
-              <span>createdAt</span>
-              {loading ? (
-                <div>Loading...</div>
-              ) : (
-                // <ExerciseList exercises={filteredExercises} title="Exercise Log" />
-                <ExerciseList exercises={exercises} title="Exercise Log" />
 
-              )}
-            </div>
-          </div>
+          {/* only display exerciseList when it exists */}
+          {allExercises && (
+            <ExerciseList exercises={allExercises.exercises.exercises} />
+          )}
         </div>
       </div>
     </>

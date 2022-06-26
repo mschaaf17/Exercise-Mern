@@ -60,7 +60,6 @@
 // }
 // `
 
-
 import { gql } from '@apollo/client';
 
 export const LOGIN_USER = gql`
@@ -88,10 +87,25 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_EXERCISE = gql`
-  mutation addExercise($exerciseName: String!, $weight: Int, $repetitions: Int, $time: Int, $notes: String) {
-    addExercise(exerciseName: $exerciseName, weight: $weight, repetitions: $repetitions, time: $time, notes: $notes) {
+  mutation addExercise(
+    $exerciseName: String!
+    $weight: Int
+    $repetitions: Int
+    $time: Int
+    $notes: String
+  ) {
+    addExercise(
+      exerciseName: $exerciseName
+      weight: $weight
+      repetitions: $repetitions
+      time: $time
+      notes: $notes
+    ) {
       _id
-      exerciseName
+      exerciseCategory {
+        _id
+        exerciseName
+      }
       weight
       repetitions
       notes
@@ -100,11 +114,13 @@ export const ADD_EXERCISE = gql`
   }
 `;
 
-
-export const REMOVE_USER_EXERCISE = gql `
-mutation removeUserExercise($exerciseId: ID!, $userExerciseId: ID!) {
-  removeUserExercise(exerciseId: $exerciseId, userExerciseId: $userExerciseId) {
-        _id
+export const REMOVE_USER_EXERCISE = gql`
+  mutation removeUserExercise($exerciseId: ID!, $userExerciseId: ID!) {
+    removeUserExercise(
+      exerciseId: $exerciseId
+      userExerciseId: $userExerciseId
+    ) {
+      _id
+    }
   }
-}
-`
+`;

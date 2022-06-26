@@ -45,6 +45,7 @@ const resolvers = {
       }
       throw new AuthenticationError('You are not logged in');
     },
+    
     exercise: async (parent, { _id }) => {
       return Exercise.findOne({ _id });
     },
@@ -105,6 +106,10 @@ const resolvers = {
         monthlyWeight: sixMonthWeight(weightArray),
       };
     },
+
+    exerciseNames: async () => {
+      return ExerciseCategory.find({});
+    },
   },
 
   Mutation: {
@@ -149,7 +154,9 @@ const resolvers = {
           { new: true }
         );
         console.log(exercise);
-        return Exercise.findOne({ _id: exercise._id }).populate('exerciseCategory');
+        return Exercise.findOne({ _id: exercise._id }).populate(
+          'exerciseCategory'
+        );
       }
 
       throw new AuthenticationError('You need to be logged in!');
