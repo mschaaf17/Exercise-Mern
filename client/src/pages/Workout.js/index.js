@@ -233,9 +233,9 @@ const [showExercise, setShowExercise] = useState(false)
           </div>
 
           {/* only display exerciseList when it exists */}
-          {allExercises && (
+          {/* {allExercises && (
             <ExerciseList exercises={allExercises.exercises.exercises} />
-          )}
+          )} */}
         </div>
       </div>
     </>
