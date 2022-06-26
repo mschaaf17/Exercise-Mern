@@ -16,6 +16,7 @@ import Ranking from './pages/Ranking/';
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Workout from './pages/Workout.js'
+import Profile from './pages/Profile/';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -47,7 +48,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
-              {/* <Route path="/profile" element={<Profile />} /> */}
+              <Route path="/profile" element={<Profile />} />
               <Route path="/ranking" element={<Ranking />} />
               <Route path ="/workout" element ={<Workout/>}/>
               {/* <Route path="/videos" element={<Video />} /> */}
