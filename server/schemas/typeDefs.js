@@ -15,9 +15,15 @@ const typeDefs = gql`
   # }
 
   # new
-  type Exercise {
+  type ExerciseCategory {
     _id: ID
     exerciseName: String
+  }
+
+  type Exercise {
+    _id: ID
+    username: String
+    exerciseCategory: ExerciseCategory
     weight: Int
     repetitions: Int
     time: Int

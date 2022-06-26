@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { useQuery, useMutation } from "@apollo/client";
-import { ADD_EXERCISE } from "../../utils/mutations";
+import React, { useEffect, useState } from 'react';
+import { useQuery, useMutation } from '@apollo/client';
+import { ADD_EXERCISE } from '../../utils/mutations';
 // import { ADD_USER_EXERCISE } from '../../utils/mutations'
 // import { REMOVE_USER_EXERCISE } from '../../utils/mutations'
-import { QUERY_EXERCISES } from "../../utils/queries";
-import ExerciseList from "../../components/ExerciseList";
-import "./index.css";
+import { QUERY_EXERCISES } from '../../utils/queries';
+import ExerciseList from '../../components/ExerciseList';
+// import './index.css';
 
 export default function Workout() {
   const [time, setTime] = useState(0);
@@ -16,7 +16,7 @@ export default function Workout() {
 
     if (timerOn) {
       interval = setInterval(() => {
-        setTime((prevTime) => prevTime + 10);
+        setTime(prevTime => prevTime + 10);
       }, 10);
     } else {
       clearInterval(interval);
@@ -26,19 +26,20 @@ export default function Workout() {
   }, [timerOn]);
 
   const [exerciseState, setExerciseState] = useState({
-    exerciseName: "",
-    weight: "",
-    repetitions: "",
-    notes: "",
+    exerciseName: '',
+    weight: '',
+    repetitions: '',
+    notes: '',
   });
   const [addExercise] = useMutation(ADD_EXERCISE);
 
   const { loading, data } = useQuery(QUERY_EXERCISES);
+  console.log(data);
   const exercises = data?.exercises || [];
   console.log(exercises);
 
   // update state based on input changes
-  const handleChange = (event) => {
+  const handleChange = event => {
     const { name, value } = event.target;
     setExerciseState({
       ...exerciseState,
@@ -47,9 +48,8 @@ export default function Workout() {
   };
 
   // submit form
-  const handleFormSubmit = async (event) => {
+  const handleFormSubmit = async event => {
     event.preventDefault();
-
     // query exercises isnt of mutations
     try {
       const { data } = await addExercise({
@@ -62,13 +62,13 @@ export default function Workout() {
     }
     // clear all values
     setExerciseState({
-      exerciseName: "",
-      weight: "",
-      repetitions: "",
-      notes: "",
+      exerciseName: '',
+      weight: '',
+      repetitions: '',
+      notes: '',
     });
 
-    console.log("Submitted!");
+    console.log('Submitted!');
   };
 
   // logged exercises form
@@ -86,10 +86,10 @@ export default function Workout() {
               {/* timer section */}
               <h1>Working Out? Start Timer!</h1>
               <span>
-                {("0" + Math.floor((time / 3600000) % 60)).slice(-2)}:
+                {('0' + Math.floor((time / 3600000) % 60)).slice(-2)}:
               </span>
-              <span>{("0" + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
-              <span>{("0" + Math.floor((time / 1000) % 60)).slice(-2)}</span>
+              <span>{('0' + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
+              <span>{('0' + Math.floor((time / 1000) % 60)).slice(-2)}</span>
               {/* <span>{("0" + ((time / 10) % 100)).slice(-2)}</span> */}
 
               <div>
@@ -149,15 +149,15 @@ export default function Workout() {
                   type="text"
                   value={time}
                 >
-                  {" "}
+                  {' '}
                   <span>
-                    {("0" + Math.floor((time / 3600000) % 60)).slice(-2)}:
+                    {('0' + Math.floor((time / 3600000) % 60)).slice(-2)}:
                   </span>
                   <span>
-                    {("0" + Math.floor((time / 60000) % 60)).slice(-2)}:
+                    {('0' + Math.floor((time / 60000) % 60)).slice(-2)}:
                   </span>
                   <span>
-                    {("0" + Math.floor((time / 1000) % 60)).slice(-2)}
+                    {('0' + Math.floor((time / 1000) % 60)).slice(-2)}
                   </span>
                 </p>
                 <textarea
@@ -177,12 +177,12 @@ export default function Workout() {
             <div>
               <span value={time}>
                 <span>
-                  {("0" + Math.floor((time / 3600000) % 60)).slice(-2)}:
+                  {('0' + Math.floor((time / 3600000) % 60)).slice(-2)}:
                 </span>
                 <span>
-                  {("0" + Math.floor((time / 60000) % 60)).slice(-2)}:
+                  {('0' + Math.floor((time / 60000) % 60)).slice(-2)}:
                 </span>
-                <span>{("0" + Math.floor((time / 1000) % 60)).slice(-2)}</span>
+                <span>{('0' + Math.floor((time / 1000) % 60)).slice(-2)}</span>
               </span>
               <span>createdAt</span>
               {loading ? (

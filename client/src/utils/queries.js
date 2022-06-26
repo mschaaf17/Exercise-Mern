@@ -111,7 +111,7 @@ export const QUERY_EXERCISES = gql`
   query {
     exercises {
       _id
-      exerciseName
+      exerciseCategory
       weight
       repetitions
       username

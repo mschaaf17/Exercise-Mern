@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Exercise } = require('../models');
+const { User, Exercise, ExerciseCategory } = require('../models');
 const { signToken } = require('../utils/auth');
 const { withInLastWeek } = require('../utils/dateValidate');
 const { sixMonthWeight } = require('../utils/sixMonthWeight');
@@ -33,11 +33,15 @@ const resolvers = {
     exercises: async (parent, args, context) => {
       // const params = username ? { username } : {};
       if (context.user) {
-        const userData = await User.findOne({ _id: context.user._id })
+        return User.findOne({ _id: context.user._id })
           .sort({ createdAt: -1 })
-          .populate('exercises');
-        console.log(userData);
-        return userData?.exercises;
+          .populate({
+            path: 'exercises',
+            populate: {
+              path: 'exerciseCategory',
+              model: 'ExerciseCategory',
+            },
+          });
       }
       throw new AuthenticationError('You are not logged in');
     },
@@ -128,8 +132,14 @@ const resolvers = {
     },
     addExercise: async (parent, args, context) => {
       if (context.user) {
+        console.log(context.user);
+        const category = await ExerciseCategory.findOne({
+          exerciseName: args.exerciseName,
+        });
+
         const exercise = await Exercise.create({
           ...args,
+          exerciseCategory: category._id,
           username: context.user.username,
         });
 
@@ -139,7 +149,7 @@ const resolvers = {
           { new: true }
         );
         console.log(exercise);
-        return exercise;
+        return Exercise.findOne({ _id: exercise._id }).populate('exerciseCategory');
       }
 
       throw new AuthenticationError('You need to be logged in!');
