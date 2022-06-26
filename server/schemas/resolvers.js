@@ -2,6 +2,9 @@ const { AuthenticationError } = require('apollo-server-express');
 const { User, Exercise, ExerciseCategory } = require('../models');
 const { signToken } = require('../utils/auth');
 const { withInLastWeek } = require('../utils/dateValidate');
+const { sixMonthWeight } = require('../utils/sixMonthWeight');
+const { exerciseAnalysis } = require('../utils/exerciseAnalysis');
+const { getWeeklyData } = require('../utils/weeklyData');
 
 const resolvers = {
   Query: {
@@ -30,22 +33,20 @@ const resolvers = {
     exercises: async (parent, args, context) => {
       // const params = username ? { username } : {};
       if (context.user) {
-        const userData = await User.findOne({ _id: context.user._id })
+        return User.findOne({ _id: context.user._id })
           .sort({ createdAt: -1 })
-          .populate('exercises');
-        console.log(userData);
-        return userData?.exercises;
+          .populate({
+            path: 'exercises',
+            populate: {
+              path: 'exerciseCategory',
+              model: 'ExerciseCategory',
+            },
+          });
       }
       throw new AuthenticationError('You are not logged in');
     },
     exercise: async (parent, { _id }) => {
       return Exercise.findOne({ _id });
-    },
-    userExercise: async (parent, {_createdAt}) => {
-      return Exercise.findOne({_createdAt})
-    },
-    exerciseNames: async (parent, args, context) => {
-      return ExerciseCategory.find({})
     },
 
     topPlayers: async () => {
@@ -57,7 +58,7 @@ const resolvers = {
           data.forEach(el => {
             let totalTime = 0;
             el.exercises
-              // only choose data within lastweek
+              // only choose exercise data within lastweek
               .filter(el => withInLastWeek(el.createdAt))
               .forEach(el => {
                 totalTime += el.time;
@@ -66,12 +67,46 @@ const resolvers = {
           });
           // return the top 3 user who has the most exercise time
           return topArray.sort((a, b) => b.totalTime - a.totalTime).slice(0, 5);
-        });
-      throw new AuthenticationError(
-        'Something wrong when retrieving top players'
-      );
+        })
+        .catch(error => console.log(error));
+    },
+
+    userData: async (parent, args, context) => {
+      const ExerciseData = await User.findById({
+        _id: '62b6d12328cc56b5dbe4f648',
+      })
+        .populate({
+          path: 'exercises',
+          populate: {
+            path: 'exerciseCategory',
+            model: 'ExerciseCategory',
+          },
+        })
+        .then(data => data.exercises);
+
+      //get 6 months' average weight
+      const weightArray = ExerciseData.map(el => ({
+        time: el.createdAt,
+        weight: el.weight,
+      }));
+
+      // calculate how much time is spent on each exercise
+      const exerciseArray = ExerciseData.map(el => ({
+        categoryName: el.exerciseCategory.exerciseName,
+        time: el.time,
+        createdAt: el.createdAt,
+        repetitions: el.repetitions,
+      }));
+      // console.log(exerciseArray);
+      return {
+        // exercises: exerciseAnalysis(categoryArray),
+        weeklyData: getWeeklyData(exerciseArray),
+        exercises: exerciseAnalysis(exerciseArray),
+        monthlyWeight: sixMonthWeight(weightArray),
+      };
     },
   },
+
   Mutation: {
     addUser: async (parent, args) => {
       const user = await User.create(args);
@@ -95,10 +130,16 @@ const resolvers = {
 
       return { token, user };
     },
-    addExerciseName: async (parent, args, context) => {
+    addExercise: async (parent, args, context) => {
       if (context.user) {
-        const exercise = await ExerciseCategory.create({
+        console.log(context.user);
+        const category = await ExerciseCategory.findOne({
+          exerciseName: args.exerciseName,
+        });
+
+        const exercise = await Exercise.create({
           ...args,
+          exerciseCategory: category._id,
           username: context.user.username,
         });
 
@@ -108,64 +149,22 @@ const resolvers = {
           { new: true }
         );
         console.log(exercise);
-        return exercise;
+        return Exercise.findOne({ _id: exercise._id }).populate('exerciseCategory');
       }
 
       throw new AuthenticationError('You need to be logged in!');
     },
-
-    removeExercise: async (parent, {exerciseId}, context) => {
-      try {
-        console.log(exerciseId)
-      if (context.user) {
-        console.log('hello')
-        const deletedExercise = await Exercise.findOneAndUpdate(
-          {_id: exerciseId},
-          {$pull: { exercises: {_id: exerciseId} }},
-          {new: true}
-        )
-        console.log(deletedExercise)
-        return deletedExercise
-      }
-      throw new AuthenticationError('You need to be logged in.')
-    }
-    catch(err) {
-      throw new AuthenticationError (err)
-    }
-    },
-//   addExercise: async (parent, args) => {
-//     const updatedExercise = await Exercise.create(args)
-//     return updatedExercise
-// },
-
-// addExercise: async (parent, args, context) => {
-//   const updatedExercise = await Exercise.create(args)
-//   const user = await User.findOneAndUpdate(
-//     {_id: context.user._id},
-//     {$push: updatedExercise._id}
-//   )
-//   console.log(user)
-//   return user
-// },
-addExercise: async (parent, {exerciseCategory, weight, repetitions, time, notes}, context) => {
- if (context.user) {
-  const loggedExercise = await Exercise.create({weight, repetitions, time, notes, username: context.user.username})
-
-   await ExerciseCategory.findOneAndUpdate(
-    {_id: exerciseNames._id},
-    {$push: {exercises: loggedExercise._id }},
-    {new: true}
-
-  )
-  return loggedExercise
- }
- throw new AuthenticationError ('Log in please')
- 
- 
-},
-
-}
-}
+    // addUserExercise: async (parent, { exerciseId, weight, repetitions, time, notes}, context) => {
+    //   if (context.user) {
+    //     const updatedExercise = await Exercise.findOneAndUpdate(
+    //       { _id: exerciseId },
+    //       { $push: { userExercise: {weight, repetitions, time, notes, username: context.user.username} }},
+    //       { new: true, runValidators: true}
+    //     )
+    //     return updatedExercise
+    //   }
+    //   throw new AuthenticationError('You need to be logged in.')
+    // },
 
     // removeUserExercise: async (parent, {exerciseId, userExerciseId}, context) => {
     //   try {
@@ -187,7 +186,7 @@ addExercise: async (parent, {exerciseCategory, weight, repetitions, time, notes}
     // }
     // }
     // },
-//   },
-// };
+  },
+};
 
 module.exports = resolvers;

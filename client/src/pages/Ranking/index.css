@@ -15,7 +15,11 @@
 
 .panel {
   flex: 1;
+<<<<<<< HEAD
   min-width: 400px;
+=======
+  min-width: 500px;
+>>>>>>> 37f70119ccaeffebcc0b8f90b2af86c3421840e2
   margin: 0.12rem;
   /* background-color: pink; */
   background-color: rgba(79, 54, 219, 0.144);
@@ -25,7 +29,11 @@
   padding: 0 0.2rem 0.2rem;
 
   /* margin-bottom: 0.25rem; */
+<<<<<<< HEAD
   border: 1px solid rgb(30, 205, 236);
+=======
+  border: 1px solid #1089e7;
+>>>>>>> 37f70119ccaeffebcc0b8f90b2af86c3421840e2
   background: url(../../assets/images/line.png);
 }
 
@@ -44,8 +52,13 @@
   left: 0;
   width: 10px;
   height: 10px;
+<<<<<<< HEAD
   border-left: 2px solid #02a6b5;
   border-top: 2px solid #02a6b5;
+=======
+  border-left: 2px solid #1089e7;
+  border-top: 2px solid #1089e7;
+>>>>>>> 37f70119ccaeffebcc0b8f90b2af86c3421840e2
 }
 
 .panel::after {
@@ -55,8 +68,13 @@
   right: 0;
   width: 10px;
   height: 10px;
+<<<<<<< HEAD
   border-right: 2px solid #02a6b5;
   border-top: 2px solid #02a6b5;
+=======
+  border-right: 2px solid #1089e7;
+  border-top: 2px solid #1089e7;
+>>>>>>> 37f70119ccaeffebcc0b8f90b2af86c3421840e2
 }
 
 .panel-footer {
@@ -73,8 +91,13 @@
   left: 0;
   width: 10px;
   height: 10px;
+<<<<<<< HEAD
   border-left: 2px solid #02a6b5;
   border-bottom: 2px solid #02a6b5;
+=======
+  border-left: 2px solid #1089e7;
+  border-bottom: 2px solid #1089e7;
+>>>>>>> 37f70119ccaeffebcc0b8f90b2af86c3421840e2
 }
 
 .panel-footer:after {
@@ -84,13 +107,22 @@
   right: 0;
   width: 10px;
   height: 10px;
+<<<<<<< HEAD
   border-right: 2px solid #02a6b5;
   border-bottom: 2px solid #02a6b5;
+=======
+  border-right: 2px solid #1089e7;
+  border-bottom: 2px solid #1089e7;
+>>>>>>> 37f70119ccaeffebcc0b8f90b2af86c3421840e2
 }
 
 .panel h2 {
   height: 0.6rem;
+<<<<<<< HEAD
   color: #02a6b5;
+=======
+  color: #1089e7;
+>>>>>>> 37f70119ccaeffebcc0b8f90b2af86c3421840e2
   line-height: 0.6rem;
   font-size: 0.2rem;
   text-align: center;
@@ -98,4 +130,8 @@
 
 .chart {
   height: 1.6rem;
+<<<<<<< HEAD
+=======
+  min-height: 200px;
+>>>>>>> 37f70119ccaeffebcc0b8f90b2af86c3421840e2
 }

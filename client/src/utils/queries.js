@@ -111,16 +111,24 @@ export const QUERY_EXERCISES = gql`
   query {
     exercises {
       _id
+<<<<<<< HEAD
       # exerciseName
       weight
       repetitions
       time
+=======
+      exerciseCategory
+      weight
+      repetitions
+      username
+>>>>>>> 37f70119ccaeffebcc0b8f90b2af86c3421840e2
       notes
       createdAt
     }
   }
 `;
 
+<<<<<<< HEAD
 export const QUERY_NAMES = gql`
 query ExerciseNames {
   exerciseNames {
@@ -130,6 +138,8 @@ query ExerciseNames {
 }
 `
 
+=======
+>>>>>>> 37f70119ccaeffebcc0b8f90b2af86c3421840e2
 export const QUERY_EXERCISE = gql`
   query exercise($id: ID!) {
     exercise(_id: $id) {
@@ -182,12 +192,24 @@ export const QUERY_ME = gql`
   }
 `;
 
+<<<<<<< HEAD
 export const QUERY_TOP_PLAYERS = gql`
+=======
+export const QUERY_EXERCISE_DATA = gql`
+>>>>>>> 37f70119ccaeffebcc0b8f90b2af86c3421840e2
   {
     topPlayers {
       username
       totalTime
     }
+<<<<<<< HEAD
+=======
+    userData {
+      weeklyData
+      monthlyWeight
+      exercises
+    }
+>>>>>>> 37f70119ccaeffebcc0b8f90b2af86c3421840e2
   }
 `;
 
