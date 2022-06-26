@@ -1,9 +1,10 @@
 import React from 'react';
+import './style.css'
 
 const Footer = () => {
   return (
-    <footer className="w-100 mt-auto bg-secondary p-4">
-      <div className="container">
+    <footer className="">
+      <div className="footer-container">
         &copy;{new Date().getFullYear()} by Cannibal Coders
       </div>
     </footer>
