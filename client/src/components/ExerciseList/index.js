@@ -29,7 +29,7 @@ const ExerciseList = ({ exercises = [] }) => {
               <p>{el.exerciseCategory.exerciseName}</p>
               <p>Date:{el.createdAt}</p>
               <p>Repetition:{el.repetitions}</p>
-              <p>Time:{el.repetitions} mins</p>
+              <p>Weight:{el.weight} lbs</p>
               <p>Note:{el.notes}</p>
             </div>
           </div>
