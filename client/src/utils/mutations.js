@@ -86,6 +86,18 @@ export const ADD_USER = gql`
   }
 `;
 
+export const EDIT_USER = gql`
+  mutation editUser($username: String!, $email: String!) {
+    editUser(username: $username, email: $email) {
+      token
+      user {
+        _id
+        username
+      }
+    }
+  }
+`;
+
 export const ADD_EXERCISE = gql`
   mutation addExercise(
     $exerciseName: String!
