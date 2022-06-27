@@ -8,7 +8,7 @@ const { getWeeklyData } = require('../utils/weeklyData');
 
 const resolvers = {
   Query: {
-    me: async (parent, args) => {
+    me: async (parent, args, context) => {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
           .select('-_v -password')
@@ -74,7 +74,7 @@ const resolvers = {
 
     userData: async (parent, args, context) => {
       const ExerciseData = await User.findById({
-        _id: '62b6d12328cc56b5dbe4f648',
+        _id: '62b92a3b925720d421d318cc',
       })
         .populate({
           path: 'exercises',
@@ -113,12 +113,14 @@ const resolvers = {
   },
 
   Mutation: {
+
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
 
       return { token, user };
     },
+
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 
@@ -135,6 +137,36 @@ const resolvers = {
 
       return { token, user };
     },
+
+    addExerciseName: async (parent, args, context) => {
+      if (context.user) {
+        const exercise = await ExerciseCategory.create({
+          ...args,
+          username: context.user.username,
+        });
+
+        await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $push: { exercises: exercise._id } },
+          { new: true }
+        );
+        console.log(exercise);
+        return exercise;
+      }
+
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    
+    editUser: async (parent, args, context) => {
+      if (context.user)  {
+        const user = await User.findOneAndUpdate({_id: context.user._id}, args, {new: true})
+        const token = signToken(user)
+
+        return {user, token}
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
     addExercise: async (parent, args, context) => {
       if (context.user) {
         console.log(context.user);
@@ -161,6 +193,43 @@ const resolvers = {
 
       throw new AuthenticationError('You need to be logged in!');
     },
+
+    
+
+
+
+
+// addUserExercise: async (parent, { exerciseId, weight, repetitions, time, notes}, context) => {
+//   if (context.user) {
+//     const updatedExercise = await Exercise.findOneAndUpdate(
+//       { _id: exerciseId },
+//       { $push: { userExercise: {weight, repetitions, time, notes, username: context.user.username} }},
+//       { new: true, runValidators: true}
+//     )
+//     return updatedExercise
+//   }
+//   throw new AuthenticationError('You need to be logged in.')
+// },
+
+    //     const exercise = await Exercise.create({
+    //       ...args,
+    //       exerciseCategory: category._id,
+    //       username: context.user.username,
+    //     });
+
+    //     await User.findByIdAndUpdate(
+    //       { _id: context.user._id },
+    //       { $push: { exercises: exercise._id } },
+    //       { new: true }
+    //     );
+    //     console.log(exercise);
+    //     return Exercise.findOne({ _id: exercise._id }).populate(
+    //       'exerciseCategory'
+    //     );
+    //   }
+
+    //   throw new AuthenticationError('You need to be logged in!');
+    // },
     // addUserExercise: async (parent, { exerciseId, weight, repetitions, time, notes}, context) => {
     //   if (context.user) {
     //     const updatedExercise = await Exercise.findOneAndUpdate(

@@ -17,10 +17,10 @@ import muscle from './muscle.svg'
 
 function Home() {
  return (
+  <>
   <div id="homepage">
    <Link to="/"></Link>
    <video src={Video1} autoPlay loop muted id="bg-video"/>
-   <div className="overlay"></div>
     <div id="home-title"> 
     <h1> STACKED</h1>
     <p>By Developers. For Developers.</p>
@@ -37,8 +37,11 @@ function Home() {
    <Link to="/login">Existing user? Login here</Link>
    </div>
    </div>
-   
+   <div className="footer">
+      &copy;{new Date().getFullYear()} by Cannibal Coders
+    </div>
   </div>
+  </>
  )
 }
 

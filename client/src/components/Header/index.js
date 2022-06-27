@@ -13,6 +13,7 @@ const Header = () => {
   if (location.pathname === "/") {
     return null
   }
+  console.log(Auth.loggedIn())
   return (
     <header className="">
       <div id="nav-container">
@@ -27,7 +28,9 @@ const Header = () => {
         <nav  className="">
           {Auth.loggedIn() ? (
             <>
-              <Link to="/profile">My Workouts</Link>
+              <Link to="/profile">Edit Profile</Link>
+              <Link to="/ranking">Ranking</Link>
+              <Link to="/workout">Workout</Link>
               <a href="/" onClick={logout}>
                 Logout
               </a>

@@ -86,6 +86,18 @@ export const ADD_USER = gql`
   }
 `;
 
+export const EDIT_USER = gql`
+  mutation editUser($username: String!, $email: String!) {
+    editUser(username: $username, email: $email) {
+      token
+      user {
+        _id
+        username
+      }
+    }
+  }
+`;
+
 export const ADD_EXERCISE = gql`
   mutation addExercise(
     $exerciseName: String!
@@ -113,6 +125,14 @@ export const ADD_EXERCISE = gql`
     }
   }
 `;
+
+export const ADD_EXERCISE_NAME = gql`
+mutation addExerciseName($exerciseName: String!) {
+  addExerciseName (exerciseName: $exerciseName) {
+    exerciseName
+  }
+}
+`
 
 export const REMOVE_USER_EXERCISE = gql`
   mutation removeUserExercise($exerciseId: ID!, $userExerciseId: ID!) {
