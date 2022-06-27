@@ -229,14 +229,19 @@ const [showExercise, setShowExercise] = useState(false)
                 <button type="submit">Submit</button>
                 </div>
               </form>
-                <div>
+                <div className='exercise-input'>
               {/* {
                     showExercise? 
                       <input placeholder="Exercise Name"/> 
                       : null
                    } */}
-                   <form onSubmit ={submitExerciseName}><input placeholder="New Exercise Name" onChange={handleChange}></input> 
-                   <button>Add to Exercise List</button>
+                   <form onSubmit ={submitExerciseName}>
+                   <div id="add-exercise">
+
+                    <input placeholder="New Exercise Name" onChange={handleChange}>
+                      </input> 
+                   <button className='button-container'>Add to Exercise List</button>
+                   </div>
 
                    </form>
                    </div>
