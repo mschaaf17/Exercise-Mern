@@ -13,6 +13,7 @@ const Header = () => {
   if (location.pathname === "/") {
     return null
   }
+  console.log(Auth.loggedIn())
   return (
     <header className="">
       <div id="nav-container">

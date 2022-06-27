@@ -15,7 +15,8 @@ import Home from './pages/Home';
 import Ranking from './pages/Ranking/';
 import Login from './pages/Login'
 import Signup from './pages/Signup'
-import Workout from './pages/Workout.js'
+
+import Workout from './pages/Workout/'
 import Profile from './pages/Profile/';
 
 const httpLink = createHttpLink({
@@ -54,7 +55,7 @@ function App() {
               {/* <Route path="/videos" element={<Video />} /> */}
             </Routes>
           
-          <Footer />
+          
         
       </Router>
     </ApolloProvider>

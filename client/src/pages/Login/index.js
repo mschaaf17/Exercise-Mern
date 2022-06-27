@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { LOGIN_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
+import './style.css'
 
 function Login(props) {
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error }] = useMutation(LOGIN_USER);
+  const location = useLocation()
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -16,6 +18,9 @@ function Login(props) {
       });
       const token = mutationResponse.data.login.token;
       Auth.login(token);
+      console.log("Testing")
+      //location.pathname = "/workout"
+      window.location.href = "/workout"
     } catch (e) {
       console.log(e);
     }
@@ -30,6 +35,7 @@ function Login(props) {
   };
 
   return (
+    <>
     <div className="entry-container">
     <div className="entry-form">
       
@@ -68,6 +74,12 @@ function Login(props) {
       <Link to="/signup">New user? Signup here</Link>
     </div>
     </div>
+    <footer className="">
+    <div className="footer-container">
+      &copy;{new Date().getFullYear()} by Cannibal Coders
+    </div>
+  </footer>
+  </>
   );
 }
 
