@@ -198,7 +198,7 @@ export default function Workout() {
                       list="typelist"
                       name="exerciseName"
                       autoComplete="off"
-                      placeholder="Add/Select Exercise Name"
+                      placeholder="Add/Select Exercise"
                       value={exerciseState.exerciseName}
                       onChange={handleChange}
                     />
