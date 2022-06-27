@@ -112,7 +112,7 @@ export default function Workout() {
       const { data } = await addExercise({
         variables: {
           ...exerciseState,
-          time:time/1000,
+          time: time / 1000,
           weight: parseInt(exerciseState.weight),
           repetitions: parseInt(exerciseState.repetitions),
         },
@@ -211,6 +211,7 @@ export default function Workout() {
                     className="exercise-input"
                     placeholder="Weight"
                     name="weight"
+                    autoComplete="off"
                     type="text"
                     value={exerciseState.weight}
                     onChange={handleChange}
@@ -218,6 +219,7 @@ export default function Workout() {
                   <input
                     className="exercise-input"
                     placeholder="Repetitions"
+                    autoComplete="off"
                     name="repetitions"
                     type="text"
                     value={exerciseState.repetitions}
@@ -225,7 +227,7 @@ export default function Workout() {
                   />
 
                   <textarea
-                    className="exercise-input"
+                    className="exercise-textarea"
                     placeholder="Notes"
                     name="notes"
                     type="text"

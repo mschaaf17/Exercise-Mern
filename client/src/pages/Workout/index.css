@@ -72,7 +72,7 @@ h1 {
 }
 
 .exercise-input {
-  margin: 5px;
+  margin: 5px 0;
   border-radius: 5px;
 }
 
@@ -82,16 +82,20 @@ input {
 }
 
 input[class='exercise-input'] {
-  width: 200px;
+  flex: 1 0 30%;
+  margin: 5px;
   border: 1px solid black;
-  height: 25%;
+  height: 25px;
 }
 
 div[class='exercise-input'] {
-  width: 200px;
+  flex: 1 0 30%;
+  margin: 5px;
+  min-width: 100px;
   border: 1px solid black;
   overflow: hidden;
   padding-right: 0;
+  height: 25px;
 }
 
 div[class='exercise-input'] > * {
@@ -100,13 +104,12 @@ div[class='exercise-input'] > * {
   /* height: 100%; */
 }
 
-div[class='exercise-input'] option {
-  width: 200px;
-}
-
-textarea[class='exercise-input'] {
+textarea[class='exercise-textarea'] {
+  /* margin: 5px 0; */
   resize: none;
-  flex: 1;
+  margin: 5px;
+  flex: 1 0 90%;
+  /* min-width: 300px; */
   height: 100px;
   outline: none;
   resize: none;
@@ -163,6 +166,10 @@ button {
   box-shadow: 0 0 10px black;
   margin: 20px;
   width: 45vw;
+}
+
+.workout-container > * {
+  max-width: 100%;
 }
 
 #saved-workouts {
