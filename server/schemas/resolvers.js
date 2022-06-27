@@ -81,6 +81,7 @@ const resolvers = {
     
       throw new AuthenticationError('You need to be logged in!');
     },
+    
     editUser: async (parent, args, context) => {
       if (context.user)  {
         const user = await User.findOneAndUpdate({_id: context.user._id}, args, {new: true})
