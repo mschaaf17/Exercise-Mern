@@ -163,10 +163,15 @@ const resolvers = {
           args,
           { new: true }
         );
+        if (!user) {
+          return 'nonono';
+        }
+
         const token = signToken(user);
 
         return { user, token };
       }
+
       throw new AuthenticationError('You need to be logged in!');
     },
 

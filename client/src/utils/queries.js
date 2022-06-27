@@ -175,7 +175,10 @@ export const QUERY_ME = gql`
       email
       exercises {
         _id
-        exerciseName
+        exerciseCategory {
+          _id
+          exerciseName
+        }
         weight
         time
         repetitions
