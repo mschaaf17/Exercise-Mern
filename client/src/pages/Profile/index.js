@@ -10,7 +10,7 @@ function EditProfile(props) {
   const [formState, setFormState] = useState({ email: '', username: '' });
   const [editUser] = useMutation(EDIT_USER); 
 
-  const {data: currentUser, loading} = useQuery(QUERY_ME)
+  const { currentUser, loading} = useQuery(QUERY_ME)
 
 console.log(currentUser);
 
