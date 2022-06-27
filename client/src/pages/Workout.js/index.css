@@ -170,3 +170,31 @@ button {
   width: 40vw;
   height: fit-content;
 }
+
+.exerciseNameLog {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  padding: 10px;
+}
+
+.nameLog {
+  text-align: center;
+  font-size: 18px;
+  padding-bottom: 10px;
+}
+
+.nameText {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.btn {
+  margin: auto;
+  
+
+}

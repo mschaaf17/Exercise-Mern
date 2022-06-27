@@ -3,6 +3,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import { ADD_EXERCISE, ADD_EXERCISE_NAME } from '../../utils/mutations';
 import { QUERY_EXERCISES, QUERY_NAMES } from '../../utils/queries';
 import ExerciseList from '../../components/ExerciseList';
+import ExerciseNameForm from '../../components/ExerciseName';
 import './index.css';
 import moment from 'moment';
 
@@ -173,6 +174,9 @@ export default function Workout() {
               </div>
             </div>
           </div>
+          <div>
+            <ExerciseNameForm />
+          </div>
           {/* enter exercise area */}
           <div className="workout-container" id="log-container">
             <h1>Log your Workout</h1>
@@ -186,7 +190,7 @@ export default function Workout() {
                       list="typelist"
                       name="exerciseName"
                       autoComplete="off"
-                      placeholder="Add/Select Exercise"
+                      placeholder="Select Recent Exercise Name"
                       value={exerciseState.exerciseName}
                       onChange={handleChange}
                     />
