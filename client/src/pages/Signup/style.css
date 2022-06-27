@@ -1,6 +1,7 @@
 .entry-container {
  display: flex;
  justify-content: center;
+ height: 100vh;
 }
 
 
@@ -13,7 +14,8 @@
  border: 1px solid var(--darker-red);
  border-radius: 5px;
  width: fit-content;
- padding: 10px;
+ height: fit-content;
+ padding: 20px;
  background-color: var(--secondary);
 
 }

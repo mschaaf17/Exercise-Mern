@@ -13,9 +13,9 @@
  border: 1px solid var(--darker-red);
  border-radius: 5px;
  width: fit-content;
- padding: 10px;
+ padding: 20px;
  background-color: var(--secondary);
-
+box-shadow: 0 0 10px black;
 }
 
 .entry-form a {

@@ -1,5 +1,6 @@
 import React from 'react';
 import './style.css';
+import Moment from 'moment'
 
 const ExerciseList = ({ exercises = [] }) => {
   console.log(exercises);
@@ -10,7 +11,9 @@ const ExerciseList = ({ exercises = [] }) => {
 
   return (
     <div className="workout-log">
-      <h3>Workout Log</h3>
+      <div id="workout-log-title">
+      <h1>Workout Log</h1>
+      </div>
       {/* <div>{date.toLocaleDateString()}</div>
       <div>
         <span value={stopTime}>
@@ -22,18 +25,20 @@ const ExerciseList = ({ exercises = [] }) => {
         </span>
         <span>createdAt</span>
       </div> */}
+      <div className="card">
       {exercises &&
         exercises.map(el => (
-          <div key={el._id} className="card mb-3">
+          <div key={el._id} className="">
             <div className="card-header">
-              <p>{el.exerciseCategory.exerciseName}</p>
-              <p>Date:{el.createdAt}</p>
-              <p>Repetition:{el.repetitions}</p>
-              <p>Weight:{el.weight} lbs</p>
-              <p>Note:{el.notes}</p>
+              <div className='p'><div className='list-element'>Exercise:  </div>{el.exerciseCategory.exerciseName}</div>
+              <div className='p'><div className='list-element'>Date:  </div>{new Date(parseInt(el.createdAt)).toLocaleDateString()}</div>
+              <div className='p'><div className='list-element'>Repetitions:  </div>{el.repetitions}</div>
+              <div className='p'><div className='list-element'>Weight:  </div>{el.weight}lbs</div>
+              <div className='p'><div className='list-element'>Notes:  </div>{el.notes}</div>
             </div>
           </div>
         ))}
+        </div>
     </div>
   );
 };

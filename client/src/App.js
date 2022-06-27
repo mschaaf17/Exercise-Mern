@@ -53,7 +53,7 @@ function App() {
               {/* <Route path="/videos" element={<Video />} /> */}
             </Routes>
           
-          <Footer />
+          
         
       </Router>
     </ApolloProvider>

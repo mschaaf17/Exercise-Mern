@@ -107,20 +107,22 @@ export default function Workout() {
   return (
     <>
       <div>
-        This is the workout page!
         <div className="flex">
           <div className="workout_timer">
             <div className="border_bottom">
               {/* timer section */}
+              <div className="workout-container" id="timer-container">
               <h1>Working Out? Start Timer!</h1>
+              <div id="hms">
               <span>
                 {('0' + Math.floor((time / 3600000) % 60)).slice(-2)}:
               </span>
               <span>{('0' + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
               <span>{('0' + Math.floor((time / 1000) % 60)).slice(-2)}</span>
               {/* <span>{("0" + ((time / 10) % 100)).slice(-2)}</span> */}
+              </div>
 
-              <div>
+              <div className="button-container">
                 {!timerOn && time === 0 && (
                   <button className="green" onClick={() => setTimerOn(true)}>
                     Start
@@ -145,15 +147,18 @@ export default function Workout() {
                 )}
               </div>
             </div>
+            </div>
 
             {/* enter exercise area */}
-            <div>
+            <div className="workout-container" id="log-container">
               <h1>Log your Workout</h1>
               {/* <h2>
                 {exerciseState.weight} {exerciseState.notes}
               </h2> */}
+              <div id="exercise-container">
               <form className="submit_log" onSubmit={handleFormSubmit}>
-                <select
+              <div id="exercise-form">
+                <select className="exercise-input"
                   // placeholder="Exercise Name"
                   name="exerciseName"
                   // type="text"
@@ -178,14 +183,14 @@ export default function Workout() {
                     })}
                 </select>
 
-                <input
+                <input className="exercise-input"
                   placeholder="weight"
                   name="weight"
                   type="text"
                   value={exerciseState.weight}
                   onChange={handleChange}
                 />
-                <input
+                <input className="exercise-input"
                   placeholder="repetitions"
                   name="repetitions"
                   type="text"
@@ -209,15 +214,20 @@ export default function Workout() {
                     {("0" + Math.floor((time / 1000) % 60)).slice(-2)}
                   </span>
                 </p> */}
-                <textarea
+                <textarea className="exercise-input"
                   placeholder="notes"
                   name="notes"
                   type="text"
                   value={exerciseState.notes}
                   onChange={handleChange}
                 />
+                </div>
+                <div className='button-container'>
                 <button type="submit">Submit</button>
+                </div>
               </form>
+              </div>
+              
               {/* <div><h3>Not ready to log?</h3>
               <p>Try out some recommended workout videos!</p>
 
@@ -260,11 +270,18 @@ export default function Workout() {
           </div>
 
           {/* only display exerciseList when it exists */}
+          <div className="" id="saved-workouts">
           {allExercises && (
             <ExerciseList exercises={allExercises.exercises.exercises} />
           )}
+          </div>
         </div>
       </div>
+      <footer className="">
+      <div className="footer-container">
+        &copy;{new Date().getFullYear()} by Cannibal Coders
+      </div>
+    </footer>
     </>
   );
 }
