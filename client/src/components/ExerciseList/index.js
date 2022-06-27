@@ -3,8 +3,6 @@ import './style.css';
 import Moment from 'moment';
 
 const ExerciseList = ({ exercises = [] }) => {
-  // console.log(exercises);
-  // const [date, setDate] = useState(new Date());
   if (!exercises.length) {
     return <h3>No exercises Yet</h3>;
   }
@@ -14,17 +12,6 @@ const ExerciseList = ({ exercises = [] }) => {
       <div id="workout-log-title">
         <h1>Workout Log</h1>
       </div>
-      {/* <div>{date.toLocaleDateString()}</div>
-      <div>
-        <span value={stopTime}>
-          <span>
-            {('0' + Math.floor((stopTime / 3600000) % 60)).slice(-2)}:
-          </span>
-          <span>{('0' + Math.floor((stopTime / 60000) % 60)).slice(-2)}:</span>
-          <span>{('0' + Math.floor((stopTime / 1000) % 60)).slice(-2)}</span>
-        </span>
-        <span>createdAt</span>
-      </div> */}
       <div className="card">
         {exercises &&
           exercises.map(el => (
@@ -49,6 +36,10 @@ const ExerciseList = ({ exercises = [] }) => {
 
                 <div className="p list-element">
                   {el.notes ? `Notes: ${el.notes}` : ' '}
+                </div>
+
+                <div className="p list-element">
+                  {el.time ? `Time: ${el.time}` : ' '}
                 </div>
               </div>
               <button>Delete</button>

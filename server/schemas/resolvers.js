@@ -176,6 +176,7 @@ const resolvers = {
           exerciseName: args.exerciseName,
         });
 
+        // create the category if it doesn't exist
         if (!category) {
           category = await ExerciseCategory.create({
             exerciseName: args.exerciseName,
@@ -193,7 +194,6 @@ const resolvers = {
           { $push: { exercises: exercise._id } },
           { new: true }
         );
-        console.log(exercise);
         return Exercise.findOne({ _id: exercise._id }).populate(
           'exerciseCategory'
         );

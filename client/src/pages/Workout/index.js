@@ -8,6 +8,7 @@ import moment from 'moment';
 
 export default function Workout() {
   const [time, setTime] = useState(0);
+
   const [timerOn, setTimerOn] = useState(false);
   // const [stopTime, setStopTime] = useState(0);
   // const [date, setDate] = useState(new Date());
@@ -22,8 +23,8 @@ export default function Workout() {
 
     if (timerOn) {
       interval = setInterval(() => {
-        setTime(prevTime => prevTime + 10);
-      }, 10);
+        setTime(prevTime => prevTime + 1000);
+      }, 1000);
     } else {
       clearInterval(interval);
     }
@@ -40,7 +41,29 @@ export default function Workout() {
 
   // add exercises log
 
-  const [addExercise, { error }] = useMutation(ADD_EXERCISE);
+  const [addExercise, { error }] = useMutation(ADD_EXERCISE, {
+    update(cache, { data: { addExercise } }) {
+      try {
+        const { exercises } = cache.readQuery({ query: QUERY_EXERCISES });
+        console.log(exercises);
+
+        // console.log(exercises.exercises);
+        console.log(addExercise);
+
+        cache.writeQuery({
+          query: QUERY_EXERCISES,
+          data: {
+            exercises: {
+              ...exercises,
+              exercises: [...exercises.exercises, { ...addExercise }],
+            },
+          },
+        });
+      } catch (e) {
+        console.log('err: ', e);
+      }
+    },
+  });
 
   // add a new exercise name
   const [addExerciseNameState, setExerciseNameState] = useState('');
@@ -52,7 +75,6 @@ export default function Workout() {
 
   //get all the exercises
   const { data: allExercises } = useQuery(QUERY_EXERCISES);
-  console.log(allExercises);
 
   // update state based on input changes
   const handleChange = event => {
@@ -63,7 +85,6 @@ export default function Workout() {
       [name]: value,
     });
   };
-  console.log(exerciseState);
   // handle exercise Name submit
   // const submitExerciseName = async event => {
   //   event.preventDefault();
@@ -91,6 +112,7 @@ export default function Workout() {
       const { data } = await addExercise({
         variables: {
           ...exerciseState,
+          time:time/1000,
           weight: parseInt(exerciseState.weight),
           repetitions: parseInt(exerciseState.repetitions),
         },
@@ -163,7 +185,7 @@ export default function Workout() {
                       type="text"
                       list="typelist"
                       name="exerciseName"
-                      autocomplete="off"
+                      autoComplete="off"
                       placeholder="Add/Select Exercise"
                       value={exerciseState.exerciseName}
                       onChange={handleChange}
@@ -217,12 +239,11 @@ export default function Workout() {
               </form>
             </div>
           </div>
-          {/* only display exerciseList when it exists */}
-          {allExercises && (
-            <div className="" id="saved-workouts">
-              <ExerciseList exercises={allExercises.exercises.exercises} />
-            </div>
-          )}
+          {/* only display exerciseList when user has exercise logs */}
+
+          <div className="" id="saved-workouts">
+            <ExerciseList exercises={allExercises?.exercises.exercises} />
+          </div>
         </div>
       </div>
       <footer className="">
