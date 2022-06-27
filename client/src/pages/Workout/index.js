@@ -9,12 +9,12 @@ import moment from 'moment';
 export default function Workout() {
   const [time, setTime] = useState(0);
   const [timerOn, setTimerOn] = useState(false);
-  const [stopTime, setStopTime] = useState(0);
-  const [date, setDate] = useState(new Date());
+  // const [stopTime, setStopTime] = useState(0);
+  // const [date, setDate] = useState(new Date());
   const handleClickStop = () => {
     setTimerOn(false);
-    setStopTime(time);
-    setDate(new Date());
+    // setStopTime(time);
+    // setDate(new Date());
   };
 
   useEffect(() => {
@@ -32,9 +32,9 @@ export default function Workout() {
   }, [timerOn]);
 
   const [exerciseState, setExerciseState] = useState({
-    exerciseName: 'Select Recent Exercise',
-    weight: 0,
-    repetitions: 0,
+    exerciseName: '',
+    weight: '',
+    repetitions: '',
     notes: '',
   });
 
@@ -43,9 +43,8 @@ export default function Workout() {
   const [addExercise, { error }] = useMutation(ADD_EXERCISE);
 
   // add a new exercise name
-  const [addExerciseNameState, setExerciseNameState] = useState('')
-  const [addExerciseName ] = useMutation(ADD_EXERCISE_NAME)
-
+  const [addExerciseNameState, setExerciseNameState] = useState('');
+  const [addExerciseName] = useMutation(ADD_EXERCISE_NAME);
 
   //get exercise names
   const { data } = useQuery(QUERY_NAMES);
@@ -58,31 +57,30 @@ export default function Workout() {
   // update state based on input changes
   const handleChange = event => {
     const { name, value } = event.target;
+
     setExerciseState({
       ...exerciseState,
-      addExerciseNameState,
       [name]: value,
     });
   };
-
+  console.log(exerciseState);
   // handle exercise Name submit
-  const submitExerciseName = async (event) => {
-    event.preventDefault()
+  // const submitExerciseName = async event => {
+  //   event.preventDefault();
 
-    try {
-     await addExerciseName({
-      variables: {addExerciseNameState},
-      
-    })
-    setExerciseNameState('')
-  } catch (e) {
-    console.log(error)
-  }
-  console.log('submit')
-  }
+  //   try {
+  //     await addExerciseName({
+  //       variables: { addExerciseNameState },
+  //     });
+  //     setExerciseNameState('');
+  //   } catch (e) {
+  //     console.log(error);
+  //   }
+  //   console.log('submit');
+  // };
 
   // handle submit
-  const handleFormSubmit = async (event) => {
+  const handleFormSubmit = async event => {
     event.preventDefault();
     if (!exerciseState.exerciseName) {
       console.log('invalid input');
@@ -108,32 +106,23 @@ export default function Workout() {
       notes: '',
     });
   };
-
-const [showExercise, setShowExercise] = useState(false)
-
-
-  // const filteredExercises = exerciseNames.filter(exercise => {
-  //   const createdAt = moment(exercise.createdAt).startOf('day');
-  //   const momentDate = moment(date).startOf('day');
-  //   return createdAt.isSame(momentDate);
-  // });
-
   return (
-  <>
-      
-        <div className="flex">
-          <div className="workout_timer">
-            <div className="border_bottom">
-              {/* timer section */}
-              <div className="workout-container" id="timer-container">
+    <>
+      <div className="flex">
+        <div className="workout_timer">
+          <div className="border_bottom">
+            {/* timer section */}
+            <div className="workout-container" id="timer-container">
               <h1>Working Out? Start Timer!</h1>
               <div id="hms">
-              <span>
-                {('0' + Math.floor((time / 3600000) % 60)).slice(-2)}:
-              </span>
-              <span>{('0' + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
-              <span>{('0' + Math.floor((time / 1000) % 60)).slice(-2)}</span>
-              {/* <span>{("0" + ((time / 10) % 100)).slice(-2)}</span> */}
+                <span>
+                  {('0' + Math.floor((time / 3600000) % 60)).slice(-2)}:
+                </span>
+                <span>
+                  {('0' + Math.floor((time / 60000) % 60)).slice(-2)}:
+                </span>
+                <span>{('0' + Math.floor((time / 1000) % 60)).slice(-2)}</span>
+                {/* <span>{("0" + ((time / 10) % 100)).slice(-2)}</span> */}
               </div>
 
               <div className="button-container">
@@ -161,108 +150,86 @@ const [showExercise, setShowExercise] = useState(false)
                 )}
               </div>
             </div>
-            </div>
-
-            {/* enter exercise area */}
-            <div className="workout-container" id="log-container">
-              <h1>Log your Workout</h1>
-              {/* <h2>
-                {exerciseState.weight} {exerciseState.notes}
-              </h2> */}
-              <div id="exercise-container">
+          </div>
+          {/* enter exercise area */}
+          <div className="workout-container" id="log-container">
+            <h1>Log your Workout</h1>
+            <div id="exercise-container">
               <form className="submit_log" onSubmit={handleFormSubmit}>
-              <div id="exercise-form">
-                <select className="exercise-input"
-                  // placeholder="Exercise Name"
-                  name="exerciseName"
-                  // type="text"
-                  defaultValue="default"
-                  onChange={handleChange}
-                >
-                  <option disabled value="default">
-                    Select Exercise
-                  </option>
-                  {exerciseNames &&
-                    exerciseNames.map(exerciseName => {
-                      if (exerciseName.exerciseName) {
-                        return (
-                          <option
-                            key={exerciseName.exerciseName}
-                            id={exerciseName._id}
-                          >
-                            {exerciseName.exerciseName}
-                          </option>
-                        );
-                      }
-                    })}
-                   {!showExercise && (
-                    <option onSelect={() => setShowExercise(true)}>Add new Exercise</option>
-                   )} 
-                 
-                </select>
-               
+                <div id="exercise-form">
+                  <div className="exercise-input">
+                    <input
+                      id="type"
+                      type="text"
+                      list="typelist"
+                      name="exerciseName"
+                      autocomplete="off"
+                      placeholder="Add/Select Exercise"
+                      value={exerciseState.exerciseName}
+                      onChange={handleChange}
+                    />
+                    <datalist id="typelist">
+                      {exerciseNames &&
+                        exerciseNames.map(exerciseName => {
+                          if (exerciseName.exerciseName) {
+                            return (
+                              <option
+                                key={exerciseName.exerciseName}
+                                id={exerciseName._id}
+                              >
+                                {exerciseName.exerciseName}
+                              </option>
+                            );
+                          }
+                        })}
+                    </datalist>
+                  </div>
 
-                <input className="exercise-input"
-                  placeholder="weight"
-                  name="weight"
-                  type="text"
-                  value={exerciseState.weight}
-                  onChange={handleChange}
-                />
-                <input className="exercise-input"
-                  placeholder="repetitions"
-                  name="repetitions"
-                  type="text"
-                  value={exerciseState.repetitions}
-                  onChange={handleChange}
-                />
-                
-                <textarea className="exercise-input"
-                  placeholder="notes"
-                  name="notes"
-                  type="text"
-                  value={exerciseState.notes}
-                  onChange={handleChange}
-                />
+                  <input
+                    className="exercise-input"
+                    placeholder="Weight"
+                    name="weight"
+                    type="text"
+                    value={exerciseState.weight}
+                    onChange={handleChange}
+                  />
+                  <input
+                    className="exercise-input"
+                    placeholder="Repetitions"
+                    name="repetitions"
+                    type="text"
+                    value={exerciseState.repetitions}
+                    onChange={handleChange}
+                  />
+
+                  <textarea
+                    className="exercise-input"
+                    placeholder="Notes"
+                    name="notes"
+                    type="text"
+                    value={exerciseState.notes}
+                    onChange={handleChange}
+                  />
                 </div>
-                <div className='button-container'>
-                <button type="submit">Submit</button>
+                <div className="button-container">
+                  <button type="submit">Submit</button>
                 </div>
               </form>
-                <div className='exercise-input'>
-              {/* {
-                    showExercise? 
-                      <input placeholder="Exercise Name"/> 
-                      : null
-                   } */}
-                   <form onSubmit ={submitExerciseName}>
-                   <div id="add-exercise">
-
-                    <input placeholder="New Exercise Name" onChange={handleChange}>
-                      </input> 
-                   <button className='button-container'>Add to Exercise List</button>
-                   </div>
-
-                   </form>
-                   </div>
-
-             
             </div>
           </div>
-
           {/* only display exerciseList when it exists */}
-          <div className="" id="saved-workouts">
           {allExercises && (
-            <ExerciseList exercises={allExercises.exercises.exercises} />
+            <div className="" id="saved-workouts">
+              <ExerciseList exercises={allExercises.exercises.exercises} />
+            </div>
           )}
-          </div>
         </div>
       </div>
       <footer className="">
-      <div className="footer-container">
-        &copy;{new Date().getFullYear()} by Cannibal Coders
-      </div>
-    </footer>
+        <div className="footer-container">
+          &copy;{new Date().getFullYear()} by Cannibal Coders
+        </div>
+      </footer>
     </>
   );
 }

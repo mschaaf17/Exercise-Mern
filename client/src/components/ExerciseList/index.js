@@ -3,7 +3,7 @@ import './style.css';
 import Moment from 'moment';
 
 const ExerciseList = ({ exercises = [] }) => {
-  console.log(exercises);
+  // console.log(exercises);
   // const [date, setDate] = useState(new Date());
   if (!exercises.length) {
     return <h3>No exercises Yet</h3>;
