@@ -74,7 +74,7 @@ const resolvers = {
 
     userData: async (parent, args, context) => {
       const ExerciseData = await User.findById({
-        _id: '62b92a3b925720d421d318cc',
+        _id: '62b6d12328cc56b5dbe4f648',
       })
         .populate({
           path: 'exercises',
@@ -193,6 +193,17 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
 
+ removeExercise: async (parent, args, context) => {
+  if(context.user) {
+    const updatedExercise = await User.findOneAndUpdate(
+      {_id: context.user._id},
+      {$pull: {exercises:_id }},
+      {new: true}
+    )
+    return updatedExercise
+  }
+  throw new AuthenticationError('Log in please')
+ }
     
 
 

@@ -1,3 +1,4 @@
+
 // import { gql } from '@apollo/client';
 
 // export const QUERY_EXERCISES = gql`
@@ -213,4 +214,3 @@ export const QUERY_EXERCISE_DATA = gql`
 //       }
 //     }
 //   }
-// `;

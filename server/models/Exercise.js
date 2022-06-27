@@ -30,13 +30,13 @@ const exerciseSchema = new Schema(
       type: Date,
       default: Date.now,
       // get: timestamp => dateFormat(timestamp),
-    }
+    },
+  },
+  {
+    toJSON: {
+      getters: true,
+    },
   }
-  // {
-  //   toJSON: {
-  //     getters: true,
-  //   },
-  // }
 );
 
 const Exercise = model('Exercise', exerciseSchema);
