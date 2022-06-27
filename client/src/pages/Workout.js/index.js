@@ -119,8 +119,8 @@ const [showExercise, setShowExercise] = useState(false)
   // });
 
   return (
-    <>
-      <div>
+  <>
+      
         <div className="flex">
           <div className="workout_timer">
             <div className="border_bottom">
