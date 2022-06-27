@@ -1,3 +1,4 @@
+
 // import { gql } from '@apollo/client';
 
 // export const QUERY_EXERCISES = gql`
@@ -175,7 +176,10 @@ export const QUERY_ME = gql`
       email
       exercises {
         _id
-        exerciseName
+        exerciseCategory {
+          _id
+          exerciseName
+        }
         weight
         time
         repetitions
@@ -200,6 +204,10 @@ export const QUERY_EXERCISE_DATA = gql`
   }
 `;
 
+
+
+
+
 // export const QUERY_ME_BASIC = gql`
 //   {
 //     me {
@@ -213,4 +221,3 @@ export const QUERY_EXERCISE_DATA = gql`
 //       }
 //     }
 //   }
-// `;

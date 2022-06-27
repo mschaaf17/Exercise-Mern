@@ -20,6 +20,7 @@ function Signup(props) {
     });
     const token = mutationResponse.data.addUser.token;
     Auth.login(token);
+    window.location.href = "/workout"
   };
 
   const handleChange = (event) => {
@@ -31,6 +32,7 @@ function Signup(props) {
   };
 
   return (
+    <>
     <div className="entry-container">
     <div className="entry-form">
       
@@ -74,6 +76,12 @@ function Signup(props) {
       <Link to="/login">Already have an account? Login here</Link>
     </div>
     </div>
+    <footer className="">
+    <div className="footer-container">
+      &copy;{new Date().getFullYear()} by Cannibal Coders
+    </div>
+  </footer>
+  </>
   );
 }
 

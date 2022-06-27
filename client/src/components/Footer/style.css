@@ -1,13 +1,16 @@
 footer {
  display: flex;
- align-items: flex-end;
+ justify-content: space-around;
+ justify-content: flex-start;
  background-color: var(--secondary);
+ padding: 15px;
+ margin-left: 5px;
 }
 
-footer .footer-container {
- position: absolute;
+/* footer .footer-container {
+ position: sticky;
  bottom: 0;
  left: 20px;
  z-index: 5;
  
-}
+} */

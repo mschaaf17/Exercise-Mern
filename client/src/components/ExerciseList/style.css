@@ -1,7 +1,30 @@
-.workout-log {
-  padding: 10px;
+#workout-log-title {
+  display: flex;
+  flex-direction: row;
+  width: auto;
+  justify-content: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .card-header {
-  margin: 10px 0;
+  margin: 15px;
+}
+
+.card-header .p {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.list-element {
+  font-weight:900;
+}
+
+.p {
+  font-size: 0.8em;
 }
