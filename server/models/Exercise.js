@@ -28,8 +28,8 @@ const exerciseSchema = new Schema(
     },
     createdAt: {
       type: Date,
-      // default: Date.now,
-      get: timestamp => dateFormat(timestamp),
+      default: Date.now,
+      // get: timestamp => dateFormat(timestamp),
     },
   },
   {

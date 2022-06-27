@@ -155,7 +155,7 @@ const resolvers = {
 
       throw new AuthenticationError('You need to be logged in!');
     },
-
+    
     editUser: async (parent, args, context) => {
       if (context.user)  {
         const user = await User.findOneAndUpdate({_id: context.user._id}, args, {new: true})
@@ -193,6 +193,17 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
 
+ removeExercise: async (parent, args, context) => {
+  if(context.user) {
+    const updatedExercise = await User.findOneAndUpdate(
+      {_id: context.user._id},
+      {$pull: {exercises:_id }},
+      {new: true}
+    )
+    return updatedExercise
+  }
+  throw new AuthenticationError('Log in please')
+ }
     
 
 

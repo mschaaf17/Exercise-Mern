@@ -71,9 +71,7 @@ const typeDefs = gql`
       notes: String
     ): Exercise
     editUser(email: String!, username: String!): Auth
-    # addExercise(exerciseName: String!): Exercise
-    # addUserExercise(exerciseId: ID!, weight: Int, repetitions: Int, time: Int, notes: String): Exercise
-    # removeUserExercise(exerciseId: ID!, userExerciseId: ID!): Exercise
+    removeExercise(_id: ID! ): Exercise
   }
 `;
 
