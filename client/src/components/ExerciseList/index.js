@@ -1,8 +1,8 @@
 import React from 'react';
 import './style.css';
-import Moment from 'moment';
+import Moment from 'moment'
 
-const ExerciseList = ({ exercises = [] }) => {
+const ExerciseList = ({ exercises = [], deleteExercise }) => {
   if (!exercises.length) {
     return <h3>No exercises Yet</h3>;
   }
@@ -10,44 +10,29 @@ const ExerciseList = ({ exercises = [] }) => {
   return (
     <div className="workout-log">
       <div id="workout-log-title">
-        <h1>Workout Log</h1>
+      <h1>Workout Log</h1>
       </div>
       <div className="card">
-        {exercises &&
-          exercises.map(el => (
-            <div key={el._id} className="">
-              <div className="card-header">
-                <div className="p">
-                  <div className="list-element">Exercise: </div>
-                  {el.exerciseCategory.exerciseName}
-                </div>
-                <div className="p">
-                  <div className="list-element">Date: </div>
-                  {new Date(parseInt(el.createdAt)).toLocaleDateString()}
-                </div>
+      {exercises &&
+        exercises.map(el => (
+          <div key={el._id} className="">
+            <div className="card-header">
+              <div className='p'><div className='list-element'>Exercise:  </div>{el.exerciseCategory.exerciseName}</div>
+              <div className='p'><div className='list-element'>Date:  </div>{new Date(parseInt(el.createdAt)).toLocaleDateString()}</div>
 
-                <div className="p list-element">
-                  {el.repetitions ? `Repetitions: ${el.repetitions}` : ' '}
-                </div>
+              <div className='p list-element'>{el.repetitions ? `Repetitions: ${el.repetitions}` : ' '}</div>
 
-                <div className="p list-element">
-                  {el.weight ? `Weight: ${el.weight} lbs` : ' '}
-                </div>
+              <div className='p list-element'>{el.weight ? `Weight: ${el.weight} lbs`: ' '}</div>
 
-                <div className="p list-element">
-                  {el.notes ? `Notes: ${el.notes}` : ' '}
-                </div>
-
-                <div className="p list-element">
-                  {el.time ? `Time: ${el.time}` : ' '}
-                </div>
-              </div>
-              <button>Delete</button>
+              <div className='p list-element'>{el.notes ? `Notes: ${el.notes}` : ' '}</div>
             </div>
-          ))}
-      </div>
+            <button onClick={() => deleteExercise(el._id)}>Delete</button>
+          </div>
+        ))}
+        </div>
     </div>
   );
 };
+
 
 export default ExerciseList;

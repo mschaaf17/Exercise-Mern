@@ -15,8 +15,7 @@ import Home from './pages/Home';
 import Ranking from './pages/Ranking/';
 import Login from './pages/Login'
 import Signup from './pages/Signup'
-
-import Workout from './pages/Workout/'
+import Workout from './pages/Workout.js'
 import Profile from './pages/Profile/';
 
 const httpLink = createHttpLink({

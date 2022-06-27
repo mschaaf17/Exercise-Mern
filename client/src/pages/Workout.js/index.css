@@ -121,19 +121,6 @@ textarea[class='exercise-textarea'] {
   flex-direction: column;
 }
 
-#add-exercise {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 35px;
-}
-
-#add-exercise input {
-  padding: 5px;
-  border-radius: 5px;
-}
-
 /* #timer-container {
   display: flex;
   flex-wrap: wrap;
@@ -180,6 +167,34 @@ button {
   flex-direction: column;
   border-radius: 10px;
   box-shadow: 0 0 10px black;
-  width: 45vw;
+  width: 40vw;
   height: fit-content;
+}
+
+.exerciseNameLog {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  padding: 10px;
+}
+
+.nameLog {
+  text-align: center;
+  font-size: 18px;
+  padding-bottom: 10px;
+}
+
+.nameText {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.btn {
+  margin: auto;
+  
+
 }

@@ -135,13 +135,21 @@ mutation addExerciseName($exerciseName: String!) {
 }
 `
 
-export const REMOVE_USER_EXERCISE = gql`
-  mutation removeUserExercise($exerciseId: ID!, $userExerciseId: ID!) {
-    removeUserExercise(
-      exerciseId: $exerciseId
-      userExerciseId: $userExerciseId
-    ) {
-      _id
-    }
+export const REMOVE_EXERCISE = gql`
+  mutation removeExercise($_id: ID!) {
+  removeExercise(_id: $_id) {
+  _id  
   }
+}
 `;
+
+// make add time mutation 
+// export const SAVE_TIME = gql`
+// mutation saveTime($time: Int) {
+//   saveTime(time: $time) {
+//     _id
+//     time
+
+//   }
+// }
+// `

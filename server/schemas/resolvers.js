@@ -136,7 +136,6 @@ const resolvers = {
 
       return { token, user };
     },
-
     addExerciseName: async (parent, args, context) => {
       if (context.user) {
         const exercise = await ExerciseCategory.create({
@@ -207,17 +206,43 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
 
-    // addUserExercise: async (parent, { exerciseId, weight, repetitions, time, notes}, context) => {
-    //   if (context.user) {
-    //     const updatedExercise = await Exercise.findOneAndUpdate(
-    //       { _id: exerciseId },
-    //       { $push: { userExercise: {weight, repetitions, time, notes, username: context.user.username} }},
-    //       { new: true, runValidators: true}
-    //     )
-    //     return updatedExercise
-    //   }
-    //   throw new AuthenticationError('You need to be logged in.')
-    // },
+ removeExercise: async (parent, args, context) => {
+  if(context.user) {
+    const updatedExercise = await User.findByIdAndUpdate(
+      {_id: context.user._id},
+      {$pull: {exercises: args._id }},
+      {new: true}
+    )
+    return updatedExercise
+  }
+  throw new AuthenticationError('Log in please')
+ },
+
+//  saveTime: async (parent, args, context) => {
+//   if(context.user) {
+//     const saveTime = await Time.create({
+//       time: args.time, 
+//       user_id: context.userId
+
+//     })
+//   }
+//  }
+    
+
+
+
+
+// addUserExercise: async (parent, { exerciseId, weight, repetitions, time, notes}, context) => {
+//   if (context.user) {
+//     const updatedExercise = await Exercise.findOneAndUpdate(
+//       { _id: exerciseId },
+//       { $push: { userExercise: {weight, repetitions, time, notes, username: context.user.username} }},
+//       { new: true, runValidators: true}
+//     )
+//     return updatedExercise
+//   }
+//   throw new AuthenticationError('You need to be logged in.')
+// },
 
     //     const exercise = await Exercise.create({
     //       ...args,

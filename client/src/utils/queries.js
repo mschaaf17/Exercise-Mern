@@ -1,3 +1,4 @@
+
 // import { gql } from '@apollo/client';
 
 // export const QUERY_EXERCISES = gql`
@@ -203,6 +204,10 @@ export const QUERY_EXERCISE_DATA = gql`
   }
 `;
 
+
+
+
+
 // export const QUERY_ME_BASIC = gql`
 //   {
 //     me {
@@ -216,4 +221,3 @@ export const QUERY_EXERCISE_DATA = gql`
 //       }
 //     }
 //   }
-// `;

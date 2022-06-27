@@ -34,11 +34,6 @@ const exerciseSchema = new Schema(
       // get: timestamp => dateFormat(timestamp),
     },
   }
-  // {
-  //   toJSON: {
-  //     getters: true,
-  //   },
-  // }
 );
 
 const Exercise = model('Exercise', exerciseSchema);
