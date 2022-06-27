@@ -154,7 +154,7 @@ const resolvers = {
 
       throw new AuthenticationError('You need to be logged in!');
     },
-
+// this edit user connects the frontend to the backend. It searches for the person logged in and updates in the backend if there are changes
     editUser: async (parent, args, context) => {
       if (context.user) {
         const user = await User.findOneAndUpdate(
