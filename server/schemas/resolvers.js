@@ -203,15 +203,25 @@ const resolvers = {
 
  removeExercise: async (parent, args, context) => {
   if(context.user) {
-    const updatedExercise = await User.findOneAndUpdate(
+    const updatedExercise = await User.findByIdAndUpdate(
       {_id: context.user._id},
-      {$pull: {exercises:_id }},
+      {$pull: {exercises: args._id }},
       {new: true}
     )
     return updatedExercise
   }
   throw new AuthenticationError('Log in please')
- }
+ },
+
+//  saveTime: async (parent, args, context) => {
+//   if(context.user) {
+//     const saveTime = await Time.create({
+//       time: args.time, 
+//       user_id: context.userId
+
+//     })
+//   }
+//  }
     
 
 

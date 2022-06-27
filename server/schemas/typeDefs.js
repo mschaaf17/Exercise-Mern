@@ -26,6 +26,12 @@ const typeDefs = gql`
     email: String
     exercises: [Exercise]
   }
+
+  type Time {
+    _id: ID
+    date: Date
+    time: Int
+  }
   #   type userExercises {
   #     _id: ID
   #     username: String
@@ -72,6 +78,7 @@ const typeDefs = gql`
     ): Exercise
     editUser(email: String!, username: String!): Auth
     removeExercise(_id: ID! ): Exercise
+    saveTime(time: Int): Time
   }
 `;
 

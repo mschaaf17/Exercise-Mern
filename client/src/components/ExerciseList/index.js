@@ -2,7 +2,7 @@ import React from 'react';
 import './style.css';
 import Moment from 'moment'
 
-const ExerciseList = ({ exercises = [] }) => {
+const ExerciseList = ({ exercises = [], deleteExercise }) => {
   if (!exercises.length) {
     return <h3>No exercises Yet</h3>;
   }
@@ -26,7 +26,7 @@ const ExerciseList = ({ exercises = [] }) => {
 
               <div className='p list-element'>{el.notes ? `Notes: ${el.notes}` : ' '}</div>
             </div>
-            <button>Delete</button>
+            <button onClick={() => deleteExercise(el._id)}>Delete</button>
           </div>
         ))}
         </div>

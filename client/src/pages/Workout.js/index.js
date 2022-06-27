@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
-import { ADD_EXERCISE, ADD_EXERCISE_NAME } from '../../utils/mutations';
+import { ADD_EXERCISE, ADD_EXERCISE_NAME, REMOVE_EXERCISE } from '../../utils/mutations';
 import { QUERY_EXERCISES, QUERY_NAMES } from '../../utils/queries';
 import ExerciseList from '../../components/ExerciseList';
 import ExerciseNameForm from '../../components/ExerciseName';
@@ -32,6 +32,12 @@ export default function Workout() {
 
     return () => clearInterval(interval);
   }, [timerOn]);
+
+
+  // submit time
+  const submitTime = () =>{
+    console.log('submitting time')
+  }
 
   const [exerciseState, setExerciseState] = useState({
     exerciseName: '',
@@ -86,20 +92,21 @@ export default function Workout() {
       [name]: value,
     });
   };
-  // handle exercise Name submit
-  // const submitExerciseName = async event => {
-  //   event.preventDefault();
-
-  //   try {
-  //     await addExerciseName({
-  //       variables: { addExerciseNameState },
-  //     });
-  //     setExerciseNameState('');
-  //   } catch (e) {
-  //     console.log(error);
-  //   }
-  //   console.log('submit');
-  // };
+  // delete logged exercise
+  const [removeExercise] = useMutation(REMOVE_EXERCISE)
+  const deleteExercise = async (_id) => {
+    // event.preventDefault();
+    console.log(_id)
+    try {
+      await removeExercise({
+        variables: { _id },
+      });
+      
+    } catch (e) {
+      console.log(error);
+    }
+    console.log('submit');
+  };
 
   // handle submit
   const handleFormSubmit = async event => {
@@ -171,12 +178,13 @@ export default function Workout() {
                     Reset
                   </button>
                 )}
+                <button onClick = {submitTime}>Save</button>
               </div>
             </div>
           </div>
-          <div>
+          {/* <div>
             <ExerciseNameForm />
-          </div>
+          </div> */}
           {/* enter exercise area */}
           <div className="workout-container" id="log-container">
             <h1>Log your Workout</h1>
@@ -190,7 +198,7 @@ export default function Workout() {
                       list="typelist"
                       name="exerciseName"
                       autoComplete="off"
-                      placeholder="Select Recent Exercise Name"
+                      placeholder="Add/Select Exercise Name"
                       value={exerciseState.exerciseName}
                       onChange={handleChange}
                     />
@@ -248,7 +256,7 @@ export default function Workout() {
           {/* only display exerciseList when user has exercise logs */}
 
           <div className="" id="saved-workouts">
-            <ExerciseList exercises={allExercises?.exercises.exercises} />
+            <ExerciseList exercises={allExercises?.exercises.exercises} deleteExercise ={deleteExercise} />
           </div>
         </div>
       </div>
