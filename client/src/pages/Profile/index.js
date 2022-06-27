@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+// f
 import { useMutation, useQuery } from '@apollo/client';
 import Auth from '../../utils/auth';
 import { EDIT_USER } from '../../utils/mutations';
 import { QUERY_ME } from '../../utils/queries';
+import '../Signup/style.css'
 
 function EditProfile(props) {
   const [formState, setFormState] = useState({ email: '', username: '' });
@@ -42,11 +43,12 @@ console.log(currentUser);
   }
 
   return (
-    <div className="">
+    <div className='entry-container'>
+      <div className='entry-form'>
 
       <h2>Edit Profile</h2>
       <form onSubmit={handleFormSubmit}>
-        <div className="">
+        <div className="inputs">
           <label htmlFor="username">Username:</label>
           <input
             placeholder= {currentUser.me.username} 
@@ -56,7 +58,7 @@ console.log(currentUser);
             onChange={handleChange}
           />
         </div>
-        <div className="">
+        <div className="inputs">
           <label htmlFor="email">Email:</label>
           <input
             placeholder={currentUser.me.email}
@@ -67,11 +69,13 @@ console.log(currentUser);
           />
         </div>
         
-        <div className="">
+        <div className="inputs submit-btn">
           <button type="submit">Submit</button>
         </div>
       </form>
+      </div>
     </div>
+    
   );
 }
 

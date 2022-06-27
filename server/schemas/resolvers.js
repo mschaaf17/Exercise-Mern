@@ -137,10 +137,7 @@ const resolvers = {
 
       return { token, user };
     },
-<<<<<<< HEAD
 
-=======
->>>>>>> workout-fix
     addExerciseName: async (parent, args, context) => {
       if (context.user) {
         const exercise = await ExerciseCategory.create({
@@ -159,7 +156,6 @@ const resolvers = {
 
       throw new AuthenticationError('You need to be logged in!');
     },
-<<<<<<< HEAD
 
     editUser: async (parent, args, context) => {
       if (context.user)  {
@@ -171,8 +167,6 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
 
-=======
->>>>>>> workout-fix
     addExercise: async (parent, args, context) => {
       if (context.user) {
         console.log(context.user);
