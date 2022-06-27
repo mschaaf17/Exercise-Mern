@@ -45,7 +45,7 @@ const resolvers = {
       }
       throw new AuthenticationError('You are not logged in');
     },
-    
+
     exercise: async (parent, { _id }) => {
       return Exercise.findOne({ _id });
     },
@@ -113,7 +113,6 @@ const resolvers = {
   },
 
   Mutation: {
-
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
@@ -155,23 +154,33 @@ const resolvers = {
 
       throw new AuthenticationError('You need to be logged in!');
     },
-    
-    editUser: async (parent, args, context) => {
-      if (context.user)  {
-        const user = await User.findOneAndUpdate({_id: context.user._id}, args, {new: true})
-        const token = signToken(user)
 
-        return {user, token}
+    editUser: async (parent, args, context) => {
+      if (context.user) {
+        const user = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          args,
+          { new: true }
+        );
+        const token = signToken(user);
+
+        return { user, token };
       }
       throw new AuthenticationError('You need to be logged in!');
     },
 
     addExercise: async (parent, args, context) => {
       if (context.user) {
-        console.log(context.user);
-        const category = await ExerciseCategory.findOne({
+        let category = await ExerciseCategory.findOne({
           exerciseName: args.exerciseName,
         });
+
+        // create the category if it doesn't exist
+        if (!category) {
+          category = await ExerciseCategory.create({
+            exerciseName: args.exerciseName,
+          });
+        }
 
         const exercise = await Exercise.create({
           ...args,
@@ -184,7 +193,6 @@ const resolvers = {
           { $push: { exercises: exercise._id } },
           { new: true }
         );
-        console.log(exercise);
         return Exercise.findOne({ _id: exercise._id }).populate(
           'exerciseCategory'
         );

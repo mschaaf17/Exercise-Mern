@@ -17,10 +17,12 @@ const exerciseSchema = new Schema(
     },
     repetitions: {
       type: Number,
+      default: 0,
       // required: 'How many reps did you do?'
     },
     time: {
       type: Number,
+      default: 0,
       // require: 'Enter 0'
     },
     notes: {
@@ -30,11 +32,6 @@ const exerciseSchema = new Schema(
       type: Date,
       default: Date.now,
       // get: timestamp => dateFormat(timestamp),
-    },
-  },
-  {
-    toJSON: {
-      getters: true,
     },
   }
 );

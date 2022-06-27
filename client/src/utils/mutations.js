@@ -119,6 +119,7 @@ export const ADD_EXERCISE = gql`
         exerciseName
       }
       weight
+      time
       repetitions
       notes
       createdAt
