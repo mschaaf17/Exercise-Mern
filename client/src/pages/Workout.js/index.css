@@ -171,7 +171,16 @@ button {
   height: fit-content;
 }
 
-.exerciseNameLog {
+.example-workouts {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+
+
+
+/* .exerciseNameLog {
   display: flex;
   flex-direction: column;
   margin: auto;
@@ -197,4 +206,6 @@ button {
   margin: auto;
   
 
-}
+} */
+
+

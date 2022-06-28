@@ -3,9 +3,12 @@ import { useQuery, useMutation } from '@apollo/client';
 import { ADD_EXERCISE, ADD_EXERCISE_NAME, REMOVE_EXERCISE } from '../../utils/mutations';
 import { QUERY_EXERCISES, QUERY_NAMES } from '../../utils/queries';
 import ExerciseList from '../../components/ExerciseList';
-import ExerciseNameForm from '../../components/ExerciseName';
 import './index.css';
-import moment from 'moment';
+// import moment from 'moment';
+import armWorkouts from '../../assets/images/arm-workout.PNG'
+import legWorkouts from '../../assets/images/leg-workout.PNG'
+import abWorkouts from '../../assets/images/ab-workout.PNG'
+
 
 export default function Workout() {
   const [time, setTime] = useState(0);
@@ -92,6 +95,14 @@ export default function Workout() {
       [name]: value,
     });
   };
+
+// example workouts
+const [arms, setArms] = useState(false)
+const [legs, setLegs] = useState(false)
+const [abs, setAbs] = useState(false)
+
+
+
   // delete logged exercise
   const [removeExercise] = useMutation(REMOVE_EXERCISE)
   const deleteExercise = async (_id) => {
@@ -105,6 +116,7 @@ export default function Workout() {
     } catch (e) {
       console.log(error);
     }
+
     console.log('submit');
   };
 
@@ -136,6 +148,7 @@ export default function Workout() {
       notes: '',
     });
   };
+
   return (
     <>
       <div className="flex">
@@ -182,9 +195,7 @@ export default function Workout() {
               </div>
             </div>
           </div>
-          {/* <div>
-            <ExerciseNameForm />
-          </div> */}
+         
           {/* enter exercise area */}
           <div className="workout-container" id="log-container">
             <h1>Log your Workout</h1>
@@ -253,6 +264,54 @@ export default function Workout() {
               </form>
             </div>
           </div>
+
+            {/* example exercises */}
+            <div className='example-workouts'>
+              <div>
+              <h4>Not ready to Log?</h4>
+              <p> Check out these workouts!</p>
+              </div>
+              <div>
+                <div>
+                {!arms && (
+              <button onClick ={() => setArms(true)}>Arms Workouts</button>
+                )}
+                {arms && (
+                  <button onClick ={() => setArms(false)}>Close</button>
+                )}
+                {
+                arms?
+                    <img src ={armWorkouts} alt="arm workout plan"/> : null
+                }
+              </div>
+              <div>
+                {!legs && (
+                  <button onClick ={()=> setLegs(true)}>Leg Workouts</button>
+                )}
+                {legs && (
+                  <button onClick ={() => setLegs(false)}>Close</button>
+                )}
+                {
+                  legs?
+                <img src = {legWorkouts} alt ="leg workout plan" /> : null
+                }
+              </div>
+              <div>
+              {!abs && (
+                  <button onClick ={()=> setAbs(true)}>Ab Workouts</button>
+                )}
+                {abs && (
+                  <button onClick ={() => setAbs(false)}>Close</button>
+                )}
+                {
+                  abs?
+                <img src ={abWorkouts} alt ="ab workout plan"/> : null
+                }
+              </div>
+              
+              </div>
+            </div>
+
           {/* only display exerciseList when user has exercise logs */}
 
           <div className="" id="saved-workouts">
