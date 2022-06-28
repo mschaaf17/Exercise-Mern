@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Exercise, ExerciseCategory } = require('../models');
+const { User, Exercise, ExerciseCategory, Time } = require('../models');
 const { signToken } = require('../utils/auth');
 const { withInLastWeek } = require('../utils/dateValidate');
 const { sixMonthWeight } = require('../utils/sixMonthWeight');
@@ -110,6 +110,9 @@ const resolvers = {
     exerciseNames: async () => {
       return ExerciseCategory.find({});
     },
+     savingTime: async () => {
+      return Time.find().sort({ createdAt: -1 });
+    }
   },
 
   Mutation: {
@@ -218,15 +221,16 @@ const resolvers = {
   throw new AuthenticationError('Log in please')
  },
 
-//  saveTime: async (parent, args, context) => {
-//   if(context.user) {
-//     const saveTime = await Time.create({
-//       time: args.time, 
-//       user_id: context.userId
-
-//     })
-//   }
-//  }
+ saveTime: async (parent, args, context) => {
+  if(context.user) {
+    const saveTime = await Time.create({
+      time: args.time, 
+      user_id: context.userId
+    })
+    return saveTime
+  }
+ 
+ }
     
 
 

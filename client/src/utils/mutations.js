@@ -144,12 +144,12 @@ export const REMOVE_EXERCISE = gql`
 `;
 
 // make add time mutation 
-// export const SAVE_TIME = gql`
-// mutation saveTime($time: Int) {
-//   saveTime(time: $time) {
-//     _id
-//     time
+export const SAVE_TIME = gql`
+mutation saveTime($time: Int) {
+  saveTime(time: $time) {
+    _id
+    time
 
-//   }
-// }
-// `
+  }
+}
+`

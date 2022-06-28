@@ -27,11 +27,11 @@ const typeDefs = gql`
     exercises: [Exercise]
   }
 
-  # type Time {
-  #   _id: ID
-  #   date: Date
-  #   time: Int
-  # }
+  type Time {
+    _id: ID
+    date: String
+    time: Int
+  }
  
   type Auth {
     token: ID!
@@ -56,6 +56,7 @@ const typeDefs = gql`
     topPlayers: [Player]
     userData: UserData
     exerciseNames: [ExerciseCategory]
+    savingTime: [Time]
   }
   type Mutation {
     login(email: String!, password: String!): Auth
@@ -70,7 +71,7 @@ const typeDefs = gql`
     ): Exercise
     editUser(email: String!, username: String!): Auth
     removeExercise(_id: ID! ): Exercise
-    # saveTime(time: Int): Time
+    saveTime(time: Int): Time
   }
 `;
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
-import { ADD_EXERCISE, ADD_EXERCISE_NAME, REMOVE_EXERCISE } from '../../utils/mutations';
+import { ADD_EXERCISE, ADD_EXERCISE_NAME, REMOVE_EXERCISE, SAVE_TIME } from '../../utils/mutations';
 import { QUERY_EXERCISES, QUERY_NAMES } from '../../utils/queries';
 import ExerciseList from '../../components/ExerciseList';
 import ExerciseNameForm from '../../components/ExerciseName';
@@ -35,9 +35,22 @@ export default function Workout() {
 
 
   // submit time
-  // const submitTime = () =>{
-  //   console.log('submitting time')
-  // }
+  // figure out how to grab time state!
+  const [saveTime] = useMutation(SAVE_TIME)
+  const submitTime = async ({time}) =>{
+    
+    try {
+      await saveTime({
+        variables: { time }
+      })
+    } catch (e) {
+      console.log(error)
+    }
+    console.log({time})
+    console.log('submitting time')
+  }
+
+ 
 
   const [exerciseState, setExerciseState] = useState({
     exerciseName: '',
@@ -178,7 +191,7 @@ export default function Workout() {
                     Reset
                   </button>
                 )}
-                {/* <button onClick = {submitTime}>Save</button> */}
+                <button onClick = {submitTime}>Save</button>
               </div>
             </div>
           </div>

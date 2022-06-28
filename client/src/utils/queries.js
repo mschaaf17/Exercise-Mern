@@ -168,6 +168,13 @@ export const QUERY_USER = gql`
   }
 `;
 
+export const SAVING_TIME = gql`
+  query savingTime {
+  savingTime {
+    time
+  }
+}`
+
 export const QUERY_ME = gql`
   {
     me {
@@ -203,6 +210,8 @@ export const QUERY_EXERCISE_DATA = gql`
     }
   }
 `;
+
+
 
 
 
