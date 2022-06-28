@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import { ADD_EXERCISE, ADD_EXERCISE_NAME, REMOVE_EXERCISE, SAVE_TIME } from '../../utils/mutations';
-import { QUERY_EXERCISES, QUERY_NAMES } from '../../utils/queries';
+import { QUERY_EXERCISES, QUERY_NAMES, SAVING_TIME } from '../../utils/queries';
 import ExerciseList from '../../components/ExerciseList';
 import ExerciseNameForm from '../../components/ExerciseName';
 import './index.css';
