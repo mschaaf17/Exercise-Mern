@@ -35,9 +35,9 @@ export default function Workout() {
 
 
   // submit time
-  const submitTime = () =>{
-    console.log('submitting time')
-  }
+  // const submitTime = () =>{
+  //   console.log('submitting time')
+  // }
 
   const [exerciseState, setExerciseState] = useState({
     exerciseName: '',
@@ -178,7 +178,7 @@ export default function Workout() {
                     Reset
                   </button>
                 )}
-                <button onClick = {submitTime}>Save</button>
+                {/* <button onClick = {submitTime}>Save</button> */}
               </div>
             </div>
           </div>
