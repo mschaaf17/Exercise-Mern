@@ -18,6 +18,11 @@ export default function Workout() {
 
   const [timerOn, setTimerOn] = useState(false);
 
+  const exerciseSrc = {
+    arms: armWorkouts,
+    legs: legWorkouts,
+    abs: abWorkouts,
+  };
   const handleClickStop = () => {
     setTimerOn(false);
     // setStopTime(time);
@@ -90,7 +95,7 @@ export default function Workout() {
   // example workouts
 
   let initialState = {
-    leg: false,
+    legs: false,
     arms: false,
     abs: false,
   };
@@ -262,7 +267,7 @@ export default function Workout() {
               <div key={el}>
                 <button
                   onClick={() => {
-                    initialState = { leg: false, arms: false, abs: false };
+                    initialState = { legs: false, arms: false, abs: false };
                     if (state[el]) {
                       setState(initialState);
                     } else {
@@ -275,7 +280,7 @@ export default function Workout() {
                 </button>
                 {state[el] ? (
                   <div className="example-picture">
-                    <img src={armWorkouts} alt="arm workout plan" />
+                    <img src={exerciseSrc[el]} alt="arm workout plan" />
                   </div>
                 ) : null}
               </div>
