@@ -1,12 +1,5 @@
 import * as echarts from 'echarts';
 
-// const data = {
-//   Crunches: [144, 136],
-//   'Sit Ups': [122, 158],
-//   'Push Ups': [85, 115],
-//   'Lat Pull Downs': [113, 121],
-//   'Pull Ups': [31, 71],
-// };
 export default function hourChart(data) {
   let timeArr;
   let repetitionArr;
@@ -72,7 +65,7 @@ export default function hourChart(data) {
         data: timeArr,
         markPoint: {
           data: [
-            // { type: 'max', name: 'Max' },
+            { type: 'max', name: 'Max' },
             { type: 'min', name: 'Min' },
           ],
         },
@@ -90,7 +83,7 @@ export default function hourChart(data) {
         data: repetitionArr,
         markPoint: {
           data: [
-            // { type: 'max', name: 'Max' },
+            { type: 'max', name: 'Max' },
             { type: 'min', name: 'Min' },
           ],
         },

@@ -14,8 +14,8 @@ const ExerciseList = ({ exercises = [], deleteExercise }) => {
       <div className="cards">
         {exercises &&
           exercises.map(el => (
-            <div className="card">
-              <div key={el._id} className="card-header">
+            <div key={el._id} className="card">
+              <div className="card-header">
                 <div className="list-element">
                   <p className="title">Exercise: </p>
                   <p>{el.exerciseCategory.exerciseName}</p>
