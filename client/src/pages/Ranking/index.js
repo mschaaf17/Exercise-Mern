@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import '../../utils/flexible';
 import './index.css';
+import Footer from '../../components/Footer/index.js'
 
 import {
   weekChart,
@@ -53,6 +54,7 @@ function Ranking() {
       </div>
       <div className="panel panel-blank"></div>
       <div className="panel panel-blank"></div>
+      <Footer/>
     </div>
   );
 }

@@ -6,6 +6,8 @@ import { EDIT_USER } from '../../utils/mutations';
 import { QUERY_ME } from '../../utils/queries';
 //this imports the style from signup page so that they have a similar look
 import '../Signup/style.css';
+import Footer from '../../components/Footer/index.js'
+
 
 function Profile(props) {
   //see mutations but it tells it what data to display and edit
@@ -96,7 +98,9 @@ function Profile(props) {
           </div>
         </form>
       </div>
-    </div>
+      <Footer/>
+    </div>   
+  
   );
 }
 
