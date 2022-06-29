@@ -15,7 +15,7 @@ const Header = () => {
   }
   console.log(Auth.loggedIn())
   return (
-    <header className="">
+    <header>
       <div id="nav-container">
         <div id="title">
         <Link to="/">

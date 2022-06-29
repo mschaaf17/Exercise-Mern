@@ -3,6 +3,7 @@
   flex-direction: row;
   width: auto;
   justify-content: center;
+  margin-bottom: 10px;
 }
 
 .workout-log {
@@ -24,7 +25,7 @@
 }
 
 .workout-delete {
-  /* margin-top: 10px; */
+  margin-top: 3px;
   padding: 5px;
   max-width: 100px;
 }

@@ -49,7 +49,6 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/ranking" element={<Ranking />} />
           <Route path="/workout" element={<Workout />} />
-          {/* <Route path="/videos" element={<Video />} /> */}
         </Routes>
         <Footer />
       </Router>

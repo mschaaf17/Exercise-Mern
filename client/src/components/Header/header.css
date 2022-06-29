@@ -4,7 +4,6 @@ header {
 
 header h1 {
   color: var(--lighter-red);
-
   font-size: 2.5em;
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: var(--black);
@@ -15,6 +14,8 @@ header h1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
 }
 
 #nav-entry {
