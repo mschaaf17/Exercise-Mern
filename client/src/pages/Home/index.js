@@ -28,9 +28,6 @@ function Home() {
    <Link to="/login">Existing user? Login here</Link>
    </div>
    </div>
-   <div className="footer">
-      &copy;{new Date().getFullYear()} by Cannibal Coders
-    </div>
   </div>
   </>
  )

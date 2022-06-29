@@ -7,6 +7,7 @@ import { QUERY_ME } from '../../utils/queries';
 //this imports the style from signup page so that they have a similar look
 import '../Signup/style.css';
 
+
 function Profile(props) {
   //see mutations but it tells it what data to display and edit
   const [editUser] = useMutation(EDIT_USER);
@@ -96,7 +97,8 @@ function Profile(props) {
           </div>
         </form>
       </div>
-    </div>
+    </div>   
+  
   );
 }
 

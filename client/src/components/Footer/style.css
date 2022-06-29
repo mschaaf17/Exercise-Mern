@@ -1,10 +1,18 @@
 footer {
+
+    /*
+    THIS IS HOW TO GET A FOOTER TO STAY AT THE BOTTOM IF THE PAGE EXTENDS PAST 100%
+    https://www.geeksforgeeks.org/how-to-create-footer-to-stay-at-the-bottom-of-a-web-page/#:~:text=To%20make%20a%20footer%20fixed,you%20could%20use%20position%3A%20fixed.&text=%3C%20div%20id%20%3D%20%22footer%22,the%20bottom%20of%20the%20page. */
+
+
  display: flex;
  justify-content: space-around;
  justify-content: flex-start;
  background-color: var(--secondary);
  padding: 15px;
- margin-left: 5px;
+ position: fixed;
+ width: 100%;
+ bottom: 0;
 }
 
 /* footer .footer-container {

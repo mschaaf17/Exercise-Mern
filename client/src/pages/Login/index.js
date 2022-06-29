@@ -74,11 +74,6 @@ function Login(props) {
       <Link to="/signup">New user? Signup here</Link>
     </div>
     </div>
-    <footer className="">
-    <div className="footer-container">
-      &copy;{new Date().getFullYear()} by Cannibal Coders
-    </div>
-  </footer>
   </>
   );
 }
