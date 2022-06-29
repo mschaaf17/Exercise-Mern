@@ -213,7 +213,7 @@ const resolvers = {
           { $pull: { exercises: args._id } },
           { new: true }
         );
-        return updatedExercise;
+        return Exercise.findByIdAndDelete(args._id);
       }
       throw new AuthenticationError('Log in please');
     },
