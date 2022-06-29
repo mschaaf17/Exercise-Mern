@@ -7,9 +7,11 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import { video } from ''
 
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Video from './components/Video';
 
 import Home from './pages/Home';
 
