@@ -103,7 +103,35 @@ export default function Workout() {
   const [state, setState] = useState(initialState);
 
   // delete logged exercise
-  const [removeExercise] = useMutation(REMOVE_EXERCISE);
+  const [removeExercise] = useMutation(REMOVE_EXERCISE, {
+    update(cache, { data: { removeExercise } }) {
+      console.log(1);
+      try {
+        const { exercises } = cache.readQuery({ query: QUERY_EXERCISES });
+        console.log(exercises);
+
+        // console.log(exercises.exercises);
+        console.log(removeExercise);
+
+        cache.writeQuery({
+          query: QUERY_EXERCISES,
+          data: {
+            exercises: {
+              ...exercises,
+              exercises: [
+                ...exercises.exercises.filter(
+                  el => el._id !== removeExercise._id
+                ),
+              ],
+            },
+          },
+        });
+      } catch (e) {
+        console.log('err: ', e);
+      }
+    },
+  });
+
   const deleteExercise = async _id => {
     // event.preventDefault();
     console.log(_id);
@@ -114,8 +142,6 @@ export default function Workout() {
     } catch (e) {
       console.log(error);
     }
-
-    console.log('submit');
   };
 
   // handle submit
