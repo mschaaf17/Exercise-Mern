@@ -266,46 +266,46 @@ const [abs, setAbs] = useState(false)
           </div>
 
             {/* example exercises */}
-            <div className='example-workouts'>
-              <div>
-              <h4>Not ready to Log?</h4>
+            <div className='workout-container'>
+              <div className = "itemsCenter textCentered">
+              <h3>Not ready to Log?</h3>
               <p> Check out these workouts!</p>
               </div>
               <div>
                 <div>
                 {!arms && (
-              <button onClick ={() => setArms(true)}>Arms Workouts</button>
+              <button className = "itemsCenter" onClick ={() => setArms(true)}>Arms Workouts</button>
                 )}
                 {arms && (
-                  <button onClick ={() => setArms(false)}>Close</button>
+                  <button className = "itemsCenter" onClick ={() => setArms(false)}>Close</button>
                 )}
                 {
                 arms?
-                    <img src ={armWorkouts} alt="arm workout plan"/> : null
+                    <img className="imageSize" src ={armWorkouts} alt="arm workout plan"/> : null
                 }
               </div>
               <div>
                 {!legs && (
-                  <button onClick ={()=> setLegs(true)}>Leg Workouts</button>
+                  <button className = "itemsCenter" onClick ={()=> setLegs(true)}>Leg Workouts</button>
                 )}
                 {legs && (
-                  <button onClick ={() => setLegs(false)}>Close</button>
+                  <button className = "itemsCenter" onClick ={() => setLegs(false)}>Close</button>
                 )}
                 {
                   legs?
-                <img src = {legWorkouts} alt ="leg workout plan" /> : null
+                <img className="imageSize"src = {legWorkouts} alt ="leg workout plan" /> : null
                 }
               </div>
               <div>
               {!abs && (
-                  <button onClick ={()=> setAbs(true)}>Ab Workouts</button>
+                  <button className = "itemsCenter"onClick ={()=> setAbs(true)}>Ab Workouts</button>
                 )}
                 {abs && (
-                  <button onClick ={() => setAbs(false)}>Close</button>
+                  <button className = "itemsCenter" onClick ={() => setAbs(false)}>Close</button>
                 )}
                 {
                   abs?
-                <img src ={abWorkouts} alt ="ab workout plan"/> : null
+                <img className="imageSize" src ={abWorkouts} alt ="ab workout plan"/> : null
                 }
               </div>
               

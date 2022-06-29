@@ -17,7 +17,7 @@ const ExerciseList = ({ exercises = [], deleteExercise }) => {
         exercises.map(el => (
           <div key={el._id} className="">
             <div className="card-header">
-              {/* <div className='p'><div className='list-element'>Exercise:  </div>{el.exerciseCategory.exerciseName}</div> */}
+              <div className='p'><div className='list-element'>Exercise:  </div>{el.exerciseCategory.exerciseName}</div>
               <div className='p'><div className='list-element'>Date:  </div>{new Date(parseInt(el.createdAt)).toLocaleDateString()}</div>
 
               <div className='p list-element'>{el.repetitions ? `Repetitions: ${el.repetitions}` : ' '}</div>
