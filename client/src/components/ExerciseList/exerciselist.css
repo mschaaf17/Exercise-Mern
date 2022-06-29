@@ -1,0 +1,45 @@
+#workout-log-title {
+  display: flex;
+  flex-direction: row;
+  width: auto;
+  justify-content: center;
+}
+
+.workout-log {
+  width: 100%;
+}
+
+.cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: left;
+}
+
+.card {
+  flex: 1 1 20%;
+  margin-top: 5px;
+  min-width: 110px;
+  max-width: 200px;
+}
+
+.workout-delete {
+  /* margin-top: 10px; */
+  padding: 5px;
+  max-width: 100px;
+}
+
+.list-element {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  font-size: 15px;
+}
+
+.list-element .title {
+  font-weight: 700;
+}
+
+.list-element p {
+  font-weight: 400;
+}

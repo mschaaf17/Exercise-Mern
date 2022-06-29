@@ -2,64 +2,34 @@ h1 {
   font-size: 30px;
 }
 
-/* start timer section only */
-/* .border_bottom {
-  border-bottom: solid 1px;
-  padding-bottom: 10px;
-  text-align: center;
-} */
-.green {
-  background-color: green;
-}
-.red {
-  background-color: red;
-}
-
-.yellow {
-  background-color: yellow;
-}
-
 .flex {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  height: 100vh;
+  justify-content: center;
 }
 
-/* entire workout timer and log section */
-/* .workout_timer {
-  width: auto;
-  height: auto;
-  margin: 0px 10px;
-  /* border: 1px solid; 
-} */
-
-/* displayed log data */
-/* .workout-log {
-  width: 40%;
-  height: 100vh; */
-/* border: 1px solid; */
-/* } */
-
-/* log your workout only */
-
-/* .submit_log {
+.flex > * {
+  flex: 1 0 40%;
+  min-height: 300px;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px black;
   display: flex;
-  flex-wrap: wrap;
-  margin: 5px;
-} */
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.example-picture {
+  width: 100%;
+  height: 100%;
+}
 
 .button-container {
   display: flex;
   justify-content: center;
   margin: 5px;
 }
-
-/* #log-container {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-} */
 
 #log-container h1 {
   text-align: center;
@@ -101,39 +71,33 @@ div[class='exercise-input'] {
 div[class='exercise-input'] > * {
   border: none;
   width: 100%;
-  /* height: 100%; */
 }
 
 textarea[class='exercise-textarea'] {
-  /* margin: 5px 0; */
   resize: none;
   margin: 5px;
   flex: 1 0 90%;
-  /* min-width: 300px; */
   height: 100px;
   outline: none;
   resize: none;
   padding: 5px;
+  border-radius: 5px;
 }
+
+.example-workouts > p {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+
 
 #exercise-container {
   display: flex;
   flex-direction: column;
 }
 
-/* #timer-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  flex-direction: column;
-} */
-
 #timer-container h1 {
   text-align: center;
-}
-
-button {
-  max-width: 50%;
 }
 
 #hms {
@@ -149,10 +113,7 @@ button {
   flex-wrap: wrap;
   flex-direction: column;
   padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px black;
-  margin: 20px;
-  width: 45vw;
+  height: 100%;
 }
 
 .workout-container > * {
@@ -162,22 +123,20 @@ button {
 #saved-workouts {
   display: flex;
   padding: 15px;
-  margin: 20px;
   flex-wrap: wrap;
   flex-direction: column;
-  border-radius: 10px;
-  box-shadow: 0 0 10px black;
-  width: 40vw;
   height: fit-content;
+}
+
+.examples > div {
+  margin-top: 5px;
 }
 
 .example-workouts {
   display: flex;
   flex-direction: column;
   text-align: center;
-  margin-right: 35px;
 }
-
 
 .imageSize {
   max-width: 100%;
@@ -198,33 +157,3 @@ button {
 .textCentered p {
   font-size: 16px;
 }
-
-/* .exerciseNameLog {
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  padding: 10px;
-}
-
-.nameLog {
-  text-align: center;
-  font-size: 18px;
-  padding-bottom: 10px;
-}
-
-.nameText {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  margin: auto;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
-
-.btn {
-  margin: auto;
-  
-
-} */
-
-

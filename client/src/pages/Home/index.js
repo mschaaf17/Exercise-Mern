@@ -1,19 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import Video1 from '../../assets/videos/video1.mp4'
-import Video2 from '../../assets/videos/video2.mp4'
-import Video3 from '../../assets/videos/video3.mp4'
-import './style.css'
-import arrow from './arrow.svg'
+
+import './home.css'
 import muscle from './muscle.svg'
 
-// const videoArr = [Video1, Video2, Video3]
-
-// function videoLoop() {
-//  for (let i = 0; i < videoArr; i++) {
-//   const currentVideo = videoArr[i]
-//  }
-// }
 
 function Home() {
  return (

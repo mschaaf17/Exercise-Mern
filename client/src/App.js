@@ -13,9 +13,9 @@ import Footer from './components/Footer';
 
 import Home from './pages/Home';
 import Ranking from './pages/Ranking/';
-import Login from './pages/Login'
-import Signup from './pages/Signup'
-import Workout from './pages/Workout.js'
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import Workout from './pages/Workout.js';
 import Profile from './pages/Profile/';
 
 const httpLink = createHttpLink({
@@ -41,21 +41,17 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        
-          <Header />
-         
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/ranking" element={<Ranking />} />
-              <Route path ="/workout" element ={<Workout/>}/>
-              {/* <Route path="/videos" element={<Video />} /> */}
-            </Routes>
-          
-          
-        
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/ranking" element={<Ranking />} />
+          <Route path="/workout" element={<Workout />} />
+          {/* <Route path="/videos" element={<Video />} /> */}
+        </Routes>
+        <Footer />
       </Router>
     </ApolloProvider>
   );

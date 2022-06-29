@@ -82,10 +82,10 @@ margin-top: 20px;
 }
 
 button {
- display: flex;
- flex-direction: row;
+ /* display: flex; */
+ /* flex-direction: row;
  justify-content: center;
- align-items: center;
+ align-items: center; */
  padding: 8px;
  background: radial-gradient(var(--lighter-red) 40%, var(--primary));
  border: 0.5px solid var(--secondary);

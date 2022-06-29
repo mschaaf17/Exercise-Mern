@@ -1,38 +1,61 @@
 import React from 'react';
-import './style.css';
-import Moment from 'moment'
+import './exerciselist.css';
 
 const ExerciseList = ({ exercises = [], deleteExercise }) => {
   if (!exercises.length) {
-    return <h3>No exercises Yet</h3>;
+    return <h1>No Exercises Yet</h1>;
   }
 
   return (
     <div className="workout-log">
       <div id="workout-log-title">
-      <h1>Workout Log</h1>
+        <h1>Workout Log</h1>
       </div>
-      <div className="card">
-      {exercises &&
-        exercises.map(el => (
-          <div key={el._id} className="">
-            <div className="card-header">
-              <div className='p'><div className='list-element'>Exercise:  </div>{el.exerciseCategory.exerciseName}</div>
-              <div className='p'><div className='list-element'>Date:  </div>{new Date(parseInt(el.createdAt)).toLocaleDateString()}</div>
+      <div className="cards">
+        {exercises &&
+          exercises.map(el => (
+            <div className="card">
+              <div key={el._id} className="card-header">
+                <div className="list-element">
+                  <p className="title">Exercise: </p>
+                  <p>{el.exerciseCategory.exerciseName}</p>
+                </div>
 
-              <div className='p list-element'>{el.repetitions ? `Repetitions: ${el.repetitions}` : ' '}</div>
+                <div className="list-element">
+                  <p className="title">Date: </p>
+                  <p>{new Date(parseInt(el.createdAt)).toLocaleDateString()}</p>
+                </div>
 
-              <div className='p list-element'>{el.weight ? `Weight: ${el.weight} lbs`: ' '}</div>
-
-              <div className='p list-element'>{el.notes ? `Notes: ${el.notes}` : ' '}</div>
+                {el.repetitions && (
+                  <div className="list-element">
+                    <p className="title">Repetitions: </p>
+                    <p>{el.repetitions}</p>
+                  </div>
+                )}
+                {el.weight && (
+                  <div className="list-element">
+                    <p className="title">Weight: </p>
+                    <p> {el.weight} lbs</p>
+                  </div>
+                )}
+                {el.notes && (
+                  <div className="list-element">
+                    <p className="title">Notes: </p>
+                    <p>{el.notes}</p>
+                  </div>
+                )}
+              </div>
+              <button
+                className="workout-delete"
+                onClick={() => deleteExercise(el._id)}
+              >
+                Delete
+              </button>
             </div>
-            <button onClick={() => deleteExercise(el._id)}>Delete</button>
-          </div>
-        ))}
-        </div>
+          ))}
+      </div>
     </div>
   );
 };
-
 
 export default ExerciseList;

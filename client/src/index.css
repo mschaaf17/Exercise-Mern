@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 * {
  margin: 0;
  padding: 0;
@@ -17,10 +13,7 @@
  --lighter-red: #E50E0E;
  --gray: #BBBBBB;
  --black: black;
-
 }
-
-
 
 a {
  text-decoration: none;
@@ -33,7 +26,6 @@ ul {
 .flex {
  display: flex;
  display: -webkit-flex;
-
 }
 
 h1 {

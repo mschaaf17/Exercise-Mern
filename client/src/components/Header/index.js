@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import Auth from '../../utils/auth';
-import './style.css'
+import './header.css'
 
 const Header = () => {
   const location = useLocation()
@@ -28,7 +28,7 @@ const Header = () => {
         <nav  className="">
           {Auth.loggedIn() ? (
             <>
-              <Link to="/profile">Edit Profile</Link>
+              <Link to="/profile">Profile</Link>
               <Link to="/ranking">Ranking</Link>
               <Link to="/workout">Workout</Link>
               <a href="/" onClick={logout}>
