@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-
+const secret = process.env.SECRET || 'mysecret'
 const expiration = '2h';
 
 module.exports = {
@@ -20,7 +20,7 @@ module.exports = {
     }
 
     try {
-      const { data } = jwt.verify(token, process.env.SECRET, {
+      const { data } = jwt.verify(token, secret, {
         maxAge: expiration,
       });
       req.user = data;
