@@ -1,4 +1,4 @@
-import workboxBuild from 'workbox-build';
+const workboxBuild = require('workbox-build');
 // NOTE: This should be run *AFTER* all your assets are built
 (() => {
   // This will return a Promise
