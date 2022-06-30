@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import '../../utils/flexible';
 import './index.css';
+import line from '../../assets/images/line.png';
 
 import {
   weekChart,
@@ -20,7 +21,6 @@ function Ranking() {
   const exerciseData = data?.userData?.exercises;
   const weeklyData = data?.userData?.weeklyData;
 
-
   useEffect(() => {
     weekChart(weeklyData);
     weightChart(weightData);
@@ -30,23 +30,23 @@ function Ranking() {
 
   return (
     <div className="mainbox">
-      <div className="panel">
+      <div className="panel" style={{ backgroundImage: `url(${line})` }}>
         <h2>Weekly Data</h2>
         <div className="chart hour"></div>
         <div className="panel-footer"></div>
       </div>
-      <div className="panel">
+      <div className="panel" style={{ backgroundImage: `url(${line})` }}>
         <h2>Star Players</h2>
         <div className="chart ranking"></div>
         <div className="panel-footer"></div>
       </div>
 
-      <div className="panel">
+      <div className="panel" style={{ backgroundImage: `url(${line})` }}>
         <h2>Exercise Analysis</h2>
         <div className="chart analysis"></div>
         <div className="panel-footer"></div>
       </div>
-      <div className="panel">
+      <div className="panel" style={{ backgroundImage: `url(${line})` }}>
         <h2>Weight Tracker</h2>
         <div className="chart weight"></div>
         <div className="panel-footer"></div>

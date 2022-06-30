@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import Video1 from '../../assets/videos/video1.mp4'
+import Video1 from '../../assets/videos/video.mp4'
 
 import './home.css'
 import muscle from './muscle.svg'

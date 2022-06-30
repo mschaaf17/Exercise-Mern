@@ -18,7 +18,7 @@
   min-width: 500px;
   margin: 0.12rem;
   /* background-color: pink; */
-  background-color: rgba(79, 54, 219, 0.144);
+  background-color: rgba(255, 255, 255, 0.144);
   /* min-width: 400px; */
   /* height: 2.5rem; */
   position: relative;
@@ -26,7 +26,6 @@
 
   /* margin-bottom: 0.25rem; */
   border: 1px solid #1089e7;
-  background: url(../../assets/images/line.png);
 }
 
 .panel-blank {

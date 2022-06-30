@@ -9,9 +9,9 @@ import { QUERY_EXERCISES, QUERY_NAMES } from '../../utils/queries';
 import ExerciseList from '../../components/ExerciseList';
 import './index.css';
 // import moment from 'moment';
-import armWorkouts from '../../assets/images/arm-workout.PNG';
-import legWorkouts from '../../assets/images/leg-workout.PNG';
-import abWorkouts from '../../assets/images/ab-workout.PNG';
+import armWorkouts from '../../assets/images/arm-workout.png';
+import legWorkouts from '../../assets/images/leg-workout.png';
+import abWorkouts from '../../assets/images/ab-workout.png';
 
 export default function Workout() {
   const [time, setTime] = useState(0);
@@ -100,7 +100,6 @@ export default function Workout() {
   // delete logged exercise
   const [removeExercise] = useMutation(REMOVE_EXERCISE, {
     update(cache, { data: { removeExercise } }) {
-
       try {
         const { exercises } = cache.readQuery({ query: QUERY_EXERCISES });
         cache.writeQuery({
