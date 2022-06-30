@@ -9,9 +9,9 @@ import { QUERY_EXERCISES, QUERY_NAMES } from '../../utils/queries';
 import ExerciseList from '../../components/ExerciseList';
 import './index.css';
 // import moment from 'moment';
-import armWorkouts from '../../assets/images/arm-workout.png';
-import legWorkouts from '../../assets/images/leg-workout.png';
-import abWorkouts from '../../assets/images/ab-workout.png';
+import armWorkouts from '../../assets/images/arm-workout.PNG';
+import legWorkouts from '../../assets/images/leg-workout.PNG';
+import abWorkouts from '../../assets/images/ab-workout.PNG';
 
 export default function Workout() {
   const [time, setTime] = useState(0);
