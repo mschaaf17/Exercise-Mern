@@ -39,7 +39,7 @@ Neo Ji, Madison Schaaf, James Fillerup, Noah Slusher, and Cade Wilson
 
 ## GitHub Profile:
 * [jamesfillerup](https://github.com/jamesfillerup)
-* [fullstackneo](https://github.com/fullstackneo
+* [fullstackneo](https://github.com/fullstackneo)
 * [mschaaf17](https://github.com/mschaaf17)
 * [noahslusher](https://github.com/noahslusher)
 * [M8MBA](https://github.com/M8MBA)
