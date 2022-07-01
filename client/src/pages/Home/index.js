@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import Video1 from '../../assets/videos/video.mp4'
+import Poster from '../../assets/images/poster.png'
 
 import './home.css'
 import muscle from './muscle.svg'
@@ -11,7 +12,7 @@ function Home() {
   <>
   <div id="homepage">
    <Link to="/"></Link>
-   <video src={Video1} autoPlay loop muted id="bg-video"/>
+   <video src={Video1} autoPlay loop muted poster={Poster} id="bg-video"/>
     <div id="home-title"> 
     <h1> STACKED</h1>
     <p>A new you is only a few clicks away.</p>

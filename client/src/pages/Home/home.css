@@ -105,9 +105,13 @@ a:hover {
   display: flex;
   justify-content: center;
   padding-top: 10px;
-  color: white;
+  color: var(--secondary);
   font-size: 15px;
   text-decoration: underline;
+}
+
+a {
+  color: var(--secondary)
 }
 
 a:visited {
