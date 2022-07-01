@@ -15,6 +15,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Description:
 An application that allows developers to develop a workout routine and track their progress. 
 *Built with: Node.js, Javascript, MongoDB React, Expressm GraphQlm Bcrypt, Apollo Server, and other npm packages.
+![image](https://user-images.githubusercontent.com/97362296/176797777-c06e2d50-22fe-4faa-a0ed-7985f7eb9e20.png)
 
 
 
@@ -37,11 +38,11 @@ Neo Ji, Madison Schaaf, James Fillerup, Noah Slusher, and Cade Wilson
 
 
 ## GitHub Profile:
-[mschaaf17](https://github.com/mschaaf17)
-[jamesfillerup](https://github.com/jamesfillerup)
-[fullstackneo](https://github.com/fullstackneo)
-[noahslusher](https://github.com/noahslusher)
-[M8MBA](https://github.com/M8MBA)
+* [jamesfillerup](https://github.com/jamesfillerup)
+* [fullstackneo](https://github.com/fullstackneo
+* [mschaaf17](https://github.com/mschaaf17)
+* [noahslusher](https://github.com/noahslusher)
+* [M8MBA](https://github.com/M8MBA)
 
 ## For any questions contact: madisonschaaf48@gmail.com, jamesp.fillerup@gmail.com, cademichaelwilson@gmail.com, fullstackneo@gmail.com, slushern42@gmail.com
 
