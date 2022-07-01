@@ -1,5 +1,51 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+# Stacked
+## License [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+## Table of Contents
+* [Description](#description)
+* [Deployed Application](#deployed-application)
+* [Usage](#usage)
+* [Installation](#installation)
+* [Contributors](#contributors)
+* [GitHub](#github-profile)
+* [Contact Me](#for-any-questions-contact)
+
+## Description:
+An application that allows developers to develop a workout routine and track their progress. 
+*Built with: Node.js, Javascript, MongoDB React, Expressm GraphQlm Bcrypt, Apollo Server, and other npm packages.
+
+
+
+## Deployed Application:
+https://exercise-mernapp.herokuapp.com/
+
+
+## Usage:
+* To log and trackers the Users progress in exercising. 
+* After logging in...
+* The user can track their workout. 
+* The user retrieves data.
+
+
+## Installation:
+Clone the code and then run npm install. 
+
+## Contributors:
+Neo Ji, Madison Schaaf, James Fillerup, Noah Slusher, and Cade Wilson
+
+
+## GitHub Profile:
+[mschaaf17](https://github.com/mschaaf17)
+[jamesfillerup](https://github.com/jamesfillerup)
+[fullstackneo](https://github.com/fullstackneo)
+[noahslusher](https://github.com/noahslusher)
+[M8MBA](https://github.com/M8MBA)
+
+## For any questions contact: madisonschaaf48@gmail.com, jamesp.fillerup@gmail.com, cademichaelwilson@gmail.com, fullstackneo@gmail.com, slushern42@gmail.com
+
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -12,10 +58,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
 
@@ -26,16 +68,6 @@ The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
 ## Learn More
 
