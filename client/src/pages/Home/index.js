@@ -14,15 +14,15 @@ function Home() {
    <video src={Video1} autoPlay loop muted id="bg-video"/>
     <div id="home-title"> 
     <h1> STACKED</h1>
-    <p>By Developers. For Developers.</p>
+    <p>A new you is only a few clicks away.</p>
     </div>
     
     <div id="home-text">
-    <h3>Code Full Stack.</h3>
-    <h3>Get Fully Stacked.</h3>
+    <h3>Find New Exercises.</h3>
+    <h3>Get Stacked.</h3>
     {/* <h3>A healthier life is just a few clicks away.</h3> */}
      <div id="signup-btn">
-    <Link to="/signup"><button>Get Stacked <img id="arrow" src={muscle}></img></button></Link>
+    <Link to="/signup"><button>Let's Go <img id="arrow" src={muscle}></img></button></Link>
    </div>
    <div id="existing">
    <Link to="/login">Existing user? Login here</Link>
