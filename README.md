@@ -14,7 +14,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Description:
 An application that allows developers to develop a workout routine and track their progress. 
-*Built with: Node.js, Javascript, MongoDB React, Expressm GraphQlm Bcrypt, Apollo Server, and other npm packages.
+*Built with: Node.js, Javascript, MongoDB React, Express, GraphQl, Bcrypt, Apollo Server, and other npm packages.
 ![image](https://user-images.githubusercontent.com/97362296/176797777-c06e2d50-22fe-4faa-a0ed-7985f7eb9e20.png)
 
 
